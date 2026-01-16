@@ -293,6 +293,52 @@
         grid-template-columns: 1fr;
       }
     }
+/* SINGLE CONTACT BOX */
+.contact-box {
+  margin-top: 20px;
+  padding: 22px 26px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  max-width: 520px;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.contact-row + .contact-row {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #9aa4b2;
+}
+
+.contact-row a,
+.contact-text {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.contact-row a {
+  text-decoration: none;
+}
+
+.contact-row a:hover {
+  text-decoration: underline;
+}
+
+
   </style>
 </head>
 
@@ -442,10 +488,30 @@
     </div>
   </section>
 
-  <section id="contact" class="section">
-    <h2>Contact Me</h2>
-    <p>You can reach me using the CONNECT button above.</p>
-  </section>
+<section id="contact" class="section">
+  <h2>Contact Me</h2>
+
+  
+<div class="contact-row">
+  <span class="contact-label">Email</span>
+  <span class="contact-text">seanpatrickramos.sp@gmail.com</span>
+</div>
+    <div class="contact-row">
+      <span class="contact-label">Phone</span>
+      <span class="contact-text">0992 323 1765</span>
+    </div>
+
+    <div class="contact-row">
+      <span class="contact-label">Location</span>
+      <span class="contact-text">
+        134 LTG St., Poblacion, San Antonio, Quezon
+      </span>
+    </div>
+  </div>
+</section>
+
+
+
 
   <script>
     // ✅ CONNECT: works normally via mailto; fallback copies email if blocked
@@ -528,6 +594,8 @@
     );
   }
 </script>
+
+
 
 
 </body>

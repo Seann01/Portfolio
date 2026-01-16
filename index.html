@@ -1,181 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sean Patrick L. Ramos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sean Patrick L. Ramos</title>
 
-<style>
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
 
-body {
-  color: #ffffff;
-  min-height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url("./images/bgimage.jpg") center / cover no-repeat fixed;
-}
+    /* PAGE BACKGROUND (GitHub Pages-safe) */
+    body {
+      color: #ffffff;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("./images/bgimage.jpg") center / cover no-repeat fixed;
+    }
 
-/* NAVBAR */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #2b2f36;
-  padding: 16px 40px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 30px;
-}
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #2b2f36;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 30px;
+    }
 
-nav a {
-  color: #9aa4b2;
-  text-decoration: none;
-  font-size: 14px;
-}
+    nav a {
+      color: #9aa4b2;
+      text-decoration: none;
+      font-size: 14px;
+    }
 
-nav a:hover,
-nav a.active {
-  color: #ffffff;
-}
+    nav a:hover,
+    nav a.active {
+      color: #ffffff;
+    }
 
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-.hero-content {
-  max-width: 1100px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: rgba(20, 24, 28, 0.9);
-  border-radius: 6px;
-  overflow: hidden;
-}
+    .hero-content {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(20, 24, 28, 0.92);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
 
-/* LEFT */
-.hero-text {
-  padding: 60px;
-}
+    /* LEFT */
+    .hero-text {
+      padding: 60px;
+    }
 
-.hero-text h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
+    .hero-text h1 {
+      font-size: 34px;
+      margin-bottom: 18px;
+    }
 
-.hero-text p {
-  font-size: 14px;
-  line-height: 1.8;
-  color: #d1d5db;
-  margin-bottom: 30px;
-  max-width: 420px;
-}
+    .hero-text p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #d1d5db;
+      margin-bottom: 28px;
+      max-width: 460px;
+    }
 
-/* BUTTON */
-.connect-btn {
-  display: inline-block;
-  padding: 12px 28px;
-  background: #5a6b7c;
-  color: #ffffff;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-decoration: none;
-}
+    /* BUTTON */
+    .connect-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: #5a6b7c;
+      color: #ffffff;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
 
-.connect-btn:hover {
-  background: #6f8194;
-}
+    .connect-btn:hover {
+      background: #6f8194;
+    }
 
-/* RIGHT IMAGE */
-.hero-image {
-  padding: 6px;
-}
+    /* RIGHT IMAGE */
+    .hero-image {
+      padding: 8px;
+      background: rgba(20, 24, 28, 0.92);
+    }
 
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 6px;
+    }
 
-/* SECTIONS */
-.section {
-  padding: 100px 40px;
-  margin: 40px 20px;
-  background: rgba(20, 24, 28, 0.9);
-}
+    /* SECTIONS */
+    .section {
+      padding: 100px 40px;
+      margin: 40px 20px;
+      background: rgba(20, 24, 28, 0.92);
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-  }
+    .section h2 {
+      margin-bottom: 18px;
+    }
 
-  .hero-text {
-    padding: 40px;
-    text-align: center;
-  }
+    .section p {
+      color: #d1d5db;
+    }
 
-  .hero-text p {
-    margin: 0 auto 30px;
-  }
-}
-</style>
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav {
+        padding: 16px 20px;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text {
+        padding: 40px;
+        text-align: center;
+      }
+
+      .hero-text p {
+        margin: 0 auto 28px;
+      }
+
+      .hero-image {
+        padding: 12px;
+      }
+
+      .section {
+        padding: 70px 20px;
+        margin: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact Me</a>
+  </nav>
 
-<nav>
-  <a href="#" class="active">Home</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact Me</a>
-</nav>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Sean Patrick L. Ramos</h1>
+        <p>
+          Hi, I'm Sean — a web development graduate with experience in IT support,
+          customer service, and backend automation, now transitioning into
+          virtual assistant and tech-support roles.
+        </p>
 
-<section class="hero">
-  <div class="hero-content">
+        <a class="connect-btn"
+           href="mailto:seanpatrickramos.sp@gmail.com?subject=Connect&body=Hi%20Sean,%0A%0AI%20would%20like%20to%20connect%20with%20you."
+           target="_blank" rel="noopener">
+          CONNECT
+        </a>
+      </div>
 
-    <div class="hero-text">
-      <h1>Sean Patrick L. Ramos</h1>
-      <p>
-        Hi, I'm Sean — a web development graduate with experience in IT support,
-        customer service, and backend automation, now transitioning into
-        virtual assistant and tech-support roles.
-      </p>
-
-      <a class="connect-btn"
-         href="https://mail.google.com/mail/?view=cm&to=seanpatrickramos.sp@gmail.com&su=Connect"
-         target="_blank">
-        CONNECT
-      </a>
+      <div class="hero-image">
+        <!-- MUST match your file name exactly -->
+        <img src="./images/self-picture.jpg" alt="Sean Patrick" />
+      </div>
     </div>
+  </section>
 
-    <div class="hero-image">
-      <img src="./images/self-picture.jpg" alt="Sean Patrick">
-    </div>
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <p>This section scrolls while the background stays fixed.</p>
+  </section>
 
-  </div>
-</section>
-
-<section id="projects" class="section">
-  <h2>Projects</h2>
-  <p>This section scrolls while the background stays fixed.</p>
-</section>
-
-<section id="contact" class="section">
-  <h2>Contact Me</h2>
-  <p>You can reach me using the CONNECT button above.</p>
-</section>
-
+  <section id="contact" class="section">
+    <h2>Contact Me</h2>
+    <p>You can reach me using the CONNECT button above.</p>
+  </section>
 </body>
 </html>

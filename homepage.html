@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sean Patrick L. Ramos</title>
+
+<style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  color: #ffffff;
+}
+
+/* FIXED BACKGROUND IMAGE */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("file:///G:/SEAN/Documents/portfolio/images/bgimage.jpg") center / cover no-repeat;
+  z-index: -1;
+}
+
+/* NAVBAR */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #2b2f36;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+nav a {
+  color: #9aa4b2;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover,
+nav a.active {
+  color: #ffffff;
+}
+
+/* HERO SECTION */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px;
+}
+/* bottom closer to Projects */
+
+
+/* HERO CONTENT */
+.hero-content {
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(20, 24, 28, 0.9);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* LEFT SIDE */
+.hero-text {
+  padding: 60px;
+}
+
+.hero-text h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #d1d5db;
+  margin-bottom: 30px;
+  max-width: 420px;
+}
+
+/* CONNECT BUTTON */
+.connect-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #5a6b7c;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.connect-btn:hover {
+  background: #6f8194;
+}
+
+/* RIGHT IMAGE */
+/* Dark blue background acts as the border */
+.hero-image {
+  background: rgba(20, 24, 28, 0.9);
+  padding: 6px 10px 8px 0; /* top closer, bottom slightly closer */
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* EXTRA SECTIONS */
+.section {
+  padding: 100px 40px; /* slightly tighter */
+  margin: 0 20px;
+  background: rgba(20, 24, 28, 0.9);
+}
+
+.section h2 {
+  margin-bottom: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text {
+    padding: 40px;
+    text-align: center;
+  }
+
+  .hero-text p {
+    margin: 0 auto 30px;
+  }
+
+  .hero-image {
+    padding: 8px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<nav>
+  <a href="#" class="active">Home</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact Me</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+
+    <div class="hero-text">
+      <h1>Sean Patrick L. Ramos</h1>
+      <p>
+        Hi, I'm Sean — a web development graduate with experience in IT support,
+        customer service, and backend automation, now transitioning into
+        virtual assistant and tech-support roles.
+      </p>
+
+      <a class="connect-btn"
+        href="https://mail.google.com/mail/?view=cm&to=seanpatrickramos.sp@gmail.com&su=Connect&body=Hi%20Sean,%0A%0AI%20would%20like%20to%20connect%20with%20you."
+        target="_blank">
+        CONNECT
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <img src="G:\SEAN\Documents\portfolio\images\Self Picture.jpg" alt="Sean Patrick">
+    </div>
+
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <h2>Projects</h2>
+  <p>This section scrolls while the background stays fixed.</p>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact Me</h2>
+  <p>You can reach me using the CONNECT button above.</p>
+</section>
+
+</body>
+</html>

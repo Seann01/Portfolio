@@ -70,4 +70,112 @@ nav a.active {
 }
 
 .hero-text h1 {
-  font-size: 32
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #d1d5db;
+  margin-bottom: 30px;
+  max-width: 420px;
+}
+
+/* BUTTON */
+.connect-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #5a6b7c;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.connect-btn:hover {
+  background: #6f8194;
+}
+
+/* RIGHT IMAGE */
+.hero-image {
+  padding: 6px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* SECTIONS */
+.section {
+  padding: 100px 40px;
+  margin: 40px 20px;
+  background: rgba(20, 24, 28, 0.9);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text {
+    padding: 40px;
+    text-align: center;
+  }
+
+  .hero-text p {
+    margin: 0 auto 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#" class="active">Home</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact Me</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+
+    <div class="hero-text">
+      <h1>Sean Patrick L. Ramos</h1>
+      <p>
+        Hi, I'm Sean — a web development graduate with experience in IT support,
+        customer service, and backend automation, now transitioning into
+        virtual assistant and tech-support roles.
+      </p>
+
+      <a class="connect-btn"
+         href="https://mail.google.com/mail/?view=cm&to=seanpatrickramos.sp@gmail.com&su=Connect"
+         target="_blank">
+        CONNECT
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <img src="./images/self-picture.jpg" alt="Sean Patrick">
+    </div>
+
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <h2>Projects</h2>
+  <p>This section scrolls while the background stays fixed.</p>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact Me</h2>
+  <p>You can reach me using the CONNECT button above.</p>
+</section>
+
+</body>
+</html>

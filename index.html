@@ -14,7 +14,19 @@
       font-family: "Segoe UI", Arial, sans-serif;
     }
 
-    /* PAGE BACKGROUND (GitHub Pages-safe) */
+    :root{
+      --container: 1100px;
+      --card: rgba(20, 24, 28, 0.92);
+      --muted: #d1d5db;
+      --nav: #2b2f36;
+      --btn: #5a6b7c;
+      --btnHover: #6f8194;
+      --shadow: 0 10px 30px rgba(0,0,0,0.25);
+      --radius: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
       color: #ffffff;
       min-height: 100vh;
@@ -28,82 +40,101 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: #2b2f36;
+      background: var(--nav);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      max-width: var(--container);
+      margin: 0 auto;
       padding: 16px 40px;
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       gap: 30px;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: #9aa4b2;
       text-decoration: none;
       font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.15s ease, color 0.15s ease;
+      outline: none;
     }
 
-    nav a:hover,
+    nav a:hover {
+      color: #ffffff;
+      background: rgba(255,255,255,0.06);
+    }
+
     nav a.active {
       color: #ffffff;
+      background: rgba(255,255,255,0.12);
     }
 
     /* HERO */
     .hero {
-      min-height: 100vh;
+      min-height: auto;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 20px;
+      padding: 24px 20px 0;
+      margin-bottom: 24px;
     }
 
     .hero-content {
-      max-width: 1100px;
+      max-width: var(--container);
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      background: rgba(20, 24, 28, 0.92);
-      border-radius: 10px;
+      background: var(--card);
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      box-shadow: var(--shadow);
     }
 
-    /* LEFT */
     .hero-text {
-      padding: 60px;
+      padding: 56px;
     }
 
     .hero-text h1 {
       font-size: 34px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .hero-text p {
       font-size: 14px;
-      line-height: 1.8;
-      color: #d1d5db;
-      margin-bottom: 28px;
-      max-width: 460px;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 26px;
+      max-width: 480px;
     }
 
-    /* BUTTON */
     .connect-btn {
       display: inline-block;
       padding: 12px 28px;
-      background: #5a6b7c;
+      background: var(--btn);
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 1px;
       text-decoration: none;
-      border-radius: 4px;
+      border-radius: 6px;
+      transition: background 0.15s ease, transform 0.1s ease;
     }
 
     .connect-btn:hover {
-      background: #6f8194;
+      background: var(--btnHover);
+      transform: translateY(-1px);
     }
 
-    /* RIGHT IMAGE */
+    /* HERO IMAGE (fixed) */
     .hero-image {
-      padding: 8px;
-      background: rgba(20, 24, 28, 0.92);
+      padding: 6px;
+      background: var(--card);
+      min-height: 380px;
+      display: flex;
     }
 
     .hero-image img {
@@ -111,30 +142,132 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      border-radius: 6px;
+      border-radius: 8px;
     }
 
     /* SECTIONS */
-    .section {
-      padding: 100px 40px;
-      margin: 40px 20px;
-      background: rgba(20, 24, 28, 0.92);
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    section.section {
+      max-width: var(--container);
+      margin: 12px auto;
+      padding: 56px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
     .section h2 {
       margin-bottom: 18px;
+      font-size: 24px;
     }
 
     .section p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+
+    /* Reusable separator line (use this instead of empty .job divs) */
+    .separator {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.10);
+      margin: 28px 0;
+    }
+
+    /* Work experience layout */
+    .job {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .job:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .job h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .job .meta {
+      margin-bottom: 12px;
+      color: #b9c2cf;
+      font-size: 13px;
+    }
+
+    .job ul {
+      margin-left: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .job li { margin-bottom: 8px; }
+
+    /* PROJECTS */
+    .project-item { margin-top: 40px; }
+
+    /* Adaptive image wrapper */
+    .project-image {
+      display: block;               /* ✅ full width so border matches container */
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+    }
+
+    .project-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Two images under same project (Sample 1) */
+    .project-images {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .project-item h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .project-item p {
       color: #d1d5db;
+      line-height: 1.8;
+      max-width: 800px;
+    }
+
+    /* ✅ Sample 2: image + text beside (uses your space better) */
+    .project-side {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .project-side .project-images,
+    .project-side .project-image {
+      margin-bottom: 0;
+    }
+
+    .project-content h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
     }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      nav {
-        padding: 16px 20px;
+      .nav-inner {
+        padding: 14px 16px;
+        gap: 12px;
       }
 
       .hero-content {
@@ -142,31 +275,35 @@
       }
 
       .hero-text {
-        padding: 40px;
+        padding: 36px 24px;
         text-align: center;
       }
 
       .hero-text p {
-        margin: 0 auto 28px;
+        margin: 0 auto 24px;
       }
 
-      .hero-image {
-        padding: 12px;
+      section.section {
+        padding: 36px 20px;
+        margin: 12px 16px;
       }
 
-      .section {
-        padding: 70px 20px;
-        margin: 20px;
+      .project-side {
+        grid-template-columns: 1fr;  /* stack on mobile */
       }
     }
   </style>
 </head>
 
 <body>
+
   <nav>
-    <a href="#" class="active">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact Me</a>
+    <div class="nav-inner">
+      <a href="#home">Home</a>
+      <a href="#experience">Work Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact Me</a>
+    </div>
   </nav>
 
   <section class="hero" id="home">
@@ -180,27 +317,172 @@
         </p>
 
         <a class="connect-btn"
-           href="mailto:seanpatrickramos.sp@gmail.com?subject=Connect&body=Hi%20Sean,%0A%0AI%20would%20like%20to%20connect%20with%20you."
-           target="_blank" rel="noopener">
+          href="mailto:seanpatrickramos.sp@gmail.com?subject=Connect&body=Hi%20Sean,%0A%0AI%20would%20like%20to%20connect%20with%20you.">
           CONNECT
         </a>
       </div>
 
       <div class="hero-image">
-        <!-- MUST match your file name exactly -->
         <img src="./images/self-picture.jpg" alt="Sean Patrick" />
       </div>
     </div>
   </section>
 
+  <section id="experience" class="section">
+    <h2>Work Experience</h2>
+
+    <div class="job">
+      <h3>Customer Service and Experience Representative — Alorica</h3>
+      <div class="meta">October 2024 – January 2025 · International Account · Peak Season Contract</div>
+      <ul>
+        <li>Handled sales and customer service for an international account</li>
+        <li>Provided warm, professional support for customer order concerns</li>
+        <li>Assisted customers with order processing and transaction issues</li>
+        <li>Delivered effective solutions while maintaining customer satisfaction during peak season</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>IT Staff — Crestec Philippines Inc.</h3>
+      <div class="meta">January 2025 – May 2025</div>
+      <ul>
+        <li>Troubleshot printer, computer, and network connectivity issues</li>
+        <li>Set up computers, printers, and telephone systems including cabling</li>
+        <li>Installed printers and essential applications such as Microsoft Office, Outlook, and internal tools</li>
+        <li>Managed inventory of department equipment, including restocking and disposal</li>
+        <li>Provided technical support for employee hardware, software, and network concerns</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>Customer Experience Representative — Alorica</h3>
+      <div class="meta">July 2025 – November 2025 · International Account</div>
+      <ul>
+        <li>Processed customer orders accurately and efficiently</li>
+        <li>Handled sales and upselling opportunities to maximize revenue</li>
+        <li>Maintained high-quality customer experience while meeting sales targets</li>
+      </ul>
+    </div>
+  </section>
+
   <section id="projects" class="section">
     <h2>Projects</h2>
-    <p>This section scrolls while the background stays fixed.</p>
+    <p>Add your projects here with screenshots and descriptions.</p>
+
+    <!-- Sample 1 (two images stacked, clean) -->
+    <div class="project-item">
+      <div class="project-images">
+        <div class="project-image">
+          <img src="./images/sample1.jpg" alt="Sample 1">
+        </div>
+        <div class="project-image">
+          <img src="./images/sample1.2.jpg" alt="Sample 1 (2)">
+        </div>
+      </div>
+
+      
+      <h3>Blue Crystal Beach Resort – Promotional Graphic Design</h3>
+<p>
+  Designed a promotional visual for Blue Crystal Beach Resort focusing on
+  brand consistency, readability, and visual hierarchy for marketing use.
+</p>
+<ul>
+  <li>Created layout and visual hierarchy for promotional materials</li>
+  <li>Edited and color-graded images for brand alignment</li>
+  <li>Designed for digital marketing and print-ready output</li>
+</ul>
+
+
+      <hr class="separator">
+    </div>
+
+    <!-- Sample 2 (image left, text right) -->
+    <div class="project-item project-side">
+      <div class="project-image">
+        <img src="./images/sample2.jpg" alt="Sample 2">
+      </div>
+
+      <div class="project-content">
+
+       <h3>Nike Dunk Low “Panda” – Promotional Graphic Design</h3>
+<p>
+  Created a promotional graphic for Nike Dunk Low “Panda” sneakers,
+  highlighting a limited-time sale using strong contrast, visual hierarchy,
+  and bold call-to-action elements.
+</p>
+<ul>
+  <li>Designed a marketing-focused layout emphasizing product visibility</li>
+  <li>Applied typography and color contrast to draw attention to discounts</li>
+  <li>Optimized the design for social media and digital advertising use</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Sample 3 (single image vertical) -->
+    <div class="project-item">
+      <hr class="separator">
+      <div class="project-image">
+        <img src="./images/sample3.jpg" alt="Sample 3">
+      </div>
+
+      <h3>RESA Face & Body Spa – Ladies Lock-In Spa Night Promo</h3>
+<p>
+  Designed a promotional graphic for a spa event targeting women,
+  focusing on relaxation, wellness, and social experience. The design
+  uses warm tones, layered imagery, and clear event details to create
+  an inviting and elegant visual.
+</p>
+<ul>
+  <li>Created a lifestyle-focused layout to promote wellness and relaxation</li>
+  <li>Applied color harmony and typography to convey a calm, premium feel</li>
+  <li>Designed for digital promotion across social media and online platforms</li>
+</ul>
+
+    </div>
   </section>
 
   <section id="contact" class="section">
     <h2>Contact Me</h2>
     <p>You can reach me using the CONNECT button above.</p>
   </section>
+
+  <script>
+    // Scroll-based nav highlight (IntersectionObserver)
+    const navLinks = Array.from(document.querySelectorAll("nav a"));
+    const sections = Array.from(document.querySelectorAll("section[id]"));
+
+    const linkById = new Map(
+      navLinks.map(a => [a.getAttribute("href").slice(1), a])
+    );
+
+    const setActive = (id) => {
+      navLinks.forEach(a => a.classList.remove("active"));
+      const link = linkById.get(id);
+      if (link) link.classList.add("active");
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) setActive(visible.target.id);
+      },
+      {
+        threshold: [0.35, 0.6, 0.8],
+        rootMargin: "-20% 0px -55% 0px"
+      }
+    );
+
+    sections.forEach(sec => observer.observe(sec));
+
+    window.addEventListener("hashchange", () => {
+      const id = location.hash.replace("#", "");
+      if (id) setActive(id);
+    });
+  </script>
+
 </body>
 </html>

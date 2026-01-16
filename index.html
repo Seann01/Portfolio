@@ -76,7 +76,6 @@
 
     /* HERO */
     .hero {
-      min-height: auto;
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -122,6 +121,7 @@
       text-decoration: none;
       border-radius: 6px;
       transition: background 0.15s ease, transform 0.1s ease;
+      cursor: pointer;
     }
 
     .connect-btn:hover {
@@ -129,7 +129,15 @@
       transform: translateY(-1px);
     }
 
-    /* HERO IMAGE (fixed) */
+    /* small status text under button */
+    .connect-status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #b9c2cf;
+      min-height: 18px;
+    }
+
+    /* HERO IMAGE */
     .hero-image {
       padding: 6px;
       background: var(--card);
@@ -166,7 +174,6 @@
       margin-bottom: 14px;
     }
 
-    /* Reusable separator line (use this instead of empty .job divs) */
     .separator {
       border: none;
       height: 1px;
@@ -174,7 +181,6 @@
       margin: 28px 0;
     }
 
-    /* Work experience layout */
     .job {
       margin-top: 26px;
       padding-top: 18px;
@@ -206,12 +212,10 @@
 
     .job li { margin-bottom: 8px; }
 
-    /* PROJECTS */
     .project-item { margin-top: 40px; }
 
-    /* Adaptive image wrapper */
     .project-image {
-      display: block;               /* ✅ full width so border matches container */
+      display: block;
       width: 100%;
       border-radius: 12px;
       overflow: hidden;
@@ -226,7 +230,6 @@
       height: auto;
     }
 
-    /* Two images under same project (Sample 1) */
     .project-images {
       display: grid;
       grid-template-columns: 1fr;
@@ -245,7 +248,6 @@
       max-width: 800px;
     }
 
-    /* ✅ Sample 2: image + text beside (uses your space better) */
     .project-side {
       display: grid;
       grid-template-columns: 420px 1fr;
@@ -263,7 +265,6 @@
       margin-bottom: 12px;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 900px) {
       .nav-inner {
         padding: 14px 16px;
@@ -289,7 +290,7 @@
       }
 
       .project-side {
-        grid-template-columns: 1fr;  /* stack on mobile */
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -316,10 +317,16 @@
           virtual assistant and tech-support roles.
         </p>
 
-        <a class="connect-btn"
-          href="mailto:seanpatrickramos.sp@gmail.com?subject=Connect&body=Hi%20Sean,%0A%0AI%20would%20like%20to%20connect%20with%20you.">
-          CONNECT
-        </a>
+     <a
+  class="connect-btn"
+  id="connectBtn"
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  CONNECT
+</a>
+        <div class="connect-status" id="connectStatus"></div>
       </div>
 
       <div class="hero-image">
@@ -328,6 +335,7 @@
     </div>
   </section>
 
+  <!-- (Your sections below are unchanged; I kept structure the same) -->
   <section id="experience" class="section">
     <h2>Work Experience</h2>
 
@@ -367,9 +375,8 @@
 
   <section id="projects" class="section">
     <h2>Projects</h2>
-    <p>Add your projects here with screenshots and descriptions.</p>
+    <h3>Sample Graphic Designs</h3>
 
-    <!-- Sample 1 (two images stacked, clean) -->
     <div class="project-item">
       <div class="project-images">
         <div class="project-image">
@@ -380,46 +387,40 @@
         </div>
       </div>
 
-      
       <h3>Blue Crystal Beach Resort – Promotional Graphic Design</h3>
-<p>
-  Designed a promotional visual for Blue Crystal Beach Resort focusing on
-  brand consistency, readability, and visual hierarchy for marketing use.
-</p>
-<ul>
-  <li>Created layout and visual hierarchy for promotional materials</li>
-  <li>Edited and color-graded images for brand alignment</li>
-  <li>Designed for digital marketing and print-ready output</li>
-</ul>
-
+      <p>
+        Designed a promotional visual for Blue Crystal Beach Resort focusing on
+        brand consistency, readability, and visual hierarchy for marketing use.
+      </p>
+      <ul>
+        <li>Created layout and visual hierarchy for promotional materials</li>
+        <li>Edited and color-graded images for brand alignment</li>
+        <li>Designed for digital marketing and print-ready output</li>
+      </ul>
 
       <hr class="separator">
     </div>
 
-    <!-- Sample 2 (image left, text right) -->
     <div class="project-item project-side">
       <div class="project-image">
         <img src="./images/sample2.jpg" alt="Sample 2">
       </div>
 
       <div class="project-content">
-
-       <h3>Nike Dunk Low “Panda” – Promotional Graphic Design</h3>
-<p>
-  Created a promotional graphic for Nike Dunk Low “Panda” sneakers,
-  highlighting a limited-time sale using strong contrast, visual hierarchy,
-  and bold call-to-action elements.
-</p>
-<ul>
-  <li>Designed a marketing-focused layout emphasizing product visibility</li>
-  <li>Applied typography and color contrast to draw attention to discounts</li>
-  <li>Optimized the design for social media and digital advertising use</li>
-</ul>
-
+        <h3>Nike Dunk Low “Panda” – Promotional Graphic Design</h3>
+        <p>
+          Created a promotional graphic for Nike Dunk Low “Panda” sneakers,
+          highlighting a limited-time sale using strong contrast, visual hierarchy,
+          and bold call-to-action elements.
+        </p>
+        <ul>
+          <li>Designed a marketing-focused layout emphasizing product visibility</li>
+          <li>Applied typography and color contrast to draw attention to discounts</li>
+          <li>Optimized the design for social media and digital advertising use</li>
+        </ul>
       </div>
     </div>
 
-    <!-- Sample 3 (single image vertical) -->
     <div class="project-item">
       <hr class="separator">
       <div class="project-image">
@@ -427,18 +428,17 @@
       </div>
 
       <h3>RESA Face & Body Spa – Ladies Lock-In Spa Night Promo</h3>
-<p>
-  Designed a promotional graphic for a spa event targeting women,
-  focusing on relaxation, wellness, and social experience. The design
-  uses warm tones, layered imagery, and clear event details to create
-  an inviting and elegant visual.
-</p>
-<ul>
-  <li>Created a lifestyle-focused layout to promote wellness and relaxation</li>
-  <li>Applied color harmony and typography to convey a calm, premium feel</li>
-  <li>Designed for digital promotion across social media and online platforms</li>
-</ul>
-
+      <p>
+        Designed a promotional graphic for a spa event targeting women,
+        focusing on relaxation, wellness, and social experience. The design
+        uses warm tones, layered imagery, and clear event details to create
+        an inviting and elegant visual.
+      </p>
+      <ul>
+        <li>Created a lifestyle-focused layout to promote wellness and relaxation</li>
+        <li>Applied color harmony and typography to convey a calm, premium feel</li>
+        <li>Designed for digital promotion across social media and online platforms</li>
+      </ul>
     </div>
   </section>
 
@@ -448,7 +448,38 @@
   </section>
 
   <script>
-    // Scroll-based nav highlight (IntersectionObserver)
+    // ✅ CONNECT: works normally via mailto; fallback copies email if blocked
+    (function () {
+      const btn = document.getElementById("connectBtn");
+      const status = document.getElementById("connectStatus");
+      if (!btn) return;
+
+      const email = "seanpatrickramos.sp@gmail.com";
+
+      btn.addEventListener("click", async () => {
+        // Let the browser try mailto naturally first.
+        // If mailto is blocked by the environment, the user will still be able to copy the email.
+        // (We don't preventDefault on purpose.)
+
+        // Show a helpful message after click
+        if (status) {
+          status.textContent = "If your email app didn’t open, your email has been copied.";
+        }
+
+        // Copy email as fallback (safe even if mailto works)
+        try {
+          await navigator.clipboard.writeText(email);
+        } catch {
+          // Clipboard can fail on some browsers unless HTTPS / permissions.
+          // Provide a manual fallback message.
+          if (status) {
+            status.textContent = "If your email app didn’t open, email me at: " + email;
+          }
+        }
+      });
+    })();
+
+    // ✅ Scroll-based nav highlight (IntersectionObserver)
     const navLinks = Array.from(document.querySelectorAll("nav a"));
     const sections = Array.from(document.querySelectorAll("section[id]"));
 
@@ -483,6 +514,21 @@
       if (id) setActive(id);
     });
   </script>
+  <script>
+  const btn = document.getElementById("connectBtn");
+
+  if (btn) {
+    btn.addEventListener(
+      "click",
+      (e) => {
+        e.stopPropagation();
+        window.open(btn.href, "_blank");
+      },
+      true
+    );
+  }
+</script>
+
 
 </body>
 </html>

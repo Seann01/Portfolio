@@ -129,7 +129,6 @@
       transform: translateY(-1px);
     }
 
-    /* small status text under button */
     .connect-status {
       margin-top: 10px;
       font-size: 13px;
@@ -293,52 +292,51 @@
         grid-template-columns: 1fr;
       }
     }
-/* SINGLE CONTACT BOX */
-.contact-box {
-  margin-top: 20px;
-  padding: 22px 26px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  max-width: 520px;
-}
 
-.contact-row {
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: 12px;
-  align-items: start;
-}
+    /* CONTACT */
+    .contact-box {
+      margin-top: 20px;
+      padding: 22px 26px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      max-width: 520px;
+    }
 
-.contact-row + .contact-row {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
+    .contact-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
 
-.contact-label {
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #9aa4b2;
-}
+    .contact-row + .contact-row {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
 
-.contact-row a,
-.contact-text {
-  color: #ffffff;
-  font-size: 14px;
-  line-height: 1.7;
-}
+    .contact-label {
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #9aa4b2;
+    }
 
-.contact-row a {
-  text-decoration: none;
-}
+    .contact-row a,
+    .contact-text {
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.7;
+    }
 
-.contact-row a:hover {
-  text-decoration: underline;
-}
+    .contact-row a {
+      text-decoration: none;
+    }
 
-
+    .contact-row a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 
@@ -349,6 +347,7 @@
       <a href="#home">Home</a>
       <a href="#experience">Work Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
       <a href="#contact">Contact Me</a>
     </div>
   </nav>
@@ -363,15 +362,15 @@
           virtual assistant and tech-support roles.
         </p>
 
-     <a
-  class="connect-btn"
-  id="connectBtn"
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  CONNECT
-</a>
+        <a
+          class="connect-btn"
+          id="connectBtn"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CONNECT
+        </a>
         <div class="connect-status" id="connectStatus"></div>
       </div>
 
@@ -381,20 +380,20 @@
     </div>
   </section>
 
-  <!-- (Your sections below are unchanged; I kept structure the same) -->
   <section id="experience" class="section">
     <h2>Work Experience</h2>
+
     <div class="job">
-  <h3>IT Specialist — DysrupIT</h3>
-  <div class="meta">March 2024 – July 2024 · Contract Role</div>
-  <ul>
-    <li>Provided technical support to employees, resolving hardware, software, and system access issues</li>
-    <li>Automated employee timesheet processing from Sprout to improve payroll accuracy and efficiency</li>
-    <li>Handled device provisioning, setup, and distribution for new hires during onboarding</li>
-    <li>Maintained inventory of IT equipment and office supplies to ensure proper tracking and availability</li>
-    <li>Supported employee onboarding by ensuring systems, tools, and devices were fully operational</li>
-  </ul>
-</div>
+      <h3>IT Specialist — DysrupIT</h3>
+      <div class="meta">March 2024 – July 2024 · Contract Role</div>
+      <ul>
+        <li>Provided technical support to employees, resolving hardware, software, and system access issues</li>
+        <li>Automated employee timesheet processing using CSV-based workflows to improve payroll accuracy and efficiency</li>
+        <li>Handled device provisioning, setup, and distribution for new hires during onboarding</li>
+        <li>Maintained inventory of IT equipment and office supplies to ensure proper tracking and availability</li>
+        <li>Supported onboarding by ensuring systems, tools, and devices were fully operational</li>
+      </ul>
+    </div>
 
     <div class="job">
       <h3>Customer Service and Experience Representative — Alorica</h3>
@@ -499,33 +498,77 @@
     </div>
   </section>
 
-<section id="contact" class="section">
-  <h2>Contact Me</h2>
+  <!-- ✅ SKILLS SECTION ADDED -->
+  <section id="skills" class="section">
+    <h2>Skills</h2>
 
-  
-<div class="contact-row">
-  <span class="contact-label">Email</span>
-  <span class="contact-text">seanpatrickramos.sp@gmail.com</span>
-</div>
-    <div class="contact-row">
-      <span class="contact-label">Phone</span>
-      <span class="contact-text">0992 323 1765</span>
+    <div class="job">
+      <h3>Technical Skills</h3>
+      <ul>
+        <li>IT Support & Troubleshooting (Hardware, Software, Access Issues)</li>
+        <li>Payroll & Timesheet Automation (CSV-based Processing)</li>
+        <li>Device Provisioning & New Hire Onboarding</li>
+        <li>Hardware & Software Setup</li>
+        <li>Inventory Management & Asset Tracking</li>
+        <li>Process Improvement & Basic Automation</li>
+      </ul>
     </div>
 
-    <div class="contact-row">
-      <span class="contact-label">Location</span>
-      <span class="contact-text">
-        134 LTG St., Poblacion, San Antonio, Quezon
-      </span>
+    <div class="job">
+      <h3>Tools & Platforms</h3>
+      <ul>
+        <li>Google Workspace (Docs, Sheets, Drive, Forms)</li>
+        <li>Microsoft 365</li>
+        <li>Canva</li>
+        <li>Remote Support Tools</li>
+      </ul>
     </div>
-  </div>
-</section>
 
+    <div class="job">
+      <h3>Creative Skills</h3>
+      <ul>
+        <li>Graphic Design</li>
+        <li>Basic Visual Content Creation for Digital Media</li>
+      </ul>
+    </div>
 
+    <div class="job">
+      <h3>Customer & Professional Skills</h3>
+      <ul>
+        <li>Customer Support for International Accounts</li>
+        <li>Clear Technical & Non-Technical Communication</li>
+        <li>Problem-Solving & Issue Resolution</li>
+        <li>Time Management & Multitasking</li>
+        <li>Adaptability in High-Volume / Peak Environments</li>
+      </ul>
+    </div>
+  </section>
 
+  <section id="contact" class="section">
+    <h2>Contact Me</h2>
+
+    <div class="contact-box">
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-text">seanpatrickramos.sp@gmail.com</span>
+      </div>
+
+      <div class="contact-row">
+        <span class="contact-label">Phone</span>
+        <span class="contact-text">0992 323 1765</span>
+      </div>
+
+      <div class="contact-row">
+        <span class="contact-label">Location</span>
+        <span class="contact-text">
+          134 LTG St., Poblacion, San Antonio, Quezon
+        </span>
+      </div>
+    </div>
+  </section>
 
   <script>
-    // ✅ CONNECT: works normally via mailto; fallback copies email if blocked
+    // ✅ CONNECT: opens Gmail compose; fallback copies email
     (function () {
       const btn = document.getElementById("connectBtn");
       const status = document.getElementById("connectStatus");
@@ -534,24 +577,12 @@
       const email = "seanpatrickramos.sp@gmail.com";
 
       btn.addEventListener("click", async () => {
-        // Let the browser try mailto naturally first.
-        // If mailto is blocked by the environment, the user will still be able to copy the email.
-        // (We don't preventDefault on purpose.)
+        if (status) status.textContent = "If your email didn’t open, your email has been copied.";
 
-        // Show a helpful message after click
-        if (status) {
-          status.textContent = "If your email app didn’t open, your email has been copied.";
-        }
-
-        // Copy email as fallback (safe even if mailto works)
         try {
           await navigator.clipboard.writeText(email);
         } catch {
-          // Clipboard can fail on some browsers unless HTTPS / permissions.
-          // Provide a manual fallback message.
-          if (status) {
-            status.textContent = "If your email app didn’t open, email me at: " + email;
-          }
+          if (status) status.textContent = "If your email didn’t open, email me at: " + email;
         }
       });
     })();
@@ -591,23 +622,21 @@
       if (id) setActive(id);
     });
   </script>
+
   <script>
-  const btn = document.getElementById("connectBtn");
-
-  if (btn) {
-    btn.addEventListener(
-      "click",
-      (e) => {
-        e.stopPropagation();
-        window.open(btn.href, "_blank");
-      },
-      true
-    );
-  }
-</script>
-
-
-
+    // ✅ Ensure CONNECT always opens new tab (some browsers block default)
+    const btn = document.getElementById("connectBtn");
+    if (btn) {
+      btn.addEventListener(
+        "click",
+        (e) => {
+          e.stopPropagation();
+          window.open(btn.href, "_blank");
+        },
+        true
+      );
+    }
+  </script>
 
 </body>
 </html>

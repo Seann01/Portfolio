@@ -6,7 +6,6 @@
 <title>Sean Patrick L. Ramos</title>
 
 <style>
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -14,11 +13,8 @@
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
-body {
-  color: #ffffff;
-}
+body { color: #ffffff; }
 
-/* FIXED BACKGROUND IMAGE */
 .background {
   position: fixed;
   top: 0;
@@ -27,11 +23,10 @@ body {
   height: 100vh;
   background:
     linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url("file:///G:/SEAN/Documents/portfolio/images/bgimage.jpg") center / cover no-repeat;
+    url("./images/bgimage.jpg") center / cover no-repeat;
   z-index: -1;
 }
 
-/* NAVBAR */
 nav {
   position: sticky;
   top: 0;
@@ -50,11 +45,8 @@ nav a {
 }
 
 nav a:hover,
-nav a.active {
-  color: #ffffff;
-}
+nav a.active { color: #ffffff; }
 
-/* HERO SECTION */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -62,10 +54,7 @@ nav a.active {
   justify-content: center;
   padding: 10px 10px;
 }
-/* bottom closer to Projects */
 
-
-/* HERO CONTENT */
 .hero-content {
   max-width: 1100px;
   width: 100%;
@@ -76,10 +65,7 @@ nav a.active {
   overflow: hidden;
 }
 
-/* LEFT SIDE */
-.hero-text {
-  padding: 60px;
-}
+.hero-text { padding: 60px; }
 
 .hero-text h1 {
   font-size: 32px;
@@ -94,7 +80,6 @@ nav a.active {
   max-width: 420px;
 }
 
-/* CONNECT BUTTON */
 .connect-btn {
   display: inline-block;
   padding: 12px 28px;
@@ -105,15 +90,11 @@ nav a.active {
   text-decoration: none;
 }
 
-.connect-btn:hover {
-  background: #6f8194;
-}
+.connect-btn:hover { background: #6f8194; }
 
-/* RIGHT IMAGE */
-/* Dark blue background acts as the border */
 .hero-image {
   background: rgba(20, 24, 28, 0.9);
-  padding: 6px 10px 8px 0; /* top closer, bottom slightly closer */
+  padding: 6px 10px 8px 0;
 }
 
 .hero-image img {
@@ -123,35 +104,22 @@ nav a.active {
   display: block;
 }
 
-/* EXTRA SECTIONS */
 .section {
-  padding: 100px 40px; /* slightly tighter */
+  padding: 100px 40px;
   margin: 0 20px;
   background: rgba(20, 24, 28, 0.9);
 }
 
-.section h2 {
-  margin-bottom: 20px;
-}
+.section h2 { margin-bottom: 20px; }
 
-/* RESPONSIVE */
 @media (max-width: 900px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-  }
-
+  .hero-content { grid-template-columns: 1fr; }
   .hero-text {
     padding: 40px;
     text-align: center;
   }
-
-  .hero-text p {
-    margin: 0 auto 30px;
-  }
-
-  .hero-image {
-    padding: 8px;
-  }
+  .hero-text p { margin: 0 auto 30px; }
+  .hero-image { padding: 8px; }
 }
 </style>
 </head>
@@ -185,7 +153,7 @@ nav a.active {
     </div>
 
     <div class="hero-image">
-      <img src="G:\SEAN\Documents\portfolio\images\Self Picture.jpg" alt="Sean Patrick">
+      <img src="./images/Self%20Picture.jpg" alt="Sean Patrick">
     </div>
 
   </div>
@@ -193,13 +161,4 @@ nav a.active {
 
 <section id="projects" class="section">
   <h2>Projects</h2>
-  <p>This section scrolls while the background stays fixed.</p>
-</section>
-
-<section id="contact" class="section">
-  <h2>Contact Me</h2>
-  <p>You can reach me using the CONNECT button above.</p>
-</section>
-
-</body>
-</html>
+  <p>This section scrolls while th

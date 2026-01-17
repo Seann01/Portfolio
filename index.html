@@ -431,6 +431,50 @@
 
   <section id="projects" class="section">
     <h2>Projects</h2>
+
+    <h3>Automation</h3>
+    <div class="project-item">
+      <div class="project-images">
+        <div class="project-image">
+          <h4>Before</h4>
+          <img src="./images/sample4.jpg" alt="Sample 1">
+        </div>
+        <div class="project-image">
+          <h4>After</h4>
+          <img src="./images/sample4.1.jpg" alt="Sample 1 (2)">
+        </div>
+      </div>
+
+    <h3>Timesheet Automation</h3>
+
+<p>
+  Built an automated timesheet workflow using anonymized attendance data
+  exported from Sprout, transforming raw biometric logs into a structured,
+  payroll-ready format while maintaining data confidentiality.
+</p>
+
+<ul>
+  <li>
+    CSV file generated from Sprout containing anonymized shift schedules and
+    biometric logs (Before)
+  </li>
+  <li>
+    Automated processing converts raw data into a clean, structured timesheet
+    output for payroll review (After)
+  </li>
+  <li>
+    All employee-identifiable information removed to comply with data privacy
+    and confidentiality requirements
+  </li>
+  <li>
+    Reduced manual processing time and minimized payroll-related errors
+  </li>
+</ul>
+
+
+      <hr class="separator">
+    </div>
+
     <h3>Sample Graphic Designs</h3>
 
     <div class="project-item">
@@ -570,7 +614,7 @@
   </section>
 
   <script>
-    // ✅ CONNECT: opens Gmail compose; fallback copies email
+    // CONNECT: opens Gmail compose; fallback copies email
     (function () {
       const btn = document.getElementById("connectBtn");
       const status = document.getElementById("connectStatus");
@@ -626,7 +670,7 @@
   </script>
 
   <script>
-    // ✅ Ensure CONNECT always opens new tab (some browsers block default)
+    //  Ensure CONNECT always opens new tab (some browsers block default)
     const btn = document.getElementById("connectBtn");
     if (btn) {
       btn.addEventListener(

@@ -337,6 +337,75 @@
     .contact-row a:hover {
       text-decoration: underline;
     }
+
+    /* =========================
+       IMAGE TOGGLE (NEXT ARROW)
+       ========================= */
+    .img-toggle {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+    }
+
+    .img-toggle img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .img-toggle .img {
+      display: none;
+    }
+
+    .img-toggle .img.active {
+      display: block;
+    }
+
+    .img-toggle .toggle-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+      transition: transform 0.12s ease, background 0.12s ease;
+      user-select: none;
+    }
+
+    .img-toggle .toggle-btn:hover {
+      background: rgba(0,0,0,0.7);
+      transform: translateY(-50%) scale(1.03);
+    }
+
+    .img-toggle .prev { left: 12px; }
+    .img-toggle .next { right: 12px; }
+
+    .img-toggle .badge {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(4px);
+      color: #fff;
+    }
   </style>
 </head>
 
@@ -415,8 +484,7 @@
         <li>Delivered effective solutions while maintaining customer satisfaction during peak season</li>
       </ul>
     </div>
-    
-  
+
     <div class="job">
       <h3>IT Specialist — DysrupIT</h3>
       <div class="meta">March 2024 – July 2024 · Contract Role</div>
@@ -428,160 +496,119 @@
         <li>Supported onboarding by ensuring systems, tools, and devices were fully operational</li>
       </ul>
     </div>
-    </section>
+  </section>
+
   <section id="projects" class="section">
     <h2>Projects</h2>
-    
+
     <h3>Website</h3>
     <div class="project-item">
-      <div class="project-images">
-        <div class="project-image">
-          <img src="./images/sample5.jpg" alt="Sample 1">
-        </div>
-        <div class="project-image">
-          <img src="./images/sample5.1.jpg" alt="Sample 1 (2)">
-        </div>
+      <!-- TOGGLE sample5 / sample5.1 -->
+      <div class="img-toggle" data-toggle data-labels="Home Page, Health Optimization Page">
+        <img class="img active" src="./images/sample5.jpg" alt="Website Sample 1">
+        <img class="img" src="./images/sample5.1.jpg" alt="Website Sample 2">
+        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
+        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
+        <span class="badge" data-badge>Sample 1</span>
       </div>
-    <h3>Vanguard Men’s Health Website Collaboration</h3>
-<p>
-  <a href="https://go.vanguardmenshealth.com/home" style="color: #4da6ff; text-decoration: underline;">
-     https://go.vanguardmenshealth.com/home
-  </a>
-</p>
 
-  Collaborated on the development and refinement of the Vanguard Men’s Health
-  website using the GoHighLevel platform, focusing on layout consistency,
-  content structure, and visual presentation to support a professional,
-  healthcare-focused brand.
-</p>
+      <h3>Vanguard Men’s Health Website Collaboration</h3>
+      <p>
+        <a href="https://go.vanguardmenshealth.com/home" style="color: #4da6ff; text-decoration: underline;">
+          https://go.vanguardmenshealth.com/home
+        </a>
+      </p>
 
-<ul>
-  <li>
-    Worked within the GoHighLevel website builder to assist with page layout,
-    section organization, and content placement (Platform: GoHighLevel)
-  </li>
-  <li>
-    Contributed to the refinement of hero sections, service highlights,
-    call-to-action placement, and visual flow across key pages
-  </li>
-  <li>
-    Ensured design consistency, readability, and alignment with the
-    Vanguard Men’s Health branding and tone
-  </li>
-  <li>
-    Collaborated with the team to improve user experience and presentation,
-    without direct ownership of the original site build
-  </li>
-</ul>
+      <p>
+        Collaborated on the development and refinement of the Vanguard Men’s Health
+        website using the GoHighLevel platform, focusing on layout consistency,
+        content structure, and visual presentation to support a professional,
+        healthcare-focused brand.
+      </p>
 
-<hr class="separator">
+      <ul>
+        <li>Worked within the GoHighLevel website builder to assist with layout, section organization, and content placement</li>
+        <li>Refined hero sections, service highlights, CTA placement, and visual flow across key pages</li>
+        <li>Ensured design consistency, readability, and alignment with branding</li>
+        <li>Collaborated with the team to improve UX and presentation</li>
+      </ul>
 
-  
+      <hr class="separator">
+    </div>
+
     <h3>Automation</h3>
     <div class="project-item">
-      <div class="project-images">
-        <div class="project-image">
-          <h4>Before</h4>
-          <img src="./images/sample4.jpg" alt="Sample 1">
-        </div>
-        <div class="project-image">
-          <h4>After</h4>
-          <img src="./images/sample4.1.jpg" alt="Sample 1 (2)">
-        </div>
+      <!-- TOGGLE sample4 / sample4.1 -->
+      <div class="img-toggle" data-toggle data-labels="Before,After">
+        <img class="img active" src="./images/sample4.jpg" alt="Timesheet Automation Before">
+        <img class="img" src="./images/sample4.1.jpg" alt="Timesheet Automation After">
+        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
+        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
+        <span class="badge" data-badge>Before</span>
       </div>
 
-    <h3>Timesheet Automation using Python(Pandas)</h3>
+      <h3>Timesheet Automation using Python(Pandas)</h3>
+      <p>
+        Built an automated timesheet workflow using anonymized attendance data
+        exported from Sprout, transforming raw biometric logs into a structured,
+        payroll-ready format while maintaining data confidentiality.
+      </p>
 
-<p>
-  Built an automated timesheet workflow using anonymized attendance data
-  exported from Sprout, transforming raw biometric logs into a structured,
-  payroll-ready format while maintaining data confidentiality.
-</p>
+      <ul>
+        <li>CSV file generated from Sprout containing anonymized shift schedules and biometric logs (Before)</li>
+        <li>Automated processing converts raw data into a clean, structured timesheet output for payroll review (After)</li>
+        <li>All employee-identifiable information removed to comply with data privacy requirements</li>
+        <li>Reduced manual processing time and minimized payroll-related errors</li>
+      </ul>
 
-<ul>
-  <li>
-    CSV file generated from Sprout containing anonymized shift schedules and
-    biometric logs (Before)
-  </li>
-  <li>
-    Automated processing converts raw data into a clean, structured timesheet
-    output for payroll review (After)
-  </li>
-  <li>
-    All employee-identifiable information removed to comply with data privacy
-    and confidentiality requirements
-  </li>
-  <li>
-    Reduced manual processing time and minimized payroll-related errors
-  </li>
-</ul>
-<hr class="separator">
+      <hr class="separator">
+    </div>
 
     <div class="project-item">
-      <div class="project-images">
-        <div class="project-image">
-          <h4>Before</h4>
-          <img src="./images/sample2.1.jpg" alt="Sample 1">
-        </div>
-        <div class="project-image">
-          <h4>After</h4>
-          <img src="./images/sample2.jpg" alt="Sample 1 (2)">
-        </div>
+      <!-- TOGGLE sample2.1 / sample2 -->
+      <div class="img-toggle" data-toggle data-labels="Raw Data,Report Output">
+        <img class="img active" src="./images/sample2.1.jpg" alt="Workbook Before">
+        <img class="img" src="./images/sample2.jpg" alt="Workbook After">
+        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
+        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
+        <span class="badge" data-badge>Before</span>
       </div>
 
-<h3>Automated Social Media Reporting Workbook using Spreadsheet Queries (Sample Data)</h3>
+      <h3>Automated Social Media Reporting Workbook using Spreadsheet Queries (Sample Data)</h3>
+      <p>
+        Developed a structured reporting workbook using sample social media data to
+        demonstrate query-driven automation within a spreadsheet environment.
+      </p>
 
-<p>
-  Developed a structured reporting workbook using sample social media data to
-  demonstrate query-driven automation within a spreadsheet environment. The
-  workbook separates raw post-level data from reporting views, enabling automatic
-  transformation of raw inputs into up-to-date performance summaries.
-</p>
+      <ul>
+        <li>Designed a multi-sheet workbook structure separating raw data and reporting outputs</li>
+        <li>Used spreadsheet queries to extract, aggregate, and summarize sample raw data</li>
+        <li>Automated calculation of engagement metrics and platform performance</li>
+        <li>Implemented auto-updating summaries that refresh as new rows are added</li>
+        <li>Demonstrated lightweight reporting automation using native spreadsheet tools</li>
+      </ul>
 
-<ul>
-  <li>
-    Designed a multi-sheet workbook structure separating raw social media data
-    and automated reporting outputs
-  </li>
-  <li>
-    Used spreadsheet queries to extract, aggregate, and summarize sample raw data
-    into dynamically updating report sheets
-  </li>
-  <li>
-    Automated calculation of engagement metrics, sentiment distribution, and
-    platform-level performance indicators
-  </li>
-  <li>
-    Implemented auto-updating summaries that refresh as new rows are added to the
-    raw data sheet
-  </li>
-  <li>
-    Demonstrated lightweight reporting automation using native spreadsheet tools,
-    suitable for operational and marketing reporting use cases
-  </li>
-</ul>
-
-  <h4 style="margin-top: 10px;">Link to the Workbook:</h4>
-    <p>
-  <a href="https://docs.google.com/spreadsheets/d/19vkXjV0LH1qFU6mi7O_ADQVbHy5gK7yp4HiOTctBNiU/edit?usp=sharing" style="color: #4da6ff; text-decoration: underline;">
-     https://docs.google.com/
-  </a>
-
-
+      <h4 style="margin-top: 10px;">Link to the Workbook:</h4>
+      <p>
+        <a href="https://docs.google.com/spreadsheets/d/19vkXjV0LH1qFU6mi7O_ADQVbHy5gK7yp4HiOTctBNiU/edit?usp=sharing"
+           style="color: #4da6ff; text-decoration: underline;">
+          https://docs.google.com/
+        </a>
+      </p>
 
       <hr class="separator">
     </div>
 
     <h3>Sample Graphic Designs</h3>
-   
+
     <div class="project-item">
-      <div class="project-images">
-        <div class="project-image">
-          <img src="./images/sample1.jpg" alt="Sample 1">
-        </div>
-        <div class="project-image">
-          <img src="./images/sample1.2.jpg" alt="Sample 1 (2)">
-        </div>
+      <!-- TOGGLE sample1 / sample1.2 -->
+      <div class="img-toggle" data-toggle data-labels="First Page,Second Page">
+        <img class="img active" src="./images/sample1.jpg" alt="First Page">
+        <img class="img" src="./images/sample1.2.jpg" alt="Second Page">
+        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
+        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
+        <span class="badge" data-badge>First Page</span>
       </div>
 
       <h3>Blue Crystal Beach Resort – Promotional Graphic Design</h3>
@@ -606,9 +633,7 @@
       <h3>RESA Face & Body Spa – Ladies Lock-In Spa Night Promo</h3>
       <p>
         Designed a promotional graphic for a spa event targeting women,
-        focusing on relaxation, wellness, and social experience. The design
-        uses warm tones, layered imagery, and clear event details to create
-        an inviting and elegant visual.
+        focusing on relaxation and wellness with clear event details.
       </p>
       <ul>
         <li>Created a lifestyle-focused layout to promote wellness and relaxation</li>
@@ -617,19 +642,16 @@
       </ul>
     </div>
 
-
     <h4 style="margin-top: 10px;">More sample at:</h4>
     <p>
-  <a href="https://drive.google.com/drive/folders/1OQ2uTXsIN6xN7GBj9NfCFoTl5LlALS6S?usp=drive_link" style="color: #4da6ff; text-decoration: underline;">
-     https://drive.google.com/
-  </a>
-
-
-</p>
+      <a href="https://drive.google.com/drive/folders/1OQ2uTXsIN6xN7GBj9NfCFoTl5LlALS6S?usp=drive_link"
+         style="color: #4da6ff; text-decoration: underline;">
+        https://drive.google.com/
+      </a>
+    </p>
 
   </section>
 
-  <!--  SKILLS SECTION ADDED -->
   <section id="skills" class="section">
     <h2>Skills</h2>
 
@@ -688,15 +710,17 @@
 
       <div class="contact-row">
         <span class="contact-label">Linkedin</span>
-        <span> <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" style="color: #4da6ff; text-decoration: underline;">
-     https://www.linkedin.com/in/sean-patrick-ramos-053385302/</a></span>
+        <span>
+          <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+             style="color: #4da6ff; text-decoration: underline;">
+            https://www.linkedin.com/in/sean-patrick-ramos-053385302/
+          </a>
+        </span>
       </div>
 
       <div class="contact-row">
         <span class="contact-label">Instagram</span>
-        <span class="contact-text">
-          <span class="contact-text">@seanramos_02</span>
-        </span>
+        <span class="contact-text">@seanramos_02</span>
       </div>
     </div>
   </section>
@@ -710,7 +734,10 @@
 
       const email = "seanpatrickramos.sp@gmail.com";
 
-      btn.addEventListener("click", async () => {
+      btn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        window.open(btn.href, "_blank", "noopener,noreferrer");
+
         if (status) status.textContent = "If your email didn’t open, your email has been copied.";
 
         try {
@@ -721,7 +748,7 @@
       });
     })();
 
-    // ✅ Scroll-based nav highlight (IntersectionObserver)
+    // ✅ Scroll-based nav highlight
     const navLinks = Array.from(document.querySelectorAll("nav a"));
     const sections = Array.from(document.querySelectorAll("section[id]"));
 
@@ -755,21 +782,33 @@
       const id = location.hash.replace("#", "");
       if (id) setActive(id);
     });
-  </script>
 
-  <script>
-    //  Ensure CONNECT always opens new tab (some browsers block default)
-    const btn = document.getElementById("connectBtn");
-    if (btn) {
-      btn.addEventListener(
-        "click",
-        (e) => {
-          e.stopPropagation();
-          window.open(btn.href, "_blank");
-        },
-        true
-      );
-    }
+    // ✅ IMAGE TOGGLE (NEXT/PREV ARROWS) FOR ALL 2-IMAGE SETS
+    (function () {
+      document.querySelectorAll("[data-toggle]").forEach(box => {
+        const imgs = Array.from(box.querySelectorAll(".img"));
+        const prev = box.querySelector(".prev");
+        const next = box.querySelector(".next");
+        const badge = box.querySelector("[data-badge]");
+
+        const labelsRaw = box.getAttribute("data-labels") || "";
+        const labels = labelsRaw.split(",").map(s => s.trim()).filter(Boolean);
+
+        let index = 0;
+
+        const show = (i) => {
+          index = (i + imgs.length) % imgs.length;
+          imgs.forEach((img, idx) => img.classList.toggle("active", idx === index));
+          if (badge) badge.textContent = labels[index] || `Image ${index + 1}`;
+        };
+
+        prev?.addEventListener("click", (e) => { e.preventDefault(); show(index - 1); });
+        next?.addEventListener("click", (e) => { e.preventDefault(); show(index + 1); });
+
+        // init
+        show(0);
+      });
+    })();
   </script>
 
 </body>

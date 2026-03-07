@@ -369,19 +369,18 @@ section.section {
   height: 44px;
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.3);
   backdrop-filter: blur(4px);
   color: #fff;
   cursor: pointer;
   display: grid;
   place-items: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
   transition: transform 0.12s ease, background 0.12s ease;
   user-select: none;
 }
 
 .img-toggle .toggle-btn:hover {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.2);
   transform: translateY(-50%) scale(1.03);
 }
 
@@ -401,4 +400,22 @@ section.section {
   border: 1px solid rgba(255,255,255,0.14);
   backdrop-filter: blur(4px);
   color: #fff;
+}
+
+@media (max-width: 768px) {
+
+  .img-toggle .toggle-btn {
+    width: 64px;
+    height: 64px;
+    font-size: 26px;
+  }
+
+  .img-toggle .prev {
+    left: 8px;
+  }
+
+  .img-toggle .next {
+    right: 8px;
+  }
+
 }

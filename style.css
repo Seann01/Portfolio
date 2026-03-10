@@ -6,7 +6,7 @@
   --btn: #5a6b7c;
   --btnHover: #8fa5bd;
   --shadow: 0 10px 30px rgba(0,0,0,0.25);
-  --radius: 10px;
+  --radius: 10px; 
 }
 
 /* RESET */
@@ -86,10 +86,10 @@ nav a.active {
 /* HERO */
 .hero {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding: 20px;
-  margin-bottom: 16px;
+  padding: 10px 20px;
+  margin-bottom: 8px;
 }
 
 .hero-content {
@@ -104,20 +104,20 @@ nav a.active {
 }
 
 .hero-text {
-  padding: 48px;
+  padding: 36px;
 }
 
 .hero-text h1 {
   font-size: 34px;
   line-height: 1.2;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .hero-text p {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.7;
   color: var(--muted);
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   max-width: 480px;
 }
 
@@ -163,9 +163,9 @@ nav a.active {
 
 /* HERO IMAGE */
 .hero-image {
-  padding: 8px;
+  padding: 6px;
   background: var(--card);
-  min-height: 380px;
+  min-height: 320px;
   display: flex;
 }
 
@@ -521,7 +521,8 @@ section.section {
   }
 
   .hero {
-    padding: 16px;
+    padding: 8px 16px;
+    margin-bottom: 6px;
   }
 
   .hero-content {
@@ -530,7 +531,7 @@ section.section {
   }
 
   .hero-text {
-    padding: 34px 24px;
+    padding: 28px 24px;
     text-align: center;
   }
 
@@ -539,13 +540,17 @@ section.section {
   }
 
   .hero-text p {
-    margin: 0 auto 22px;
+    margin: 0 auto 18px;
     max-width: 100%;
     font-size: 15px;
   }
 
   .hero-buttons {
     justify-content: center;
+  }
+
+  .hero-image {
+    min-height: 280px;
   }
 
   section.section {
@@ -588,8 +593,8 @@ section.section {
   }
 
   .hero {
-    padding: 12px;
-    margin-bottom: 10px;
+    padding: 8px 12px;
+    margin-bottom: 6px;
   }
 
   .hero-content {
@@ -597,18 +602,18 @@ section.section {
   }
 
   .hero-text {
-    padding: 24px 18px;
+    padding: 20px 16px;
   }
 
   .hero-text h1 {
     font-size: 24px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .hero-text p {
     font-size: 14px;
     line-height: 1.7;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .hero-image {
@@ -728,11 +733,12 @@ section.section {
   }
 
   .hero {
-    padding: 10px;
+    padding: 8px 10px;
+    margin-bottom: 4px;
   }
 
   .hero-text {
-    padding: 20px 16px;
+    padding: 18px 14px;
   }
 
   .hero-text h1 {

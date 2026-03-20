@@ -24,9 +24,13 @@ html {
 body {
   color: #ffffff;
   min-height: 100vh;
+
   background:
     linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url("./images/bgimage.jpg") center center / cover no-repeat;
+    url("./images/bgimage.jpg") center top / cover no-repeat;
+
+  background-attachment: fixed;
+
   background-color: #0f1318;
 }
 

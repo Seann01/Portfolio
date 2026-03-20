@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Me - Sean Patrick Ramos</title>
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="./index.html">Home</a>
+      <a href="./experience.html" >Work Experience</a>
+      <a href="./projects.html">Projects</a>
+      <a href="./contactme.html" class="active">Contact Me</a>
+      <a href="./about.html">About</a>
+
+    </div>
+  </nav>
+<main class="page-wrap">
+<section class="section contact-page">
+  <div>
+    <div class="contact-copy">
+      <h2>Contact Me</h2>
+      <p>
+        Have a project, role, or collaboration in mind? Send me a message and
+        I’ll get back to you as soon as possible.
+      </p>
+    </div>
+
+    <form
+      class="contact-form-modern"
+      action="https://formspree.io/f/mojkbejy"
+      method="POST"
+    >
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="subject">Subject</label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          placeholder="What is this about?"
+          required
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="7"
+          placeholder="Write your message here..."
+          required
+        ></textarea>
+      </div>
+
+      <input type="hidden" name="_subject" value="New portfolio contact form submission" />
+      <input type="hidden" name="_captcha" value="false" />
+
+      <button type="submit" class="connect-btn">Send Message</button>
+    </form>
+    <hr class="separator">
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-container">
+    <!-- left -->
+    <div class="footer-col">
+    <h3>Let's Work Together</h3>
+      <a>
+      Open to Virtual Assistant, Web Development, and Digital Marketing opportunities.
+      </a>
+    </div>
+    <!-- middle -->
+    <div class="footer-col">
+      <h3>Connect With Me</h3>
+
+      <div class="contact-box">
+
+        <a class="contact-row email" href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me">
+          <i class="fas fa-envelope"></i>
+          <span>Email</span>
+        </a>
+
+        <a class="contact-row linkedin" href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+
+        <a class="contact-row instagram" href="https://www.instagram.com/seanramos_02/">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+
+      </div>
+    </div>
+    
+    <!-- RIGHT -->
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./experience.html">Work Experience</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./about.html">About</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Sean Patrick Ramos. All rights reserved.</p>
+  </div>
+
+</footer>
+
+</main>
+</body>
+</html>

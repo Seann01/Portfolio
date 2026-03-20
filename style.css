@@ -137,23 +137,43 @@ nav a.active {
   letter-spacing: 0.5px;
   text-decoration: none;
   border-radius: 8px;
-  transition: background 0.15s ease, transform 0.1s ease;
   cursor: pointer;
+
+  transition: 
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
+/* 🔥 SUBTLE LIGHTER HOVER */
 .connect-btn:hover {
-  background: var(--btnHover);
-  transform: translateY(-1px);
+  background: #61849b; /* soft light overlay */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+.connect-btn{
+  background-color: #4f6c80;
 }
 
+/* DOWNLOAD BUTTON */
 .dl-btn {
-  background: #586baa;
+  background: rgba(98, 98, 255, 0.5);
 }
 
 .dl-btn:hover {
-  background: #849ffa;
+  background:  #586baa; /* lighter version of blue */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
 }
 
+/* CLICK FEEDBACK */
+.connect-btn:active,
+.dl-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* STATUS TEXT */
 .connect-status {
   margin-top: 10px;
   font-size: 13px;
@@ -322,51 +342,67 @@ section.section {
   margin-bottom: 12px;
 }
 
-/* CONTACT */
+/* =========================
+   CONTACT - FINAL (COMPACT)
+========================= */
+
 .contact-box {
-  margin-top: 20px;
-  padding: 20px 22px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: fit-content;     /* prevents full stretch */
+  max-width: 220px;       /* controls length */
 }
 
 .contact-row {
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: 12px;
-  align-items: start;
-}
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-.contact-row + .contact-row {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
+  padding: 9px 12px;
+  border-radius: 10px;
 
-.contact-label {
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #9aa4b2;
-}
-
-.contact-row a,
-.contact-text {
-  color: #ffffff;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-.contact-row a {
   text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+
+  width: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.contact-row a:hover {
-  text-decoration: underline;
+/* ICON */
+.contact-row i {
+  font-size: 14px;
+  width: 16px;
+  min-width: 16px;
+  text-align: center;
 }
 
+/* TEXT */
+.contact-row span {
+  font-size: 13.5px;
+  line-height: 1.2;
+}
+
+/* COLORS */
+.contact-row.email {
+  background: #2f2f2f;
+}
+
+.contact-row.linkedin {
+  background: #0077b5;
+}
+
+.contact-row.instagram {
+  background: linear-gradient(45deg, #feda75, #d62976, #962fbf);
+}
+
+/* HOVER (clean, not flashy) */
+.contact-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
 /* IMAGE TOGGLE */
 .img-toggle {
   position: relative;
@@ -510,6 +546,75 @@ section.section {
   border: 1px solid rgba(255,255,255,0.12);
 }
 
+/* FOOTER */
+.footer {
+  width: 100%;
+  max-width: var(--container);
+  margin: 16px auto;
+  padding: 50px 48px 20px;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  color: #ccc;
+}
+
+.footer-container {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 260px;
+}
+
+.footer-col h3 {
+  margin-bottom: 18px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #aaa;
+  margin: 0;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  margin-top: 35px;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  border-top: 1px solid #222;
+  padding-top: 15px;
+}
+
 /* TABLET */
 @media (max-width: 900px) {
   :root {
@@ -559,6 +664,12 @@ section.section {
     border-radius: 14px;
   }
 
+  .footer {
+    padding: 34px 24px 20px;
+    margin: 14px auto;
+    border-radius: 14px;
+  }
+
   .nav-inner {
     padding: 12px 16px;
     gap: 10px;
@@ -576,6 +687,10 @@ section.section {
 
   .contact-box {
     max-width: 100%;
+  }
+
+  .footer-container {
+    gap: 30px;
   }
 }
 
@@ -652,6 +767,12 @@ section.section {
     border-radius: 12px;
   }
 
+  .footer {
+    padding: 24px 16px 18px;
+    margin: 10px auto;
+    border-radius: 12px;
+  }
+
   .section h2 {
     font-size: 20px;
     margin-bottom: 14px;
@@ -686,22 +807,46 @@ section.section {
   }
 
   .contact-box {
-    padding: 16px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 260px;
+}
 
-  .contact-row {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
+/* ROW */
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-  .contact-row a,
-  .contact-text {
-    font-size: 14px;
-  }
+  padding: 9px 12px;
+  border-radius: 10px;
 
-  .contact-label {
-    font-size: 11px;
-  }
+  font-size: 13.5px;
+  font-weight: 600;
+
+  text-decoration: none;
+  color: #fff;
+
+  transition: all 0.25s ease;
+}
+
+/* ICON (fixed size) */
+.footer .contact-row i {
+  font-size: 14px;
+  min-width: 16px;
+}
+
+/* TEXT */
+.contact-row span {
+  font-size: 13.5px;
+}
+
+/* MOBILE / STACK */
+.footer-container {
+  flex-direction: column;
+  gap: 30px;
+}
 
   .img-toggle .toggle-btn {
     width: 46px;
@@ -747,15 +892,18 @@ section.section {
 
   .hero-text p,
   .section p,
-  .job ul,
-  .contact-row a,
-  .contact-text {
+  .job ul {
     font-size: 14px;
   }
 
   section.section {
     margin: 8px auto;
     padding: 20px 14px;
+  }
+
+  .footer {
+    margin: 8px auto;
+    padding: 20px 14px 16px;
   }
 
   .nav-inner {
@@ -781,5 +929,9 @@ section.section {
 
   .section-header h2 {
     text-align: left;
+  }
+
+  .footer-col {
+    min-width: 100%;
   }
 }

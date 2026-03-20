@@ -33,12 +33,7 @@
 
         <div class="hero-buttons">
 
-          <a
-            class="connect-btn"
-            id="connectBtn"
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
-            target="_blank"
-          >
+          <a class="connect-btn" id="connectBtn">
             CONNECT
           </a>
 
@@ -160,31 +155,48 @@
   </div>
 
 </footer>
+<!-- CONTACT MODAL -->
+<div class="contact-modal" id="contactModal">
+  <div class="contact-modal-content">
 
+    <span class="close-btn" id="closeModal">&times;</span>
 
-    <script>
-    // CONNECT: opens Gmail compose; fallback copies email
-    (function () {
-      const btn = document.getElementById("connectBtn");
-      const status = document.getElementById("connectStatus");
-      if (!btn) return;
+    <h3>Get In Touch</h3>
 
-      const email = "seanpatrickramos.sp@gmail.com";
+    <form action="https://formspree.io/f/mojkbejy" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
 
-      btn.addEventListener("click", async (e) => {
-        e.preventDefault();
-        window.open(btn.href, "_blank", "noopener,noreferrer");
+      <button type="submit">Send Message</button>
+    </form>
 
-        if (status) status.textContent = "If your email didn’t open, Sean email address has been copied.";
+    <p class="alt-contact">
+      Or email me directly: seanpatrickramos.sp@gmail.com
+    </p>
 
-        try {
-          await navigator.clipboard.writeText(email);
-        } catch {
-          if (status) status.textContent = "If your email didn’t open, email me at: " + email;
-        }
-      });
-    })();
-    </script>
+  </div>
+</div>
+
+  <script>
+  const btn = document.getElementById("connectBtn");
+  const modal = document.getElementById("contactModal");
+  const close = document.getElementById("closeModal");
+
+  btn.onclick = () => {
+    modal.style.display = "flex";
+  };
+
+  close.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.onclick = (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
 </main>
 </body>
 </html>

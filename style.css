@@ -357,7 +357,7 @@ section.section {
 .project-image img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 70%;
 }
 
 .project-images {

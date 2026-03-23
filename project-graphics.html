@@ -27,30 +27,34 @@
     <h2>Graphics Design</h2>
     </div>
     <div class="project-item">
-      <!-- TOGGLE sample1 / sample1.2 -->
-      <div class="img-toggle" data-toggle data-labels="First Page,Second Page">
-        <img class="img active" src="./images/sample1.jpg" alt="First Page">
-        <img class="img" src="./images/sample1.2.jpg" alt="Second Page">
-        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-        <span class="badge" data-badge>First Page</span>
+      <div class="project-image">
+        <img src="./images/sample1.jpg" alt="Sample 1">
       </div>
 
-      <h3>Blue Crystal Beach Resort – Promotional Graphic Design</h3>
-      <p>
-        Designed a promotional visual for Blue Crystal Beach Resort focusing on
-        brand consistency, readability, and visual hierarchy for marketing use.
-      </p>
-      <ul>
-        <li>Created layout and visual hierarchy for promotional materials</li>
-        <li>Edited and color-graded images for brand alignment</li>
-        <li>Designed for digital marketing and print-ready output</li>
-      </ul>
-      <h4 class="tools-title">Tools Used</h4>
+      <h3>7-Day Meal Prep Guide – Lead Magnet Design and Cover Photo</h3>
+        <p>
+        Designed a high-converting lead magnet focused on engaging visuals,
+        clear information flow, and effective content structure to attract
+        and capture potential clients.
+        </p>
+        <ul>
+          <li>Created a structured layout optimized for readability and user engagement</li>
+          <li>Designed visual hierarchy to guide users through key information</li>
+          <li>Aligned colors, typography, and imagery with brand identity</li>
+          <li>Optimized for digital distribution and conversion-focused marketing</li>
+        </ul>
+        <h4 class="tools-title">Tools Used</h4>
         <div class="tools-used">
         <span>canva</span>
+        <span>pexels.com</span>
         </div>
-
+        <h4 style="margin-top: 10px;">Preview Lead Magnet:</h4>
+    <p>
+      <a href="https://drive.google.com/file/d/16hUkgBP3JEkIJfnmFpc9XhEzMdToEkGy/view?usp=sharing"
+         style="color: #4da6ff; text-decoration: underline;">
+        https://drive.google.com/Meal-Prep-lead-magnet
+      </a>
+    </p>
       <hr class="separator">
     </div>
 
@@ -136,70 +140,6 @@
   </div>
 
 </footer>
-  <script>
-  
-    // ✅ Scroll-based nav highlight
-    const navLinks = Array.from(document.querySelectorAll("nav a"));
-    const sections = Array.from(document.querySelectorAll("section[id]"));
-
-    const linkById = new Map(
-      navLinks.map(a => [a.getAttribute("href").slice(1), a])
-    );
-
-    const setActive = (id) => {
-      navLinks.forEach(a => a.classList.remove("active"));
-      const link = linkById.get(id);
-      if (link) link.classList.add("active");
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter(e => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible) setActive(visible.target.id);
-      },
-      {
-        threshold: [0.35, 0.6, 0.8],
-        rootMargin: "-20% 0px -55% 0px"
-      }
-    );
-
-    sections.forEach(sec => observer.observe(sec));
-
-    window.addEventListener("hashchange", () => {
-      const id = location.hash.replace("#", "");
-      if (id) setActive(id);
-    });
-
-    // ✅ IMAGE TOGGLE (NEXT/PREV ARROWS) FOR ALL 2-IMAGE SETS
-    (function () {
-      document.querySelectorAll("[data-toggle]").forEach(box => {
-        const imgs = Array.from(box.querySelectorAll(".img"));
-        const prev = box.querySelector(".prev");
-        const next = box.querySelector(".next");
-        const badge = box.querySelector("[data-badge]");
-
-        const labelsRaw = box.getAttribute("data-labels") || "";
-        const labels = labelsRaw.split(",").map(s => s.trim()).filter(Boolean);
-
-        let index = 0;
-
-        const show = (i) => {
-          index = (i + imgs.length) % imgs.length;
-          imgs.forEach((img, idx) => img.classList.toggle("active", idx === index));
-          if (badge) badge.textContent = labels[index] || `Image ${index + 1}`;
-        };
-
-        prev?.addEventListener("click", (e) => { e.preventDefault(); show(index - 1); });
-        next?.addEventListener("click", (e) => { e.preventDefault(); show(index + 1); });
-
-        // init
-        show(0);
-      });
-    })();
-  </script>
   </main>
 </body>
 </html>

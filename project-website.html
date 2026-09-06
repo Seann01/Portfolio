@@ -6,306 +6,234 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects - Websites</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./style.css" />
 </head>
-
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="./index.html">Home</a>
-      <a href="./experience.html">Work Experience</a>
-      <a href="./projects.html" class="active">Projects</a>
-      <a href="./contactme.html">Contact Me</a>
-      <a href="./about.html">About</a>
+<div class="shell">
+
+  <aside class="sidebar">
+    <a href="./index.html" class="brand">
+      <div class="brand-mark">SR</div>
+      <div class="brand-text">Sean Ramos<small>Marketing + Automation</small></div>
+    </a>
+    <nav class="side-nav">
+      <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
+      <a href="./experience.html"><i class="fa-solid fa-briefcase"></i>Work Experience</a>
+      <a href="./projects.html" class="active"><i class="fa-solid fa-diagram-project"></i>Projects</a>
+      <a href="./contactme.html"><i class="fa-solid fa-envelope"></i>Contact Me</a>
+      <a href="./about.html"><i class="fa-solid fa-user"></i>About</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="sidebar-social">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/seanramos_02/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="sidebar-status">Open to opportunities</div>
     </div>
+  </aside>
+
+  <header class="topbar">
+    <a href="./index.html" class="brand">
+      <div class="brand-mark">SR</div>
+      <div class="brand-text">Sean Ramos</div>
+    </a>
+  </header>
+  <nav class="topbar-nav">
+    <a href="./index.html">Home</a>
+    <a href="./experience.html">Work Experience</a>
+    <a href="./projects.html" class="active">Projects</a>
+    <a href="./contactme.html">Contact Me</a>
+    <a href="./about.html">About</a>
   </nav>
-  <main class="page-wrap">
-   <section id="projects" class="section">
-    <div class="section-header">
-    <a href="projects.html" class="back-btn">← Back</a>
-    <h2>Websites</h2>
-    </div>
 
-<div class="project-item">
-      <!-- TOGGLE sample5 / sample5.1 -->
-      <div class="img-toggle" data-toggle data-labels="Home Page, Services Page, Contact Page">
-        <img class="img active" src="./images/sample11.jpg" alt="Website Sample 1">
-        <img class="img" src="./images/sample11.1.jpg" alt="Website Sample 2">
-        <img class="img" src="./images/sample11.2.jpg" alt="Website Sample 3">
-        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-        <span class="badge" data-badge>Home Page</span>
+  <div class="content">
+    <div class="content-inner">
+
+      <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i>Back to Projects</a>
+
+      <section class="hero-v2" style="margin-bottom:8px;">
+        <div class="kicker">Websites</div>
+        <h1 style="font-size:34px;">Responsive builds, from demo funnels to live deployments.</h1>
+      </section>
+
+      <div>
+        <div class="project-split">
+          <div class="project-media">
+            <div class="img-toggle" data-toggle data-labels="Home Page, Services Page, Contact Page">
+              <img class="img active" src="./images/sample11.jpg" alt="Website Sample 1">
+              <img class="img" src="./images/sample11.1.jpg" alt="Website Sample 2">
+              <img class="img" src="./images/sample11.2.jpg" alt="Website Sample 3">
+              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
+              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
+              <span class="badge" data-badge>Home Page</span>
+            </div>
+          </div>
+          <div class="project-copy">
+            <h3>Creating Landing Page for Zucheng IT Solutions (Demo)</h3>
+            <p>
+              Developed a conversion-focused landing page for Zucheng IT Solutions, a Chinese tech-oriented company, using Replit and modern “vibe coding”
+              workflows. The project emphasized fast development and efficient deployment, allowing the website to move quickly from concept to a fully
+              functional live page. Managed the complete setup process, including domain registration, DNS configuration, and hosting, while maintaining
+              strong performance, security, and reliability. Designed the landing page to reflect a modern tech brand, focusing on clear messaging,
+              intuitive navigation, and user engagement to support marketing objectives.
+            </p>
+            <ul>
+              <li>Developed the landing page using Replit with fast prototyping (“vibe coding”) techniques for efficient turnaround</li>
+              <li>Purchased and configured the domain through Namecheap, aligning it with the company’s branding</li>
+              <li>Deployed and hosted the website using SiteGround for reliable uptime and performance</li>
+              <li>Integrated Cloudflare for DNS management, improving website speed, caching, and security protection</li>
+              <li>Designed the layout with a focus on conversion, clear call-to-actions, and user-friendly navigation</li>
+              <li>Implemented responsive design to ensure seamless performance across desktop, tablet, and mobile devices</li>
+            </ul>
+            <h4 class="tools-title">Tools Used</h4>
+            <div class="tools-used">
+              <span>Replit</span><span>Namecheap</span><span>SiteGround</span><span>Cloudflare</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-split flip">
+          <div class="project-media">
+            <div class="img-toggle" data-toggle data-labels="Home Page, Services Page, Contact Page">
+              <img class="img active" src="./images/sample10.jpg" alt="Website Sample 1">
+              <img class="img" src="./images/sample10.1.jpg" alt="Website Sample 2">
+              <img class="img" src="./images/sample10.2.jpg" alt="Website Sample 3">
+              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
+              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
+              <span class="badge" data-badge>Home Page</span>
+            </div>
+          </div>
+          <div class="project-copy">
+            <h3>Creating Landing Page for Zhongrenxing Company (Demo)</h3>
+            <p>
+              Developed a high-converting landing page for a Chinese technology-focused company using Replit and modern “vibe coding” workflows,
+              enabling rapid prototyping and efficient development. The project involved managing the full deployment lifecycle—from domain acquisition
+              to live hosting—while ensuring performance, security, and scalability. The landing page was structured to align with the company’s tech-oriented
+              branding, focusing on clear messaging, user engagement, and conversion-driven design.
+            </p>
+            <ul>
+              <li>Developed the landing page using Replit with fast prototyping (“vibe coding”) techniques for efficient turnaround</li>
+              <li>Purchased and configured the domain through Namecheap, aligning it with the company’s branding</li>
+              <li>Deployed and hosted the website using SiteGround for reliable uptime and performance</li>
+              <li>Integrated Cloudflare for DNS management, improving website speed, caching, and security protection</li>
+              <li>Designed the layout with a focus on conversion, clear call-to-actions, and user-friendly navigation</li>
+              <li>Implemented responsive design to ensure seamless performance across desktop, tablet, and mobile devices</li>
+            </ul>
+            <h4 class="tools-title">Tools Used</h4>
+            <div class="tools-used">
+              <span>Replit</span><span>Namecheap</span><span>SiteGround</span><span>Cloudflare</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-split">
+          <div class="project-media">
+            <div class="img-toggle" data-toggle data-labels="Home Page, Health Optimization Page">
+              <img class="img active" src="./images/sample5.jpg" alt="Website Sample 1">
+              <img class="img" src="./images/sample5.1.jpg" alt="Website Sample 2">
+              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
+              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
+              <span class="badge" data-badge>Home Page</span>
+            </div>
+          </div>
+          <div class="project-copy">
+            <h3>Vanguard Men's Health Website Collaboration</h3>
+            <p><a href="https://go.vanguardmenshealth.com/home">https://go.vanguardmenshealth.com/home</a></p>
+            <p>
+              Collaborated on the development and refinement of the Vanguard Men's Health
+              website using the GoHighLevel platform, focusing on layout consistency,
+              content structure, and visual presentation to support a professional,
+              healthcare-focused brand.
+            </p>
+            <ul>
+              <li>Worked within the GoHighLevel website builder to assist with layout, section organization, and content placement</li>
+              <li>Refined hero sections, service highlights, CTA placement, and visual flow across key pages</li>
+              <li>Ensured design consistency, readability, and alignment with branding</li>
+              <li>Collaborated with the team to improve UX and presentation</li>
+            </ul>
+            <h4 class="tools-title">Tools Used</h4>
+            <div class="tools-used">
+              <span>GHL</span><span>HTML</span><span>CSS</span><span>Pexels.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-split flip">
+          <div class="project-media">
+            <div class="img-toggle" data-toggle data-labels="Home Page, Projects, Projects-Websites">
+              <img class="img active" src="./images/sample9.jpg" alt="Website Sample 1">
+              <img class="img" src="./images/sample9.1.jpg" alt="Website Sample 2">
+              <img class="img" src="./images/sample9.2.jpg" alt="Website Sample 3">
+              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
+              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
+              <span class="badge" data-badge>Home Page</span>
+            </div>
+          </div>
+          <div class="project-copy">
+            <h3>Personal Portfolio Website</h3>
+            <p>
+              Developed a personal portfolio website to showcase my projects, skills, and
+              approach to web development and marketing. The site is built with a focus on
+              clean structure, responsive design, and user-friendly navigation to effectively
+              present my work to potential clients.
+            </p>
+            <ul>
+              <li>Built the website from scratch using HTML, CSS, and JavaScript</li>
+              <li>Designed a responsive layout that adapts seamlessly across desktop, tablet, and mobile screen sizes</li>
+              <li>Structured content to highlight projects, skills, and practical experience in web development and marketing</li>
+              <li>Implemented clean UI and navigation to improve user experience and readability</li>
+              <li>Integrated a contact form with Formspree to handle user inquiries and enable direct email submissions without a backend</li>
+              <li>Deployed the project using GitHub for version control and Vercel for hosting and performance monitoring</li>
+            </ul>
+            <h4 class="tools-title">Tools Used</h4>
+            <div class="tools-used">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub</span><span>Vercel</span><span>Formspree</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <h3>Creating Landing Page for Zucheng IT Solutions (Demo)</h3>
-
-<p>
- Developed a conversion-focused landing page for Zucheng IT Solutions, a Chinese tech-oriented company, using Replit and modern “vibe coding”
- workflows. The project emphasized fast development and efficient deployment, allowing the website to move quickly from concept to a fully 
- functional live page. Managed the complete setup process, including domain registration, DNS configuration, and hosting, while maintaining 
- strong performance, security, and reliability. Designed the landing page to reflect a modern tech brand, focusing on clear messaging, 
- intuitive navigation, and user engagement to support marketing objectives.
-</p>
-
-<ul>
-  <li>Developed the landing page using Replit with fast prototyping (“vibe coding”) techniques for efficient turnaround</li>
-  <li>Purchased and configured the domain through Namecheap, aligning it with the company’s branding</li>
-  <li>Deployed and hosted the website using SiteGround for reliable uptime and performance</li>
-  <li>Integrated Cloudflare for DNS management, improving website speed, caching, and security protection</li>
-  <li>Designed the layout with a focus on conversion, clear call-to-actions, and user-friendly navigation</li>
-  <li>Implemented responsive design to ensure seamless performance across desktop, tablet, and mobile devices</li>
-</ul>
-
-<h4 class="tools-title">Tools Used</h4>
-<div class="tools-used">
-  <span>Replit</span>
-  <span>Namecheap</span>
-  <span>SiteGround</span>
-  <span>Cloudflare</span>
-</div>
-
-<hr class="separator">
-</div>
-    <div class="project-item">
-      <!-- TOGGLE sample5 / sample5.1 -->
-      <div class="img-toggle" data-toggle data-labels="Home Page, Services Page, Contact Page">
-        <img class="img active" src="./images/sample10.jpg" alt="Website Sample 1">
-        <img class="img" src="./images/sample10.1.jpg" alt="Website Sample 2">
-        <img class="img" src="./images/sample10.2.jpg" alt="Website Sample 3">
-        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-        <span class="badge" data-badge>Home Page</span>
-      </div>
-
-      <h3>Creating Landing Page for Zhongrenxing Company (Demo)</h3>
-
-<p>
-  Developed a high-converting landing page for a Chinese technology-focused company using Replit and modern “vibe coding” workflows, 
-  enabling rapid prototyping and efficient development. The project involved managing the full deployment lifecycle—from domain acquisition 
-  to live hosting—while ensuring performance, security, and scalability. The landing page was structured to align with the company’s tech-oriented 
-  branding, focusing on clear messaging, user engagement, and conversion-driven design.
-</p>
-
-<ul>
-  <li>Developed the landing page using Replit with fast prototyping (“vibe coding”) techniques for efficient turnaround</li>
-  <li>Purchased and configured the domain through Namecheap, aligning it with the company’s branding</li>
-  <li>Deployed and hosted the website using SiteGround for reliable uptime and performance</li>
-  <li>Integrated Cloudflare for DNS management, improving website speed, caching, and security protection</li>
-  <li>Designed the layout with a focus on conversion, clear call-to-actions, and user-friendly navigation</li>
-  <li>Implemented responsive design to ensure seamless performance across desktop, tablet, and mobile devices</li>
-</ul>
-
-<h4 class="tools-title">Tools Used</h4>
-<div class="tools-used">
-  <span>Replit</span>
-  <span>Namecheap</span>
-  <span>SiteGround</span>
-  <span>Cloudflare</span>
-</div>
-
-<hr class="separator">
-</div>
-
-
-   <div class="project-item">
-      <!-- TOGGLE sample5 / sample5.1 -->
-      <div class="img-toggle" data-toggle data-labels="Home Page, Health Optimization Page">
-        <img class="img active" src="./images/sample5.jpg" alt="Website Sample 1">
-        <img class="img" src="./images/sample5.1.jpg" alt="Website Sample 2">
-        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-        <span class="badge" data-badge>Home Page</span>
-      </div>
-
-      <h3>Vanguard Men’s Health Website Collaboration</h3>
-      <p>
-        <a href="https://go.vanguardmenshealth.com/home" style="color: #4da6ff; text-decoration: underline;">
-          https://go.vanguardmenshealth.com/home
-        </a>
-      </p>
-
-      <p>
-        Collaborated on the development and refinement of the Vanguard Men’s Health
-        website using the GoHighLevel platform, focusing on layout consistency,
-        content structure, and visual presentation to support a professional,
-        healthcare-focused brand.
-      </p>
-
-      <ul>
-        <li>Worked within the GoHighLevel website builder to assist with layout, section organization, and content placement</li>
-        <li>Refined hero sections, service highlights, CTA placement, and visual flow across key pages</li>
-        <li>Ensured design consistency, readability, and alignment with branding</li>
-        <li>Collaborated with the team to improve UX and presentation</li>
-      </ul>
-      <h4 class="tools-title">Tools Used</h4>
-        <div class="tools-used">
-        <span>GHL</span>
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>pexels.com</span>
-        </div> 
-        <hr class="separator">
     </div>
 
-    <div class="project-item">
-      <!-- TOGGLE sample5 / sample5.1 -->
-      <div class="img-toggle" data-toggle data-labels="Home Page, Projects, Projects-Websites">
-        <img class="img active" src="./images/sample9.jpg" alt="Website Sample 1">
-        <img class="img" src="./images/sample9.1.jpg" alt="Website Sample 2">
-        <img class="img" src="./images/sample9.2.jpg" alt="Website Sample 3">
-        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-        <span class="badge" data-badge>Home Page</span>
+    <footer class="footer-slim">
+      <div>© 2026 Sean Patrick Ramos. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="./index.html">Home</a>
+        <a href="./experience.html">Work Experience</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./contactme.html">Contact Me</a>
+        <a href="./about.html">About</a>
       </div>
-
-      <h3>Personal Portfolio Website</h3>
-
-
-<p>
-  Developed a personal portfolio website to showcase my projects, skills, and approach to web development and marketing. The site is built with a focus on clean structure, responsive design, and user-friendly navigation to effectively present my work to potential clients.
-</p>
-
-<ul>
-  <li>Built the website from scratch using HTML, CSS, and JavaScript</li>
-  <li>Designed a responsive layout that adapts seamlessly across desktop, tablet, and mobile screen sizes</li>
-  <li>Structured content to highlight projects, skills, and practical experience in web development and marketing</li>
-  <li>Implemented clean UI and navigation to improve user experience and readability</li>
-  <li>Integrated a contact form with Formspree to handle user inquiries and enable direct email submissions without a backend</li>
-  <li>Deployed the project using GitHub for version control and Vercel for hosting and performance monitoring</li>
-</ul>
-
-<h4 class="tools-title">Tools Used</h4>
-<div class="tools-used">
-  <span>HTML</span>
-  <span>CSS</span>
-  <span>JavaScript</span>
-  <span>GitHub</span>
-  <span>Vercel</span>
-  <span>Formspree</span>
-</div>
-
-<hr class="separator">
-</div>
-</section>
-      
-
-    <footer class="footer">
-  <div class="footer-container">
-    <!-- left -->
-    <div class="footer-col">
-    <h3>Let's Work Together</h3>
-      <a>
-      Open to Virtual Assistant, Web Development, and Digital Marketing opportunities.
-      </a>
-    </div>
-    <!-- middle -->
-    <div class="footer-col">
-      <h3>Connect With Me</h3>
-
-      <div class="contact-box">
-
-        <a class="contact-row email" href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me">
-          <i class="fas fa-envelope"></i>
-          <span>Email</span>
-        </a>
-
-        <a class="contact-row linkedin" href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/">
-          <i class="fab fa-linkedin"></i>
-          <span>LinkedIn</span>
-        </a>
-
-        <a class="contact-row instagram" href="https://www.instagram.com/seanramos_02/">
-          <i class="fab fa-instagram"></i>
-          <span>Instagram</span>
-        </a>
-
-      </div>
-    </div>
-    
-    <!-- RIGHT -->
-    <div class="footer-col">
-      <h3>Quick Links</h3>
-      <ul class="footer-links">
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./experience.html">Work Experience</a></li>
-        <li><a href="./projects.html">Projects</a></li>
-        <li><a href="./contactme.html">Contact Me</a></li>
-        <li><a href="./about.html">About</a></li>
-      </ul>
-    </div>
-
+    </footer>
   </div>
+</div>
 
-  <div class="footer-bottom">
-    <p>© 2026 Sean Patrick Ramos. All rights reserved.</p>
-  </div>
-
-</footer>
-    <script>
-    // ✅ Scroll-based nav highlight
-    const navLinks = Array.from(document.querySelectorAll("nav a"));
-    const sections = Array.from(document.querySelectorAll("section[id]"));
-
-    const linkById = new Map(
-      navLinks.map(a => [a.getAttribute("href").slice(1), a])
-    );
-
-    const setActive = (id) => {
-      navLinks.forEach(a => a.classList.remove("active"));
-      const link = linkById.get(id);
-      if (link) link.classList.add("active");
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter(e => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible) setActive(visible.target.id);
-      },
-      {
-        threshold: [0.35, 0.6, 0.8],
-        rootMargin: "-20% 0px -55% 0px"
-      }
-    );
-
-    sections.forEach(sec => observer.observe(sec));
-
-    window.addEventListener("hashchange", () => {
-      const id = location.hash.replace("#", "");
-      if (id) setActive(id);
+<script>
+  (function () {
+    document.querySelectorAll("[data-toggle]").forEach(box => {
+      const imgs = Array.from(box.querySelectorAll(".img"));
+      const prev = box.querySelector(".prev");
+      const next = box.querySelector(".next");
+      const badge = box.querySelector("[data-badge]");
+      const labelsRaw = box.getAttribute("data-labels") || "";
+      const labels = labelsRaw.split(",").map(s => s.trim()).filter(Boolean);
+      let index = 0;
+      const show = (i) => {
+        index = (i + imgs.length) % imgs.length;
+        imgs.forEach((img, idx) => img.classList.toggle("active", idx === index));
+        if (badge) badge.textContent = labels[index] || `Image ${index + 1}`;
+      };
+      prev?.addEventListener("click", (e) => { e.preventDefault(); show(index - 1); });
+      next?.addEventListener("click", (e) => { e.preventDefault(); show(index + 1); });
+      show(0);
     });
-
-    // ✅ IMAGE TOGGLE (NEXT/PREV ARROWS) FOR ALL 2-IMAGE SETS
-    (function () {
-      document.querySelectorAll("[data-toggle]").forEach(box => {
-        const imgs = Array.from(box.querySelectorAll(".img"));
-        const prev = box.querySelector(".prev");
-        const next = box.querySelector(".next");
-        const badge = box.querySelector("[data-badge]");
-
-        const labelsRaw = box.getAttribute("data-labels") || "";
-        const labels = labelsRaw.split(",").map(s => s.trim()).filter(Boolean);
-
-        let index = 0;
-
-        const show = (i) => {
-          index = (i + imgs.length) % imgs.length;
-          imgs.forEach((img, idx) => img.classList.toggle("active", idx === index));
-          if (badge) badge.textContent = labels[index] || `Image ${index + 1}`;
-        };
-
-        prev?.addEventListener("click", (e) => { e.preventDefault(); show(index - 1); });
-        next?.addEventListener("click", (e) => { e.preventDefault(); show(index + 1); });
-
-        // init
-        show(0);
-      });
-    })();
-    </script>
-
-  </main>
+  })();
+</script>
 </body>
 </html>

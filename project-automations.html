@@ -6,218 +6,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects - Automations</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./style.css" />
 </head>
-
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="./index.html">Home</a>
-      <a href="./experience.html">Work Experience</a>
-      <a href="./projects.html" class="active">Projects</a>
-      <a href="./contactme.html">Contact Me</a>
-      <a href="./about.html">About</a>
+<div class="shell">
+
+  <aside class="sidebar">
+    <a href="./index.html" class="brand">
+      <div class="brand-mark">SR</div>
+      <div class="brand-text">Sean Ramos<small>Marketing + Automation</small></div>
+    </a>
+    <nav class="side-nav">
+      <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
+      <a href="./experience.html"><i class="fa-solid fa-briefcase"></i>Work Experience</a>
+      <a href="./projects.html" class="active"><i class="fa-solid fa-diagram-project"></i>Projects</a>
+      <a href="./contactme.html"><i class="fa-solid fa-envelope"></i>Contact Me</a>
+      <a href="./about.html"><i class="fa-solid fa-user"></i>About</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="sidebar-social">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/seanramos_02/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="sidebar-status">Open to opportunities</div>
     </div>
+  </aside>
+
+  <header class="topbar">
+    <a href="./index.html" class="brand">
+      <div class="brand-mark">SR</div>
+      <div class="brand-text">Sean Ramos</div>
+    </a>
+  </header>
+  <nav class="topbar-nav">
+    <a href="./index.html">Home</a>
+    <a href="./experience.html">Work Experience</a>
+    <a href="./projects.html" class="active">Projects</a>
+    <a href="./contactme.html">Contact Me</a>
+    <a href="./about.html">About</a>
   </nav>
-  <main class="page-wrap">
-   <section id="projects" class="section">
-    <div class="section-header">
-    <a href="projects.html" class="back-btn">← Back</a>
-    <h2>Automation</h2>
-    </div>
-    <div class="project-item">
-      <!-- TOGGLE sample4 / sample4.1 -->
-      <div class="img-toggle" data-toggle data-labels="Raw Data,Report Output">
-        <img class="img active" src="./images/sample4.jpg" alt="Timesheet Automation Before">
-        <img class="img" src="./images/sample4.1.jpg" alt="Timesheet Automation After">
-        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-        <span class="badge" data-badge>Before</span>
-      </div>
 
-      <h3>Timesheet Automation</h3>
-      <p>
-        Built an automated timesheet workflow using anonymized attendance data
-        exported from Sprout, transforming raw biometric logs into a structured,
-        payroll-ready format while maintaining data confidentiality.
-      </p>
+  <div class="content">
+    <div class="content-inner">
 
-      <ul>
-        <li>CSV file generated from Sprout containing anonymized shift schedules and biometric logs (Raw Data)</li>
-        <li>Automated processing converts raw data into a clean, structured timesheet output for payroll review (Output)</li>
-        <li>All employee-identifiable information removed to comply with data privacy requirements</li>
-        <li>Reduced manual processing time and minimized payroll-related errors</li>
-      </ul>
-        <h4 class="tools-title">Tools Used</h4>
-        <div class="tools-used">
-        <span>Python</span>
-        <span>Pandas</span>
-        <span>CSV Processing</span>
-        <span>Git Bash</span>
-        <span>Bash</span>
-        <span>Automation Scripts</span>
+      <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i>Back to Projects</a>
+
+      <section class="hero-v2" style="margin-bottom:8px;">
+        <div class="kicker">Automations</div>
+        <h1 style="font-size:34px;">Scripts and workflows that remove manual busywork.</h1>
+      </section>
+
+      <div>
+        <div class="project-split">
+          <div class="project-media">
+            <div class="img-toggle" data-toggle data-labels="Raw Data,Report Output">
+              <img class="img active" src="./images/sample4.jpg" alt="Timesheet Automation Before">
+              <img class="img" src="./images/sample4.1.jpg" alt="Timesheet Automation After">
+              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
+              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
+              <span class="badge" data-badge>Raw Data</span>
+            </div>
+          </div>
+          <div class="project-copy">
+            <h3>Timesheet Automation</h3>
+            <p>
+              Built an automated timesheet workflow using anonymized attendance data
+              exported from Sprout, transforming raw biometric logs into a structured,
+              payroll-ready format while maintaining data confidentiality.
+            </p>
+            <ul>
+              <li>CSV file generated from Sprout containing anonymized shift schedules and biometric logs (Raw Data)</li>
+              <li>Automated processing converts raw data into a clean, structured timesheet output for payroll review (Output)</li>
+              <li>All employee-identifiable information removed to comply with data privacy requirements</li>
+              <li>Reduced manual processing time and minimized payroll-related errors</li>
+            </ul>
+            <h4 class="tools-title">Tools Used</h4>
+            <div class="tools-used">
+              <span>Python</span><span>Pandas</span><span>CSV Processing</span><span>Git Bash</span><span>Bash</span><span>Automation Scripts</span>
+            </div>
+          </div>
         </div>
-      <hr class="separator">
-    </div>
 
-    <div class="project-item">
-      <!-- TOGGLE sample2.1 / sample2 -->
-      <div class="img-toggle" data-toggle data-labels="Raw Data,Report Output">
-        <img class="img active" src="./images/sample2.1.jpg" alt="Raw Data">
-        <img class="img" src="./images/sample2.jpg" alt="Report Output">
-        <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-        <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-        <span class="badge" data-badge>Before</span>
-      </div>
-
-      <h3>Automated Social Media Reporting  using Spreadsheet Queries (Sample Data)</h3>
-      <p>
-        Developed a structured reporting using sample social media data to
-        demonstrate query-driven automation within a spreadsheet environment.
-      </p>
-
-      <ul>
-        <li>Designed a multi-sheet  structure separating raw data and reporting outputs</li>
-        <li>Used spreadsheet queries to extract, aggregate, and summarize sample raw data</li>
-        <li>Automated calculation of engagement metrics and platform performance</li>
-        <li>Implemented auto-updating summaries that refresh as new rows are added</li>
-        <li>Demonstrated lightweight reporting automation using native spreadsheet tools</li>
-      </ul>
-        
-    </div>
-      <h4 style="margin-top: 10px;">Link to the spreadsheet:</h4>
-      <p>
-        <a href="https://docs.google.com/spreadsheets/d/19vkXjV0LH1qFU6mi7O_ADQVbHy5gK7yp4HiOTctBNiU/edit?usp=sharing"
-           style="color: #4da6ff; text-decoration: underline;">
-          https://docs.google.com/
-        </a>
-      </p>
-    </div>
-    <h4 class="tools-title">Tools Used</h4>
-        <div class="tools-used">
-        <span>Google Sheet</span>
-        <span>Queries</span>
-       
+        <div class="project-split flip">
+          <div class="project-media">
+            <div class="img-toggle" data-toggle data-labels="Raw Data,Report Output">
+              <img class="img active" src="./images/sample2.1.jpg" alt="Raw Data">
+              <img class="img" src="./images/sample2.jpg" alt="Report Output">
+              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
+              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
+              <span class="badge" data-badge>Raw Data</span>
+            </div>
+          </div>
+          <div class="project-copy">
+            <h3>Automated Social Media Reporting using Spreadsheet Queries (Sample Data)</h3>
+            <p>
+              Developed a structured reporting using sample social media data to
+              demonstrate query-driven automation within a spreadsheet environment.
+            </p>
+            <ul>
+              <li>Designed a multi-sheet structure separating raw data and reporting outputs</li>
+              <li>Used spreadsheet queries to extract, aggregate, and summarize sample raw data</li>
+              <li>Automated calculation of engagement metrics and platform performance</li>
+              <li>Implemented auto-updating summaries that refresh as new rows are added</li>
+              <li>Demonstrated lightweight reporting automation using native spreadsheet tools</li>
+            </ul>
+            <p class="link-line">Link to the spreadsheet:</p>
+            <p><a href="https://docs.google.com/spreadsheets/d/19vkXjV0LH1qFU6mi7O_ADQVbHy5gK7yp4HiOTctBNiU/edit?usp=sharing">https://docs.google.com/</a></p>
+            <h4 class="tools-title">Tools Used</h4>
+            <div class="tools-used">
+              <span>Google Sheets</span><span>Queries</span>
+            </div>
+          </div>
         </div>
-  <hr class="separator">
- </section>
-
-   <footer class="footer">
-  <div class="footer-container">
-    <!-- left -->
-    <div class="footer-col">
-    <h3>Let's Work Together</h3>
-      <a>
-      Open to Virtual Assistant, Web Development, and Digital Marketing opportunities.
-      </a>
-    </div>
-    <!-- middle -->
-    <div class="footer-col">
-      <h3>Connect With Me</h3>
-
-      <div class="contact-box">
-
-        <a class="contact-row email" href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me">
-          <i class="fas fa-envelope"></i>
-          <span>Email</span>
-        </a>
-
-        <a class="contact-row linkedin" href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/">
-          <i class="fab fa-linkedin"></i>
-          <span>LinkedIn</span>
-        </a>
-
-        <a class="contact-row instagram" href="https://www.instagram.com/seanramos_02/">
-          <i class="fab fa-instagram"></i>
-          <span>Instagram</span>
-        </a>
-
       </div>
-    </div>
-    
-    <!-- RIGHT -->
-    <div class="footer-col">
-      <h3>Quick Links</h3>
-      <ul class="footer-links">
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./experience.html">Work Experience</a></li>
-        <li><a href="./projects.html">Projects</a></li>
-        <li><a href="./contactme.html">Contact Me</a></li>
-        <li><a href="./about.html">About</a></li>
-      </ul>
+
     </div>
 
+    <footer class="footer-slim">
+      <div>© 2026 Sean Patrick Ramos. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="./index.html">Home</a>
+        <a href="./experience.html">Work Experience</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./contactme.html">Contact Me</a>
+        <a href="./about.html">About</a>
+      </div>
+    </footer>
   </div>
+</div>
 
-  <div class="footer-bottom">
-    <p>© 2026 Sean Patrick Ramos. All rights reserved.</p>
-  </div>
-
-</footer>
-  <script>
-    // ✅ Scroll-based nav highlight
-    const navLinks = Array.from(document.querySelectorAll("nav a"));
-    const sections = Array.from(document.querySelectorAll("section[id]"));
-
-    const linkById = new Map(
-      navLinks.map(a => [a.getAttribute("href").slice(1), a])
-    );
-
-    const setActive = (id) => {
-      navLinks.forEach(a => a.classList.remove("active"));
-      const link = linkById.get(id);
-      if (link) link.classList.add("active");
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter(e => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible) setActive(visible.target.id);
-      },
-      {
-        threshold: [0.35, 0.6, 0.8],
-        rootMargin: "-20% 0px -55% 0px"
-      }
-    );
-
-    sections.forEach(sec => observer.observe(sec));
-
-    window.addEventListener("hashchange", () => {
-      const id = location.hash.replace("#", "");
-      if (id) setActive(id);
+<script>
+  (function () {
+    document.querySelectorAll("[data-toggle]").forEach(box => {
+      const imgs = Array.from(box.querySelectorAll(".img"));
+      const prev = box.querySelector(".prev");
+      const next = box.querySelector(".next");
+      const badge = box.querySelector("[data-badge]");
+      const labelsRaw = box.getAttribute("data-labels") || "";
+      const labels = labelsRaw.split(",").map(s => s.trim()).filter(Boolean);
+      let index = 0;
+      const show = (i) => {
+        index = (i + imgs.length) % imgs.length;
+        imgs.forEach((img, idx) => img.classList.toggle("active", idx === index));
+        if (badge) badge.textContent = labels[index] || `Image ${index + 1}`;
+      };
+      prev?.addEventListener("click", (e) => { e.preventDefault(); show(index - 1); });
+      next?.addEventListener("click", (e) => { e.preventDefault(); show(index + 1); });
+      show(0);
     });
-
-    // ✅ IMAGE TOGGLE (NEXT/PREV ARROWS) FOR ALL 2-IMAGE SETS
-    (function () {
-      document.querySelectorAll("[data-toggle]").forEach(box => {
-        const imgs = Array.from(box.querySelectorAll(".img"));
-        const prev = box.querySelector(".prev");
-        const next = box.querySelector(".next");
-        const badge = box.querySelector("[data-badge]");
-
-        const labelsRaw = box.getAttribute("data-labels") || "";
-        const labels = labelsRaw.split(",").map(s => s.trim()).filter(Boolean);
-
-        let index = 0;
-
-        const show = (i) => {
-          index = (i + imgs.length) % imgs.length;
-          imgs.forEach((img, idx) => img.classList.toggle("active", idx === index));
-          if (badge) badge.textContent = labels[index] || `Image ${index + 1}`;
-        };
-
-        prev?.addEventListener("click", (e) => { e.preventDefault(); show(index - 1); });
-        next?.addEventListener("click", (e) => { e.preventDefault(); show(index + 1); });
-
-        // init
-        show(0);
-      });
-    })();
-  </script>
-  </main>
+  })();
+</script>
 </body>
 </html>

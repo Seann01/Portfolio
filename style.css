@@ -7,17 +7,10 @@ DESKTOP STRUCTURE:
 ┌────────────────┬──────────────────────────────────────┬──────────────────────┐
 │                │                                      │                      │
 │    SIDEBAR     │             MAIN CONTENT             │   TOOLS & SKILLSET   │
-│                │                65%                   │         35%          │
+│                │                55%                   │         45%          │
 │    FIXED       │                                      │        FIXED         │
 │                │                                      │                      │
 └────────────────┴──────────────────────────────────────┴──────────────────────┘
-
-The available desktop width AFTER the sidebar is split:
-
-   Main Content  = 65%
-   Tools Panel   = 35%
-
-The sidebar remains fixed at 244px.
 ========================================================= */
 
 
@@ -56,10 +49,7 @@ ROOT VARIABLES
 
   --sidebar-w:244px;
 
-  /* =======================================================
-     DESKTOP SPLIT
-  ======================================================= */
-
+  /* DESKTOP SPLIT */
   --main-ratio:55%;
   --skills-ratio:45%;
 
@@ -102,6 +92,13 @@ ul{
   list-style:none;
 }
 
+button,
+input,
+textarea,
+summary{
+  font-family:inherit;
+}
+
 
 /* =========================================================
 APP SHELL
@@ -116,7 +113,6 @@ APP SHELL
 
 /* =========================================================
 LEFT SIDEBAR
-FIXED
 ========================================================= */
 
 .sidebar{
@@ -384,6 +380,12 @@ MOBILE TOPBAR
   padding:10px 16px 14px;
 
   border-bottom:1px solid var(--line);
+
+  scrollbar-width:none;
+}
+
+.topbar-nav::-webkit-scrollbar{
+  display:none;
 }
 
 .topbar-nav a{
@@ -431,7 +433,7 @@ MAIN CONTENT AREA
 
 
 /* =========================================================
-INDEX PAGE — 65/35 SPLIT
+INDEX PAGE — 55/45 SPLIT
 ========================================================= */
 
 .content:has(.skills-compact) .content-inner{
@@ -449,7 +451,7 @@ INDEX PAGE — 65/35 SPLIT
 
 
 /* =========================================================
-CENTER DIVIDER
+CENTER DIVIDER — 55%
 ========================================================= */
 
 .content:has(.skills-compact)::before{
@@ -587,10 +589,6 @@ HERO HEADING
 
 /* =========================================================
 HERO ROW
-LARGE IMAGE + BACKGROUND COPY
-
-The image is contained entirely inside the 65% left
-content area. It does NOT enter the 35% right panel.
 ========================================================= */
 
 .hero-row{
@@ -645,7 +643,7 @@ HERO VISUAL
 
 
 /* =========================================================
-PORTRAIT — LARGE
+PORTRAIT
 ========================================================= */
 
 .portrait-frame{
@@ -788,7 +786,7 @@ HERO BUTTONS
 
 
 /* =========================================================
-TOOLS & SKILLSET — 35% RIGHT SIDE
+TOOLS & SKILLSET — 45% RIGHT SIDE
 ========================================================= */
 
 .skills-compact{
@@ -865,15 +863,10 @@ SKILLS LIST
 
   align-content:flex-start;
 
-  gap:10px 10px;
+  gap:10px;
 
   width:100%;
 }
-
-
-/* =========================================================
-INDIVIDUAL SKILL
-========================================================= */
 
 .skills-list span{
   display:inline-flex;
@@ -942,13 +935,17 @@ RIGHT PANEL SCROLLBAR
 
 
 /* =========================================================
-TOOL TICKER
+AREAS OF FOCUS
 ========================================================= */
 
 .ticker-wrap{
+  width:100%;
+
   border-top:1px solid var(--line);
 
   padding-top:20px;
+
+  margin-top:28px;
 }
 
 .ticker-label{
@@ -959,36 +956,156 @@ TOOL TICKER
   color:var(--ink-faint);
 
   margin-bottom:12px;
+
+  text-transform:none;
 }
 
-.ticker{
+
+/* =========================================================
+FOCUS DROPDOWN
+========================================================= */
+
+.focus-dropdown{
+  width:100%;
+
+  border-top:1px solid var(--line);
+}
+
+.focus-dropdown details{
+  width:100%;
+
+  border-bottom:1px solid var(--line);
+}
+
+
+/* =========================================================
+DROPDOWN SUMMARY
+========================================================= */
+
+.focus-dropdown summary{
   display:flex;
 
-  flex-wrap:wrap;
+  align-items:center;
 
-  gap:8px;
-}
+  justify-content:space-between;
 
-.ticker span{
-  font-size:12px;
+  width:100%;
 
-  font-weight:500;
+  min-height:48px;
+
+  padding:12px 0;
+
+  cursor:pointer;
+
+  list-style:none;
 
   color:var(--ink-dim);
 
-  padding:0 12px 0 0;
+  font-size:13px;
 
-  position:relative;
+  font-weight:500;
+
+  gap:16px;
+
+  user-select:none;
+
+  -webkit-tap-highlight-color:transparent;
+
+  transition:
+    color .15s ease,
+    padding-left .15s ease;
 }
 
-.ticker span:not(:last-child)::after{
-  content:"·";
+.focus-dropdown summary::-webkit-details-marker{
+  display:none;
+}
 
-  position:absolute;
+.focus-dropdown summary::marker{
+  display:none;
+}
 
-  right:-2px;
+.focus-dropdown summary:hover{
+  color:var(--ink);
+
+  padding-left:4px;
+}
+
+
+/* =========================================================
+FOCUS ARROW
+========================================================= */
+
+.focus-arrow{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  width:24px;
+  height:24px;
+
+  min-width:24px;
+
+  border:1px solid var(--line);
+
+  border-radius:4px;
 
   color:var(--ink-faint);
+
+  font-size:15px;
+
+  line-height:1;
+
+  flex-shrink:0;
+
+  transition:
+    color .15s ease,
+    border-color .15s ease,
+    background .15s ease,
+    transform .15s ease;
+}
+
+
+/* =========================================================
+OPEN STATE
+========================================================= */
+
+.focus-dropdown details[open] summary{
+  color:var(--ink);
+}
+
+.focus-dropdown details[open] .focus-arrow{
+  color:var(--amber);
+
+  border-color:var(--amber);
+
+  background:var(--amber-soft);
+
+  transform:rotate(45deg);
+}
+
+
+/* =========================================================
+DROPDOWN CONTEXT
+========================================================= */
+
+.focus-context{
+  width:100%;
+
+  padding:
+    0
+    28px
+    17px
+    0;
+
+  color:var(--ink-faint);
+
+  font-size:12.5px;
+
+  line-height:1.7;
+
+  max-width:520px;
 }
 
 
@@ -1814,11 +1931,6 @@ FOOTER
   color:var(--ink-faint);
 }
 
-
-/* =========================================================
-FOOTER — 65% LEFT AREA
-========================================================= */
-
 .content:has(.skills-compact) .footer-slim{
   width:var(--main-ratio);
 
@@ -2039,7 +2151,7 @@ CONTACT MODAL
 
 
 /* =========================================================
-OLD .skills-sidebar SUPPORT
+OLD SKILLS SIDEBAR SUPPORT
 ========================================================= */
 
 .skills-sidebar{
@@ -2069,11 +2181,6 @@ LARGE DESKTOP
   .skills-list span{
     font-size:13px;
   }
-
-  /*
-    LARGE PORTRAIT
-    Still entirely inside the 65% column.
-  */
 
   .hero-row{
     grid-template-columns:
@@ -2126,11 +2233,6 @@ DESKTOP — 1101px TO 1399px
       9px;
   }
 
-  /*
-    LARGE ENOUGH TO SEE THE IMAGE CLEARLY,
-    BUT STILL INSIDE THE LEFT 65%.
-  */
-
   .hero-row{
     grid-template-columns:
       minmax(0,1fr)
@@ -2151,7 +2253,6 @@ DESKTOP — 1101px TO 1399px
 
 /* =========================================================
 TABLET
-Fixed right panel is removed.
 ========================================================= */
 
 @media (max-width:1100px){
@@ -2171,8 +2272,7 @@ Fixed right panel is removed.
 
     padding:28px;
 
-    border:
-      1px solid var(--line);
+    border:1px solid var(--line);
 
     border-radius:var(--radius-md);
 
@@ -2214,10 +2314,6 @@ Fixed right panel is removed.
     max-width:none;
   }
 
-  /*
-    TABLET HERO
-  */
-
   .hero-row{
     grid-template-columns:
       minmax(0,1fr)
@@ -2258,9 +2354,15 @@ MOBILE NAV
     margin-left:0;
 
     width:100%;
+
+    min-width:0;
   }
 
   .content-inner{
+    width:100%;
+
+    min-width:0;
+
     padding:
       36px
       22px
@@ -2268,45 +2370,113 @@ MOBILE NAV
   }
 
   .content:has(.skills-compact) .content-inner{
+    width:100%;
+
     padding:
       36px
       22px
       40px;
   }
 
+  .hero-v2{
+    width:100%;
+
+    margin-bottom:48px;
+  }
+
   .hero-v2 h1{
     font-size:34px;
 
     line-height:1.1;
+
+    letter-spacing:-.5px;
   }
 
-  /*
-    MOBILE HERO BECOMES VERTICAL
-  */
+
+  /* ================================================
+     MOBILE HERO
+  ================================================ */
 
   .hero-row{
-    display:block;
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    gap:28px;
+
+    width:100%;
   }
 
   .hero-copy{
-    margin-bottom:30px;
+    width:100%;
+
+    margin-bottom:0;
+  }
+
+  .hero-row p{
+    width:100%;
+
+    max-width:none;
+
+    font-size:15px;
+
+    line-height:1.75;
+  }
+
+  .hero-visual{
+    width:100%;
+
+    margin-top:0;
   }
 
   .portrait-frame{
     width:100%;
 
-    max-width:320px;
+    max-width:360px;
 
     height:auto;
 
-    aspect-ratio:1 / 1;
+    aspect-ratio:4 / 5;
 
     margin-left:0;
+
+    margin-right:auto;
   }
 
-  .hero-visual{
-    margin-top:0;
+
+  /* ================================================
+     BUTTONS
+  ================================================ */
+
+  .hero-buttons{
+    width:100%;
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    gap:10px;
+
+    margin-bottom:30px;
   }
+
+  .connect-btn,
+  .dl-btn{
+    width:100%;
+
+    min-height:46px;
+
+    justify-content:center;
+
+    text-align:center;
+  }
+
+
+  /* ================================================
+     GENERAL CONTENT
+  ================================================ */
 
   .block,
   .log-row{
@@ -2339,7 +2509,14 @@ MOBILE NAV
     gap:26px;
   }
 
+
+  /* ================================================
+     FOOTER
+  ================================================ */
+
   .footer-slim{
+    width:100%;
+
     padding:
       22px
       22px
@@ -2354,6 +2531,60 @@ MOBILE NAV
     width:100%;
 
     max-width:none;
+  }
+
+
+  /* ================================================
+     AREAS OF FOCUS
+  ================================================ */
+
+  .ticker-wrap{
+    width:100%;
+
+    margin-top:26px;
+
+    padding-top:18px;
+  }
+
+  .ticker-label{
+    margin-bottom:10px;
+  }
+
+  .focus-dropdown{
+    width:100%;
+  }
+
+  .focus-dropdown summary{
+    min-height:50px;
+
+    padding:13px 0;
+
+    font-size:13px;
+
+    gap:12px;
+  }
+
+  .focus-context{
+    padding:
+      0
+      8px
+      17px
+      0;
+
+    max-width:100%;
+
+    font-size:12.5px;
+
+    line-height:1.7;
+  }
+
+  .focus-arrow{
+    width:26px;
+    height:26px;
+
+    min-width:26px;
+
+    font-size:15px;
   }
 }
 
@@ -2378,10 +2609,27 @@ SMALL MOBILE
       40px;
   }
 
+
+  /* ================================================
+     HERO
+  ================================================ */
+
+  .hero-v2{
+    margin-bottom:42px;
+  }
+
   .hero-v2 h1{
-    font-size:27px;
+    font-size:28px;
+
+    line-height:1.1;
 
     letter-spacing:-.4px;
+
+    margin-bottom:24px;
+  }
+
+  .hero-row{
+    gap:24px;
   }
 
   .hero-row p{
@@ -2391,14 +2639,41 @@ SMALL MOBILE
   }
 
   .portrait-frame{
-    max-width:280px;
+    width:100%;
+
+    max-width:100%;
+
+    height:auto;
+
+    aspect-ratio:4 / 5;
   }
 
+
+  /* ================================================
+     SKILLS PANEL
+  ================================================ */
+
   .skills-compact{
-    padding:22px 18px;
+    width:100%;
+
+    margin-top:28px;
+
+    padding:
+      22px
+      18px;
+  }
+
+  .skills-compact-title{
+    font-size:11.5px;
+
+    margin-bottom:18px;
+
+    padding-bottom:15px;
   }
 
   .skills-list{
+    width:100%;
+
     gap:7px;
   }
 
@@ -2408,7 +2683,100 @@ SMALL MOBILE
     padding:
       7px
       9px;
+
+    min-height:32px;
   }
+
+
+  /* ================================================
+     AREAS OF FOCUS — PHONE
+  ================================================ */
+
+  .ticker-wrap{
+    width:100%;
+
+    margin-top:22px;
+
+    padding-top:18px;
+  }
+
+  .ticker-label{
+    font-size:11px;
+
+    margin-bottom:10px;
+  }
+
+  .focus-dropdown{
+    width:100%;
+
+    max-width:100%;
+  }
+
+  .focus-dropdown details{
+    width:100%;
+
+    max-width:100%;
+  }
+
+  .focus-dropdown summary{
+    width:100%;
+
+    min-height:48px;
+
+    padding:
+      12px
+      0;
+
+    font-size:12.5px;
+
+    line-height:1.4;
+
+    gap:10px;
+  }
+
+  .focus-dropdown summary:hover{
+    padding-left:0;
+  }
+
+  .focus-dropdown summary > span:first-child{
+    min-width:0;
+
+    flex:1;
+
+    padding-right:8px;
+  }
+
+  .focus-arrow{
+    width:25px;
+    height:25px;
+
+    min-width:25px;
+
+    font-size:14px;
+  }
+
+  .focus-context{
+    width:100%;
+
+    max-width:100%;
+
+    padding:
+      0
+      4px
+      16px
+      0;
+
+    font-size:12px;
+
+    line-height:1.7;
+
+    overflow-wrap:break-word;
+  }
+
+
+  /* ================================================
+     GENERAL MOBILE
+  ================================================ */
 
   .form-grid{
     grid-template-columns:1fr;
@@ -2424,209 +2792,53 @@ SMALL MOBILE
     display:none;
   }
 
-  .hero-buttons{
-    flex-direction:column;
-
-    align-items:stretch;
-  }
-
-  .connect-btn,
-  .dl-btn{
-    justify-content:center;
-
-    text-align:center;
-  }
-
   .contact-links a{
     min-width:0;
 
     width:100%;
   }
 }
-/* =========================================================
-AREAS OF FOCUS — DROPDOWN
-========================================================= */
-
-.ticker-wrap{
-  border-top:1px solid var(--line);
-
-  padding-top:20px;
-}
-
-.ticker-label{
-  font-size:11.5px;
-
-  font-weight:600;
-
-  color:var(--ink-faint);
-
-  margin-bottom:12px;
-}
 
 
 /* =========================================================
-FOCUS DROPDOWN
+VERY SMALL PHONES
 ========================================================= */
 
-.focus-dropdown{
-  width:100%;
+@media (max-width:380px){
 
-  border-top:1px solid var(--line);
-}
-
-
-/* =========================================================
-INDIVIDUAL DROPDOWN
-========================================================= */
-
-.focus-dropdown details{
-  border-bottom:1px solid var(--line);
-}
-
-
-/* =========================================================
-DROPDOWN HEADER
-========================================================= */
-
-.focus-dropdown summary{
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  width:100%;
-
-  padding:13px 0;
-
-  cursor:pointer;
-
-  list-style:none;
-
-  color:var(--ink-dim);
-
-  font-size:13px;
-
-  font-weight:500;
-
-  transition:
-    color .15s ease,
-    padding-left .15s ease;
-}
-
-
-/* Remove default browser arrow */
-
-.focus-dropdown summary::-webkit-details-marker{
-  display:none;
-}
-
-.focus-dropdown summary::marker{
-  display:none;
-}
-
-
-/* =========================================================
-HOVER
-========================================================= */
-
-.focus-dropdown summary:hover{
-  color:var(--ink);
-
-  padding-left:4px;
-}
-
-
-/* =========================================================
-PLUS / MINUS
-========================================================= */
-
-.focus-arrow{
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  width:22px;
-  height:22px;
-
-  border:1px solid var(--line);
-
-  border-radius:4px;
-
-  color:var(--ink-faint);
-
-  font-size:15px;
-
-  line-height:1;
-
-  flex-shrink:0;
-
-  transition:
-    color .15s ease,
-    border-color .15s ease,
-    background .15s ease,
-    transform .15s ease;
-}
-
-
-/* =========================================================
-OPEN STATE
-========================================================= */
-
-.focus-dropdown details[open] summary{
-  color:var(--ink);
-}
-
-.focus-dropdown details[open] .focus-arrow{
-  color:var(--amber);
-
-  border-color:var(--amber);
-
-  background:var(--amber-soft);
-
-  transform:rotate(45deg);
-}
-
-
-/* =========================================================
-CONTEXT
-========================================================= */
-
-.focus-context{
-  padding:
-    0
-    30px
-    16px
-    0;
-
-  color:var(--ink-faint);
-
-  font-size:12.5px;
-
-  line-height:1.7;
-
-  max-width:520px;
-}
-
-
-/* =========================================================
-MOBILE
-========================================================= */
-
-@media (max-width:560px){
-
-  .focus-dropdown summary{
-    padding:12px 0;
-
-    font-size:12.5px;
+  .content-inner{
+    padding-left:16px;
+    padding-right:16px;
   }
 
-  .focus-context{
-    padding-right:10px;
+  .content:has(.skills-compact) .content-inner{
+    padding-left:16px;
+    padding-right:16px;
+  }
 
+  .hero-v2 h1{
+    font-size:26px;
+  }
+
+  .skills-compact{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  .focus-dropdown summary{
     font-size:12px;
   }
 
+  .focus-context{
+    font-size:11.5px;
+
+    line-height:1.65;
+  }
+
+  .focus-arrow{
+    width:23px;
+    height:23px;
+
+    min-width:23px;
+  }
 }

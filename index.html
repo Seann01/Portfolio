@@ -1,192 +1,778 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Home - Sean Patrick Ramos</title>
+
+  <!-- Font Awesome -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
+
+  <!-- Google Fonts -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Main CSS -->
 
   <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
 
 <div class="shell">
 
+  <!-- =====================================================
+       LEFT SIDEBAR
+  ====================================================== -->
+
   <aside class="sidebar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Patrick Ramos<small>Marketing + Automation</small></div>
+
+<a href="./index.html" class="brand">
+
+  <div class="brand-mark">
+    SR
+  </div>
+
+  <div class="brand-text">
+    Sean Patrick Ramos
+    <small>Marketing + Automation</small>
+  </div>
+
+</a>
+
+<nav class="side-nav">
+
+  <a href="./index.html" class="active">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </a>
+
+  <a href="./experience.html">
+    <i class="fa-solid fa-briefcase"></i>
+    <span>Work Experience</span>
+  </a>
+
+  <a href="./projects.html">
+    <i class="fa-solid fa-diagram-project"></i>
+    <span>Projects</span>
+  </a>
+
+  <a href="./contactme.html">
+    <i class="fa-solid fa-envelope"></i>
+    <span>Contact Me</span>
+  </a>
+
+  <a href="./about.html">
+    <i class="fa-solid fa-user"></i>
+    <span>About</span>
+  </a>
+
+</nav>
+
+<div class="sidebar-foot">
+
+  <div class="sidebar-social">
+
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+      aria-label="Email"
+    >
+      <i class="fas fa-envelope"></i>
     </a>
-    <nav class="side-nav">
-      <a href="./index.html" class="active"><i class="fa-solid fa-house"></i>Home</a>
-      <a href="./experience.html"><i class="fa-solid fa-briefcase"></i>Work Experience</a>
-      <a href="./projects.html"><i class="fa-solid fa-diagram-project"></i>Projects</a>
-      <a href="./contactme.html"><i class="fa-solid fa-envelope"></i>Contact Me</a>
-      <a href="./about.html"><i class="fa-solid fa-user"></i>About</a>
-    </nav>
-    <div class="sidebar-foot">
-      <div class="sidebar-social">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/seanramos_02/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-      <div class="sidebar-status">Open to opportunities</div>
-    </div>
+
+    <a
+      href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+      aria-label="LinkedIn"
+      target="_blank"
+      rel="noopener"
+    >
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+    <a
+      href="https://www.instagram.com/seanramos_02/"
+      aria-label="Instagram"
+      target="_blank"
+      rel="noopener"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+
+  </div>
+
+  <div class="sidebar-status">
+    Open to opportunities
+  </div>
+
+</div>
+
   </aside>
 
+  <!-- =====================================================
+       MOBILE TOPBAR
+  ====================================================== -->
+
   <header class="topbar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Ramos</div>
-    </a>
+
+<a href="./index.html" class="brand">
+
+  <div class="brand-mark">
+    SR
+  </div>
+
+  <div class="brand-text">
+    Sean Ramos
+  </div>
+
+</a>
+
   </header>
+
+  <!-- =====================================================
+       MOBILE NAVIGATION
+  ====================================================== -->
+
   <nav class="topbar-nav">
-    <a href="./index.html" class="active">Home</a>
-    <a href="./experience.html">Work Experience</a>
-    <a href="./projects.html">Projects</a>
-    <a href="./contactme.html">Contact Me</a>
-    <a href="./about.html">About</a>
+
+<a href="./index.html" class="active">
+  Home
+</a>
+
+<a href="./experience.html">
+  Work Experience
+</a>
+
+<a href="./projects.html">
+  Projects
+</a>
+
+<a href="./contactme.html">
+  Contact Me
+</a>
+
+<a href="./about.html">
+  About
+</a>
+
   </nav>
 
-  <div class="content">
-    <div class="content-inner">
+  <!-- =====================================================
+       MAIN CONTENT AREA
+  ====================================================== -->
 
-      <section class="hero-v2">
-        <div class="kicker">Virtual Marketing Assistant</div>
-        <h1>I build the systems behind the marketing funnels, pages, and automations.</h1>
+  <main class="content">
 
-        <div class="hero-row">
-          <p>
-            Background in IT support, web development, and digital operations.
-            I help teams turn manual marketing work into automated funnels,
-            structured landing pages, and reporting that runs itself.
-          </p>
-          <div class="portrait-frame">
-            <img src="./images/self-picture.jpg" alt="Sean Patrick" />
-          </div>
+<div class="content-inner">
+
+
+  <!-- =================================================
+       HERO
+  ================================================== -->
+
+  <section class="hero-v2">
+
+    <div class="kicker">
+      Virtual Marketing Assistant
+    </div>
+
+    <h1>
+      I build the systems behind the marketing funnels, pages, and automations.
+    </h1>
+
+
+    <div class="hero-row">
+
+      <div class="hero-copy">
+
+        <p>
+          Background in IT support, web development, and digital operations.
+          I help teams turn manual marketing work into automated funnels,
+          structured landing pages, and reporting that runs itself.
+        </p>
+
+      </div>
+
+
+      <div class="hero-visual">
+
+        <div class="portrait-frame">
+
+          <img
+            src="./images/self-picture.jpg"
+            alt="Sean Patrick Ramos"
+          />
         </div>
 
-        <div class="hero-buttons">
-          <a class="connect-btn" id="connectBtn">Connect</a>
-          <a class="connect-btn dl-btn" href="./Sean_Patrick_Ramos_Resume.pdf" download>Download Resume</a>
-        </div>
-
-        <div class="ticker-wrap">
-          <p class="ticker-label">Tools & Skillset</p>
-          <div class="ticker">
-            <span>HTML</span><span>CSS</span><span>Python</span><span>Replit</span>
-            <span>Cloudflare</span><span>SiteGround</span><span>SEOquake</span>
-            <span>SEO PowerSuite</span><span>Spyfu</span><span>GHL</span><span>SQL</span>
-            <span>C++</span><span>Canva</span><span>Capcut</span><span>Microsoft Ads</span>
-            <span>Vibe coding</span><span>Data Entry</span><span>Email Management</span>
-            <span>Social Media Management</span><span>Github Version Control</span>
-            <span>Website Hosting</span><span>Microsoft 365</span><span>Google Workspace</span>
-            <span>Email Marketing</span><span>Lead Generation</span><span>SEO optimization</span>
-            <span>Competitive Marketing Research</span><span>Website Audit</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="block">
-        <div class="block-label">Core Skills</div>
-        <div class="block-head">
-          <h2>Where I add value</h2>
-          <p>Four areas of work — marketing strategy, technical build, creative execution, and client support.</p>
-
-          <div class="subsection">
-            <h3>Technical & Automation</h3>
-            <ul>
-              <li>Email Marketing & Automation (GoHighLevel, ActiveCampaign – workflows, sequences, tagging)</li>
-              <li>Website & Landing Page Development (HTML, CSS, basic UI/UX, conversion-focused layouts)</li>
-              <li>Workflow Automation & Data Handling (CSV processing, Google Sheets reporting, data organization)</li>
-              <li>Basic Web Troubleshooting (site issues, form errors, accessibility checks)</li>
-            </ul>
-          </div>
-
-          <div class="subsection">
-            <h3>Marketing & Research</h3>
-            <ul>
-              <li>Competitor Market Analysis (CMA) for local businesses (SEO, paid ads, and online presence)</li>
-              <li>Keyword Research (organic & paid) to identify ranking opportunities and improve visibility</li>
-              <li>Website Audits (CTA placement, user experience, mobile responsiveness, conversion flow)</li>
-              <li>SEO Fundamentals (on-page optimization, content structure, and search intent alignment)</li>
-            </ul>
-          </div>
-
-          <div class="subsection">
-            <h3>Creative & Content</h3>
-            <ul>
-              <li>Social Media Content Creation & Scheduling (Canva, Hootsuite, Buffer)</li>
-              <li>Graphic Design for marketing materials, lead magnets, and branding assets</li>
-              <li>Basic Video Editing (subtitles, transitions, short-form content repurposing)</li>
-              <li>Email Campaign Content (promotions, nurturing sequences, and CTA optimization)</li>
-            </ul>
-          </div>
-
-          <div class="subsection">
-            <h3>Professional & Client Support</h3>
-            <ul>
-              <li>Customer Support for international clients with focus on clarity and resolution</li>
-              <li>Strong communication and problem-solving in fast-paced environments</li>
-              <li>Time Management & Task Prioritization under workload pressure</li>
-              <li>Email Organization (categorization, tagging, automation for workflow efficiency)</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      </div>
 
     </div>
 
-    <footer class="footer-slim">
-      <div>© 2026 Sean Patrick Ramos. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./experience.html">Work Experience</a>
-        <a href="./projects.html">Projects</a>
-        <a href="./contactme.html">Contact Me</a>
-        <a href="./about.html">About</a>
+
+    <!-- =================================================
+         HERO BUTTONS
+    ================================================== -->
+
+    <div class="hero-buttons">
+
+      <a
+        class="connect-btn"
+        id="connectBtn"
+        href="#"
+      >
+        <i class="fa-solid fa-paper-plane"></i>
+        Connect
+      </a>
+
+      <a
+        class="connect-btn dl-btn"
+        href="./Sean_Patrick_Ramos_Resume.pdf"
+        download
+      >
+        <i class="fa-solid fa-download"></i>
+        Download Resume
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       CORE SKILLS
+  ================================================== -->
+
+  <section class="block">
+
+    <div class="block-label">
+      Core Skills
+    </div>
+
+    <div class="block-head">
+
+      <h2>
+        Where I add value
+      </h2>
+
+      <p>
+        Four areas of work — marketing strategy, technical build,
+        creative execution, and client support.
+      </p>
+
+
+      <!-- Technical & Automation -->
+
+      <div class="subsection">
+
+        <h3>
+          Technical & Automation
+        </h3>
+
+        <ul>
+
+          <li>
+            Email Marketing & Automation
+            (GoHighLevel, ActiveCampaign – workflows, sequences, tagging)
+          </li>
+
+          <li>
+            Website & Landing Page Development
+            (HTML, CSS, basic UI/UX, conversion-focused layouts)
+          </li>
+
+          <li>
+            Workflow Automation & Data Handling
+            (CSV processing, Google Sheets reporting, data organization)
+          </li>
+
+          <li>
+            Basic Web Troubleshooting
+            (site issues, form errors, accessibility checks)
+          </li>
+
+        </ul>
+
       </div>
-    </footer>
-  </div>
+
+
+      <!-- Marketing & Research -->
+
+      <div class="subsection">
+
+        <h3>
+          Marketing & Research
+        </h3>
+
+        <ul>
+
+          <li>
+            Competitor Market Analysis (CMA) for local businesses
+            (SEO, paid ads, and online presence)
+          </li>
+
+          <li>
+            Keyword Research (organic & paid) to identify ranking
+            opportunities and improve visibility
+          </li>
+
+          <li>
+            Website Audits
+            (CTA placement, user experience, mobile responsiveness,
+            conversion flow)
+          </li>
+
+          <li>
+            SEO Fundamentals
+            (on-page optimization, content structure,
+            and search intent alignment)
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Creative & Content -->
+
+      <div class="subsection">
+
+        <h3>
+          Creative & Content
+        </h3>
+
+        <ul>
+
+          <li>
+            Social Media Content Creation & Scheduling
+            (Canva, Hootsuite, Buffer)
+          </li>
+
+          <li>
+            Graphic Design for marketing materials,
+            lead magnets, and branding assets
+          </li>
+
+          <li>
+            Basic Video Editing
+            (subtitles, transitions, short-form content repurposing)
+          </li>
+
+          <li>
+            Email Campaign Content
+            (promotions, nurturing sequences, and CTA optimization)
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Professional & Client Support -->
+
+      <div class="subsection">
+
+        <h3>
+          Professional & Client Support
+        </h3>
+
+        <ul>
+
+          <li>
+            Customer Support for international clients
+            with focus on clarity and resolution
+          </li>
+
+          <li>
+            Strong communication and problem-solving
+            in fast-paced environments
+          </li>
+
+          <li>
+            Time Management & Task Prioritization
+            under workload pressure
+          </li>
+
+          <li>
+            Email Organization
+            (categorization, tagging, automation
+            for workflow efficiency)
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
 </div>
 
-<!-- CONTACT MODAL -->
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="footer-slim">
+
+  <div>
+    © 2026 Sean Patrick Ramos. All rights reserved.
+  </div>
+
+  <div class="footer-links">
+
+    <a href="./index.html">
+      Home
+    </a>
+
+    <a href="./experience.html">
+      Work Experience
+    </a>
+
+    <a href="./projects.html">
+      Projects
+    </a>
+
+    <a href="./contactme.html">
+      Contact Me
+    </a>
+
+    <a href="./about.html">
+      About
+    </a>
+
+  </div>
+
+</footer>
+
+  </main>
+
+  <!-- =====================================================
+       TOOLS & SKILLSET
+       DESKTOP: FIXED RIGHT 50%
+       MOBILE: MOVES BELOW CONTENT
+  ====================================================== -->
+
+  <aside class="skills-compact">
+
+<div class="skills-compact-title">
+  Tools & Skillset
+</div>
+
+
+<div class="skills-list">
+
+  <span>HTML</span>
+  <span>CSS</span>
+  <span>Python</span>
+  <span>SQL</span>
+  <span>C++</span>
+
+  <span>Replit</span>
+  <span>Cloudflare</span>
+  <span>SiteGround</span>
+  <span>GitHub Version Control</span>
+  <span>Website Hosting</span>
+
+  <span>SEOquake</span>
+  <span>SEO PowerSuite</span>
+  <span>SpyFu</span>
+  <span>SEO Optimization</span>
+  <span>Website Audit</span>
+
+  <span>GoHighLevel</span>
+  <span>ActiveCampaign</span>
+  <span>Email Marketing</span>
+  <span>Lead Generation</span>
+  <span>Microsoft Ads</span>
+
+  <span>Canva</span>
+  <span>CapCut</span>
+  <span>Social Media Management</span>
+
+  <span>Data Entry</span>
+  <span>Email Management</span>
+  <span>Microsoft 365</span>
+  <span>Google Workspace</span>
+
+  <span>Competitive Marketing Research</span>
+  <span>Vibe Coding</span>
+
+</div>
+
+
+<!-- =================================================
+     TOOL TICKER / ADDITIONAL INFO
+================================================== -->
+
+<div class="ticker-wrap">
+
+  <div class="ticker-label">
+    Areas of Focus
+  </div>
+
+  <div class="focus-dropdown">
+
+    <details>
+      <summary>
+        <span>Digital Marketing</span>
+        <span class="focus-arrow">+</span>
+      </summary>
+
+      <div class="focus-context">
+        Planning and executing digital campaigns designed to increase
+        visibility, attract the right audience, and generate measurable
+        business results.
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span>SEO</span>
+        <span class="focus-arrow">+</span>
+      </summary>
+
+      <div class="focus-context">
+        Improving search visibility through technical SEO, on-page
+        optimization, keyword research, content structure, and ongoing
+        performance analysis.
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span>Lead Generation</span>
+        <span class="focus-arrow">+</span>
+      </summary>
+
+      <div class="focus-context">
+        Building acquisition systems that turn traffic into qualified
+        leads through targeted campaigns, optimized landing pages,
+        tracking, and conversion-focused workflows.
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span>Landing Pages</span>
+        <span class="focus-arrow">+</span>
+      </summary>
+
+      <div class="focus-context">
+        Designing and developing focused landing pages built around
+        clear messaging, strong calls to action, user experience, and
+        conversion performance.
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span>Digital Operations</span>
+        <span class="focus-arrow">+</span>
+      </summary>
+
+      <div class="focus-context">
+        Structuring digital workflows, processes, and systems to make
+        day-to-day operations more efficient, organized, and scalable.
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span>Web Development</span>
+        <span class="focus-arrow">+</span>
+      </summary>
+
+      <div class="focus-context">
+        Developing responsive websites and digital interfaces with an
+        emphasis on performance, usability, maintainability, and clean
+        implementation.
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span>Reporting</span>
+        <span class="focus-arrow">+</span>
+      </summary>
+
+      <div class="focus-context">
+        Turning campaign and operational data into clear reports that
+        highlight performance, identify opportunities, and support
+        better decision-making.
+      </div>
+    </details>
+
+  </div>
+
+</div>
+
+
+  </aside>
+
+</div>
+
+<!-- =====================================================
+     CONTACT MODAL
+====================================================== -->
+
 <div class="contact-modal" id="contactModal">
+
   <div class="contact-modal-content">
-    <span class="close-btn" id="closeModal">&times;</span>
-    <h3>Get In Touch</h3>
 
-    <form action="https://formspree.io/f/mojkbejy" method="POST">
-      <div class="form-field">
-        <label for="modal-name">Name</label>
-        <input type="text" id="modal-name" name="name" placeholder="Your Name" required>
-      </div>
-      <div class="form-field">
-        <label for="modal-email">Email Address</label>
-        <input type="email" id="modal-email" name="email" placeholder="you@example.com" required>
-      </div>
-      <div class="form-field">
-        <label for="modal-message">Message</label>
-        <textarea id="modal-message" name="message" placeholder="Write your message here..." required></textarea>
-      </div>
-      <button type="submit">Send Message</button>
-    </form>
+<span
+  class="close-btn"
+  id="closeModal"
+  aria-label="Close"
+>
+  &times;
+</span>
 
-    <p class="alt-contact">Or email me directly: <a>seanpatrickramos.sp@gmail.com</a></p>
+<h3>
+  Get In Touch
+</h3>
+
+
+<form
+  action="https://formspree.io/f/mojkbejy"
+  method="POST"
+>
+
+  <div class="form-field">
+
+    <label for="modal-name">
+      Name
+    </label>
+
+    <input
+      type="text"
+      id="modal-name"
+      name="name"
+      placeholder="Your Name"
+      required
+    >
+
   </div>
+
+
+  <div class="form-field">
+
+    <label for="modal-email">
+      Email Address
+    </label>
+
+    <input
+      type="email"
+      id="modal-email"
+      name="email"
+      placeholder="you@example.com"
+      required
+    >
+
+  </div>
+
+
+  <div class="form-field">
+
+    <label for="modal-message">
+      Message
+    </label>
+
+    <textarea
+      id="modal-message"
+      name="message"
+      placeholder="Write your message here..."
+      required
+    ></textarea>
+
+  </div>
+
+
+  <button type="submit">
+    Send Message
+  </button>
+
+</form>
+
+
+<p class="alt-contact">
+  Or email me directly:
+  <a href="mailto:seanpatrickramos.sp@gmail.com">
+    seanpatrickramos.sp@gmail.com
+  </a>
+</p>
+
+  </div>
+
 </div>
+
+<!-- =====================================================
+     CONTACT MODAL SCRIPT
+====================================================== -->
 
 <script>
+
   const btn = document.getElementById("connectBtn");
   const modal = document.getElementById("contactModal");
   const close = document.getElementById("closeModal");
-  btn.onclick = () => { modal.style.display = "flex"; };
-  close.onclick = () => { modal.style.display = "none"; };
-  window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+
+  if (btn && modal) {
+
+    btn.addEventListener("click", function(event) {
+
+      event.preventDefault();
+
+      modal.style.display = "flex";
+
+    });
+
+  }
+
+
+  if (close && modal) {
+
+    close.addEventListener("click", function() {
+
+      modal.style.display = "none";
+
+    });
+
+  }
+
+
+  window.addEventListener("click", function(event) {
+
+    if (event.target === modal) {
+
+      modal.style.display = "none";
+
+    }
+
+  });
+
+
+  document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape" && modal) {
+
+      modal.style.display = "none";
+
+    }
+
+  });
+
 </script>
+
 </body>
 </html>

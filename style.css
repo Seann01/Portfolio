@@ -341,78 +341,790 @@ SIDEBAR FOOTER
 
 
 /* =========================================================
-MOBILE TOPBAR
+   MOBILE NAVIGATION
 ========================================================= */
 
-.topbar{
+.mobile-menu-btn{
   display:none;
 
-  position:sticky;
+  width:42px;
+  height:42px;
 
-  top:0;
+  padding:0;
 
-  z-index:600;
+  border:1px solid var(--line);
 
-  background:rgba(18,21,27,.92);
-
-  backdrop-filter:blur(10px);
-
-  border-bottom:1px solid var(--line);
-
-  padding:12px 16px;
-
-  align-items:center;
-
-  justify-content:space-between;
-}
-
-.topbar .brand{
-  margin-bottom:0;
-}
-
-.topbar-nav{
-  display:none;
-
-  gap:4px;
-
-  overflow-x:auto;
-
-  padding:10px 16px 14px;
-
-  border-bottom:1px solid var(--line);
-
-  scrollbar-width:none;
-}
-
-.topbar-nav::-webkit-scrollbar{
-  display:none;
-}
-
-.topbar-nav a{
-  flex-shrink:0;
-
-  text-decoration:none;
-
-  font-size:13px;
-  font-weight:500;
-
-  color:var(--ink-dim);
-
-  padding:8px 13px;
-
-  border-radius:999px;
+  border-radius:var(--radius-sm);
 
   background:var(--raised);
+
+  color:var(--ink);
+
+  cursor:pointer;
+
+  flex-shrink:0;
+
+  align-items:center;
+  justify-content:center;
+
+  flex-direction:column;
+
+  gap:5px;
+
+  transition:
+    background .15s ease,
+    border-color .15s ease;
 }
 
-.topbar-nav a.active{
-  color:#10131a;
-
-  background:var(--amber);
-
-  font-weight:600;
+.mobile-menu-btn:hover{
+  background:#222833;
+  border-color:var(--line-hi);
 }
 
+.mobile-menu-btn span{
+  display:block;
+
+  width:19px;
+  height:2px;
+
+  background:var(--ink);
+
+  border-radius:2px;
+
+  transition:
+    transform .2s ease,
+    opacity .2s ease;
+}
+
+
+/* =========================================================
+   HAMBURGER → X
+========================================================= */
+
+.mobile-menu-btn.open span:nth-child(1){
+  transform:
+    translateY(7px)
+    rotate(45deg);
+}
+
+.mobile-menu-btn.open span:nth-child(2){
+  opacity:0;
+}
+
+.mobile-menu-btn.open span:nth-child(3){
+  transform:
+    translateY(-7px)
+    rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE DRAWER
+========================================================= */
+
+.mobile-drawer{
+  display:none;
+}
+
+
+/* =========================================================
+   MOBILE OVERLAY
+========================================================= */
+
+.mobile-menu-overlay{
+  display:none;
+}
+
+
+/* =========================================================
+   MOBILE ONLY
+========================================================= */
+
+@media (max-width:980px){
+
+  /* -----------------------------------------
+     NEVER SHOW DESKTOP SIDEBAR
+  ----------------------------------------- */
+
+  .sidebar{
+    display:none;
+  }
+
+
+  /* -----------------------------------------
+     NEVER SHOW OLD HORIZONTAL NAV
+  ----------------------------------------- */
+
+  .topbar-nav{
+    display:none !important;
+  }
+
+
+  /* -----------------------------------------
+     TOPBAR
+  ----------------------------------------- */
+
+  .topbar{
+    position:sticky;
+
+    top:0;
+
+    width:100%;
+
+    height:64px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    gap:12px;
+
+    padding:
+      10px
+      14px;
+
+    background:rgba(18,21,27,.96);
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+
+    border-bottom:1px solid var(--line);
+
+    z-index:1000;
+  }
+
+
+  /* -----------------------------------------
+     SHOW HAMBURGER
+  ----------------------------------------- */
+
+  .mobile-menu-btn{
+    display:flex;
+  }
+
+
+  /* -----------------------------------------
+     TOPBAR BRAND
+  ----------------------------------------- */
+
+  .topbar .brand{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    margin:0;
+
+    min-width:0;
+
+    overflow:hidden;
+
+    text-decoration:none;
+  }
+
+  .topbar .brand-mark{
+    width:32px;
+    height:32px;
+
+    min-width:32px;
+
+    border-radius:8px;
+  }
+
+  .topbar .brand-text{
+    font-size:13px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE DRAWER
+  ----------------------------------------- */
+
+  .mobile-drawer{
+    position:fixed;
+
+    display:flex;
+
+    flex-direction:column;
+
+    top:0;
+    left:0;
+    bottom:0;
+
+    width:min(300px, 84vw);
+
+    padding:
+      20px
+      18px;
+
+    background:var(--bg-soft);
+
+    border-right:1px solid var(--line-hi);
+
+    box-shadow:
+      15px 0 45px rgba(0,0,0,.4);
+
+    transform:translateX(-110%);
+
+    visibility:hidden;
+
+    transition:
+      transform .25s ease,
+      visibility .25s ease;
+
+    z-index:2000;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+  }
+
+  .mobile-drawer.open{
+    transform:translateX(0);
+
+    visibility:visible;
+  }
+
+
+  /* -----------------------------------------
+     DRAWER HEADER
+  ----------------------------------------- */
+
+  .mobile-drawer-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:
+      2px
+      2px
+      18px;
+
+    margin-bottom:18px;
+
+    border-bottom:1px solid var(--line);
+
+    font-family:var(--font-display);
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    color:var(--ink-faint);
+  }
+
+
+  /* -----------------------------------------
+     CLOSE BUTTON
+  ----------------------------------------- */
+
+  .mobile-menu-close{
+    width:34px;
+    height:34px;
+
+    padding:0;
+
+    display:grid;
+
+    place-items:center;
+
+    border:1px solid var(--line);
+
+    border-radius:var(--radius-sm);
+
+    background:var(--raised);
+
+    color:var(--ink-dim);
+
+    font-size:24px;
+
+    line-height:1;
+
+    cursor:pointer;
+  }
+
+  .mobile-menu-close:hover{
+    color:var(--ink);
+
+    border-color:var(--line-hi);
+  }
+
+
+  /* -----------------------------------------
+     DRAWER BRAND
+  ----------------------------------------- */
+
+  .mobile-drawer-brand{
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    padding:
+      0
+      4px
+      22px;
+
+    margin-bottom:10px;
+  }
+
+  .mobile-drawer-brand .brand-mark{
+    width:36px;
+    height:36px;
+
+    min-width:36px;
+
+    border-radius:9px;
+
+    display:grid;
+
+    place-items:center;
+
+    background:
+      linear-gradient(
+        135deg,
+        var(--amber),
+        var(--teal)
+      );
+
+    color:#10131a;
+
+    font-family:var(--font-display);
+
+    font-size:13px;
+
+    font-weight:700;
+  }
+
+  .mobile-drawer-brand strong{
+    display:block;
+
+    color:var(--ink);
+
+    font-family:var(--font-display);
+
+    font-size:13px;
+
+    line-height:1.3;
+  }
+
+  .mobile-drawer-brand small{
+    display:block;
+
+    margin-top:2px;
+
+    color:var(--ink-faint);
+
+    font-size:10.5px;
+  }
+
+
+  /* -----------------------------------------
+     DRAWER LINKS
+  ----------------------------------------- */
+
+  .mobile-drawer-links{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:3px;
+
+    width:100%;
+  }
+
+  .mobile-drawer-links a{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+    min-height:48px;
+
+    padding:
+      11px
+      12px;
+
+    border-left:2px solid transparent;
+
+    border-radius:var(--radius-sm);
+
+    color:var(--ink-dim);
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    transition:
+      color .15s ease,
+      background .15s ease,
+      border-color .15s ease;
+  }
+
+  .mobile-drawer-links a i{
+    width:18px;
+
+    text-align:center;
+
+    color:var(--ink-faint);
+
+    font-size:13px;
+  }
+
+  .mobile-drawer-links a:hover{
+    color:var(--ink);
+
+    background:var(--raised);
+
+    border-left-color:var(--amber);
+  }
+
+  .mobile-drawer-links a:hover i{
+    color:var(--amber);
+  }
+
+  .mobile-drawer-links a.active{
+    color:var(--ink);
+
+    background:var(--raised);
+
+    border-left-color:var(--amber);
+  }
+
+  .mobile-drawer-links a.active i{
+    color:var(--amber);
+  }
+
+
+  /* -----------------------------------------
+     DRAWER FOOTER
+  ----------------------------------------- */
+
+  .mobile-drawer-footer{
+    margin-top:auto;
+
+    padding:
+      20px
+      4px
+      4px;
+
+    border-top:1px solid var(--line);
+  }
+
+  .mobile-drawer-footer .sidebar-social{
+    display:flex;
+
+    gap:8px;
+
+    margin-bottom:14px;
+  }
+
+  .mobile-drawer-footer .sidebar-social a{
+    width:34px;
+    height:34px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:var(--radius-sm);
+
+    background:var(--raised);
+
+    color:var(--ink-dim);
+
+    text-decoration:none;
+  }
+
+
+  /* -----------------------------------------
+     OVERLAY
+  ----------------------------------------- */
+
+  .mobile-menu-overlay{
+    display:block;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(5,7,10,.68);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+      opacity .25s ease,
+      visibility .25s ease;
+
+    z-index:1500;
+  }
+
+  .mobile-menu-overlay.open{
+    opacity:1;
+
+    visibility:visible;
+  }
+
+
+  /* -----------------------------------------
+     LOCK PAGE WHILE MENU IS OPEN
+  ----------------------------------------- */
+
+  body.menu-open{
+    overflow:hidden;
+  }
+
+
+  /* -----------------------------------------
+     CONTENT
+  ----------------------------------------- */
+
+  .content{
+    margin-left:0;
+
+    width:100%;
+
+    min-width:0;
+  }
+
+
+  .content-inner,
+  .content:has(.skills-compact) .content-inner{
+    width:100%;
+
+    max-width:none;
+
+    min-width:0;
+
+    padding:
+      34px
+      22px
+      40px;
+  }
+
+
+  /* -----------------------------------------
+     HERO
+  ----------------------------------------- */
+
+  .hero-row{
+    display:flex;
+
+    flex-direction:column;
+
+    width:100%;
+
+    min-width:0;
+
+    gap:26px;
+  }
+
+  .hero-copy{
+    width:100%;
+
+    min-width:0;
+  }
+
+  .hero-visual{
+    width:100%;
+
+    min-width:0;
+  }
+
+
+  /* -----------------------------------------
+     SKILLS PANEL
+  ----------------------------------------- */
+
+  .skills-compact{
+    position:relative;
+
+    top:auto;
+    right:auto;
+    bottom:auto;
+
+    width:100%;
+
+    max-width:none;
+
+    min-width:0;
+
+    height:auto;
+
+    margin-top:28px;
+
+    padding:24px 20px;
+
+    border:
+      1px solid var(--line);
+
+    border-radius:var(--radius-md);
+
+    overflow:visible;
+  }
+
+
+  /* -----------------------------------------
+     FOCUS DROPDOWN
+  ----------------------------------------- */
+
+  .ticker-wrap,
+  .focus-dropdown,
+  .focus-dropdown details{
+    width:100%;
+
+    max-width:none;
+
+    min-width:0;
+  }
+
+  .focus-dropdown summary{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    width:100%;
+
+    min-width:0;
+
+    text-align:left;
+
+    overflow-wrap:anywhere;
+
+    word-break:break-word;
+  }
+
+  .focus-dropdown summary > span:first-child{
+    min-width:0;
+
+    flex:1;
+  }
+
+  .focus-context{
+    width:100%;
+
+    max-width:none;
+
+    min-width:0;
+
+    overflow-wrap:anywhere;
+
+    word-break:break-word;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width:560px){
+
+  .topbar{
+    height:62px;
+
+    padding:
+      9px
+      12px;
+  }
+
+  .mobile-menu-btn{
+    width:40px;
+    height:40px;
+  }
+
+  .topbar .brand-mark{
+    width:30px;
+    height:30px;
+
+    min-width:30px;
+  }
+
+  .topbar .brand-text{
+    font-size:12px;
+  }
+
+
+  .content-inner,
+  .content:has(.skills-compact) .content-inner{
+    padding:
+      28px
+      16px
+      36px;
+  }
+
+
+  .mobile-drawer{
+    width:min(285px, 86vw);
+
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+
+  .skills-compact{
+    padding:
+      20px
+      16px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width:380px){
+
+  .topbar{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .content-inner,
+  .content:has(.skills-compact) .content-inner{
+    padding-left:13px;
+    padding-right:13px;
+  }
+
+  .mobile-drawer{
+    width:86vw;
+
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+}
 
 /* =========================================================
 MAIN CONTENT AREA

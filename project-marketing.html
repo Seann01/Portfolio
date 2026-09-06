@@ -1,202 +1,1718 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Projects - Marketing</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="./style.css" />
+
+  <!-- =========================================================
+       PREVENT OLD TOP NAVIGATION
+       ========================================================= -->
+
+  <style>
+
+    .topbar-nav {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      max-height: 0 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+    }
+
+
+    /* =========================================================
+       IMAGE LIGHTBOX
+       ========================================================= */
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px;
+
+      background: rgba(0, 0, 0, 0.92);
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+    }
+
+
+    .image-lightbox.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+
+    .lightbox-content {
+      position: relative;
+
+      width: min(1100px, 92vw);
+      height: min(85vh, 800px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .lightbox-image {
+      display: block;
+
+      max-width: 100%;
+      max-height: 100%;
+
+      width: auto;
+      height: auto;
+
+      object-fit: contain;
+
+      border-radius: 4px;
+
+      user-select: none;
+      -webkit-user-drag: none;
+
+      box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.5);
+    }
+
+
+    .lightbox-close {
+
+      position: absolute;
+
+      top: -20px;
+      right: -20px;
+
+      width: 46px;
+      height: 46px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(255, 255, 255, 0.2);
+
+      border-radius: 50%;
+
+      background: rgba(20, 20, 20, 0.95);
+
+      color: #fff;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+      z-index: 3;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+
+
+    .lightbox-prev,
+    .lightbox-next {
+
+      position: absolute;
+
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 52px;
+      height: 52px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(255, 255, 255, 0.2);
+
+      border-radius: 50%;
+
+      background: rgba(20, 20, 20, 0.9);
+
+      color: #fff;
+
+      font-size: 28px;
+
+      line-height: 1;
+
+      cursor: pointer;
+
+      z-index: 3;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+
+    .lightbox-prev {
+      left: -80px;
+    }
+
+
+    .lightbox-next {
+      right: -80px;
+    }
+
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+
+    .lightbox-prev:hover {
+      transform: translateY(-50%) translateX(-2px);
+    }
+
+
+    .lightbox-next:hover {
+      transform: translateY(-50%) translateX(2px);
+    }
+
+
+    .lightbox-counter {
+
+      position: absolute;
+
+      bottom: -45px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      color: rgba(255, 255, 255, 0.8);
+
+      font-family: "IBM Plex Sans", sans-serif;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      white-space: nowrap;
+    }
+
+
+    /* Make project images feel clickable */
+
+    .img-toggle .img {
+      cursor: zoom-in;
+    }
+
+
+    /* =========================================================
+       MOBILE LIGHTBOX
+       ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .image-lightbox {
+        padding: 20px;
+      }
+
+
+      .lightbox-content {
+
+        width: 100%;
+        height: 80vh;
+
+      }
+
+
+      .lightbox-close {
+
+        top: -55px;
+        right: 0;
+
+        width: 42px;
+        height: 42px;
+
+      }
+
+
+      .lightbox-prev,
+      .lightbox-next {
+
+        width: 44px;
+        height: 44px;
+
+        font-size: 23px;
+
+      }
+
+
+      .lightbox-prev {
+        left: 5px;
+      }
+
+
+      .lightbox-next {
+        right: 5px;
+      }
+
+
+      .lightbox-counter {
+        bottom: -35px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 <body>
 
 <div class="shell">
 
+  <!-- =========================================================
+       DESKTOP SIDEBAR
+       ========================================================= -->
+
   <aside class="sidebar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Patrick Ramos<small>Marketing + Automation</small></div>
+
+  
+<a href="./index.html" class="brand">
+
+  <div class="brand-mark">
+    SR
+  </div>
+
+  <div class="brand-text">
+    Sean Patrick Ramos
+    <small>Marketing + Automation</small>
+  </div>
+
+</a>
+
+
+<nav class="side-nav">
+
+  <a href="./index.html">
+
+    <i class="fa-solid fa-house"></i>
+
+    <span>
+      Home
+    </span>
+
+  </a>
+
+
+  <a href="./experience.html">
+
+    <i class="fa-solid fa-briefcase"></i>
+
+    <span>
+      Work Experience
+    </span>
+
+  </a>
+
+
+  <a href="./projects.html" class="active">
+
+    <i class="fa-solid fa-diagram-project"></i>
+
+    <span>
+      Projects
+    </span>
+
+  </a>
+
+
+  <a href="./contactme.html">
+
+    <i class="fa-solid fa-envelope"></i>
+
+    <span>
+      Contact Me
+    </span>
+
+  </a>
+
+
+  <a href="./about.html">
+
+    <i class="fa-solid fa-user"></i>
+
+    <span>
+      About
+    </span>
+
+  </a>
+
+</nav>
+
+
+<div class="sidebar-foot">
+
+  <div class="sidebar-social">
+
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+      aria-label="Email"
+    >
+      <i class="fas fa-envelope"></i>
     </a>
-    <nav class="side-nav">
-      <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
-      <a href="./experience.html"><i class="fa-solid fa-briefcase"></i>Work Experience</a>
-      <a href="./projects.html" class="active"><i class="fa-solid fa-diagram-project"></i>Projects</a>
-      <a href="./contactme.html"><i class="fa-solid fa-envelope"></i>Contact Me</a>
-      <a href="./about.html"><i class="fa-solid fa-user"></i>About</a>
-    </nav>
-    <div class="sidebar-foot">
-      <div class="sidebar-social">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/seanramos_02/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-      <div class="sidebar-status">Open to opportunities</div>
-    </div>
+
+
+    <a
+      href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+      aria-label="LinkedIn"
+    >
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+
+    <a
+      href="https://www.instagram.com/seanramos_02/"
+      aria-label="Instagram"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+
+  </div>
+
+
+  <div class="sidebar-status">
+    Open to opportunities
+  </div>
+
+</div>
+  
+
   </aside>
 
+  <!-- =========================================================
+       MOBILE TOPBAR
+       ========================================================= -->
+
   <header class="topbar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Ramos</div>
-    </a>
+
+  
+<a href="./index.html" class="brand">
+
+  <div class="brand-mark">
+    SR
+  </div>
+
+  <div class="brand-text">
+    Sean Ramos
+  </div>
+
+</a>
+
+
+<button
+  class="mobile-menu-btn"
+  type="button"
+  aria-label="Open navigation menu"
+  aria-controls="mobileDrawer"
+  aria-expanded="false"
+>
+
+  <i class="fa-solid fa-bars"></i>
+
+</button>
+  
+
   </header>
-  <nav class="topbar-nav">
-    <a href="./index.html">Home</a>
-    <a href="./experience.html">Work Experience</a>
-    <a href="./projects.html" class="active">Projects</a>
-    <a href="./contactme.html">Contact Me</a>
-    <a href="./about.html">About</a>
-  </nav>
 
-  <div class="content">
-    <div class="content-inner">
+  <!-- =========================================================
+       MOBILE MENU OVERLAY
+       ========================================================= -->
 
-      <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i>Back to Projects</a>
+  <div
+    class="mobile-menu-overlay"
+    aria-hidden="true"
+  ></div>
 
-      <section class="hero-v2" style="margin-bottom:8px;">
-        <div class="kicker">Marketing & Lead Generation</div>
-        <h1 style="font-size:34px;">Funnels, scheduling, and outreach built for consistency.</h1>
-      </section>
+  <!-- =========================================================
+       MOBILE NAVIGATION DRAWER
+       ========================================================= -->
 
-      <div>
-        <div class="project-split">
-          <div class="project-media">
-            <div class="img-toggle" data-toggle data-labels="Image 1,Image 2,Image 3">
-              <img class="img active" src="./images/sample8.jpg" alt="Image 1">
-              <img class="img" src="./images/sample8.1.jpg" alt="Image 2">
-              <img class="img" src="./images/sample8.2.jpg" alt="Image 3">
-              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-              <span class="badge" data-badge>Image 1</span>
-            </div>
-          </div>
-          <div class="project-copy">
-            <h3>GHL Funnel and Form Automation (Sample Data)</h3>
-            <p>
-              Developed a GoHighLevel (GHL) funnel with integrated form automation using
-              conditional logic. When a user submits the form, the workflow automatically
-              delivers a downloadable lead magnet and enrolls the contact into a timed
-              email sequence. The follow-up emails were designed using HTML and CSS to
-              create a clean layout and more professional email presentation.
-            </p>
-            <ul>
-              <li>Integrated GHL forms directly into funnel pages for lead capture</li>
-              <li>Configured if/else conditions to control user actions after form submission</li>
-              <li>Automated delivery of a downloadable lead magnet to users</li>
-              <li>Designed email templates using HTML and CSS for improved layout and readability</li>
-              <li>Created automated email sequences with wait times between messages</li>
-              <li>Organized funnel workflow to nurture leads over several days</li>
-            </ul>
-            <h4 class="tools-title">Tools Used</h4>
-            <div class="tools-used">
-              <span>GoHighLevel (GHL)</span><span>Funnels</span><span>Email Automation</span><span>HTML</span><span>CSS</span><span>Conditional Logic</span>
-            </div>
-          </div>
+  <aside
+    class="mobile-drawer"
+    id="mobileDrawer"
+    aria-label="Mobile navigation"
+  >
+
+  
+<div class="mobile-drawer-head">
+
+  <a href="./index.html" class="brand">
+
+    <div class="brand-mark">
+      SR
+    </div>
+
+    <div class="brand-text">
+
+      Sean Patrick Ramos
+
+      <small>
+        Marketing + Automation
+      </small>
+
+    </div>
+
+  </a>
+
+
+  <button
+    class="mobile-menu-close"
+    type="button"
+    aria-label="Close navigation menu"
+  >
+
+    <i class="fa-solid fa-xmark"></i>
+
+  </button>
+
+</div>
+
+
+<nav class="mobile-nav">
+
+  <a href="./index.html">
+
+    <i class="fa-solid fa-house"></i>
+
+    <span>
+      Home
+    </span>
+
+  </a>
+
+
+  <a href="./experience.html">
+
+    <i class="fa-solid fa-briefcase"></i>
+
+    <span>
+      Work Experience
+    </span>
+
+  </a>
+
+
+  <a href="./projects.html" class="active">
+
+    <i class="fa-solid fa-diagram-project"></i>
+
+    <span>
+      Projects
+    </span>
+
+  </a>
+
+
+  <a href="./contactme.html">
+
+    <i class="fa-solid fa-envelope"></i>
+
+    <span>
+      Contact Me
+    </span>
+
+  </a>
+
+
+  <a href="./about.html">
+
+    <i class="fa-solid fa-user"></i>
+
+    <span>
+      About
+    </span>
+
+  </a>
+
+</nav>
+
+
+<div class="mobile-drawer-foot">
+
+  <div class="sidebar-social">
+
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+      aria-label="Email"
+    >
+      <i class="fas fa-envelope"></i>
+    </a>
+
+
+    <a
+      href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+      aria-label="LinkedIn"
+    >
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+
+    <a
+      href="https://www.instagram.com/seanramos_02/"
+      aria-label="Instagram"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+
+  </div>
+
+
+  <div class="sidebar-status">
+    Open to opportunities
+  </div>
+
+</div>
+  
+
+  </aside>
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
+
+  <main class="content">
+
+  
+<div class="content-inner">
+
+
+  <a
+    href="./projects.html"
+    class="back-link"
+  >
+
+    <i class="fa-solid fa-arrow-left"></i>
+
+    Back to Projects
+
+  </a>
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <section
+    class="hero-v2"
+    style="margin-bottom:8px;"
+  >
+
+    <div class="kicker">
+      Marketing & Lead Generation
+    </div>
+
+
+    <h1 style="font-size:34px;">
+      Funnels, scheduling, and outreach built for consistency.
+    </h1>
+
+  </section>
+
+
+  <!-- =====================================================
+       PROJECTS
+       ===================================================== -->
+
+  <div>
+
+
+    <!-- ===================================================
+         PROJECT 1
+         =================================================== -->
+
+    <div class="project-split">
+
+
+      <div class="project-media">
+
+        <div
+          class="img-toggle"
+          data-toggle
+          data-labels="Image 1,Image 2,Image 3"
+        >
+
+          <img
+            class="img active"
+            src="./images/sample8.jpg"
+            alt="Image 1"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample8.1.jpg"
+            alt="Image 2"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample8.2.jpg"
+            alt="Image 3"
+          >
+
+
+          <button
+            class="toggle-btn prev"
+            type="button"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
+
+          <button
+            class="toggle-btn next"
+            type="button"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+
+          <span
+            class="badge"
+            data-badge
+          >
+            Image 1
+          </span>
+
         </div>
 
-        <div class="project-split flip">
-          <div class="project-media">
-            <div class="img-toggle" data-toggle data-labels="Image 1,Image 2,Image 3">
-              <img class="img active" src="./images/sample6.jpg" alt="Image 1">
-              <img class="img" src="./images/sample6.1.jpg" alt="Image 2">
-              <img class="img" src="./images/sample6.2.jpg" alt="Image 3">
-              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-              <span class="badge" data-badge>Image 1</span>
-            </div>
-          </div>
-          <div class="project-copy">
-            <h3>Content Scheduling (Demo Account)</h3>
-            <p>
-              Managed social media content scheduling using Buffer to maintain consistent
-              posting across platforms. This workflow focused on planning, organizing,
-              and scheduling marketing content in advance while monitoring engagement
-              directly on Facebook to evaluate post performance.
-            </p>
-            <ul>
-              <li>Planned and scheduled marketing posts using Buffer to ensure consistent publishing</li>
-              <li>Organized content calendars to streamline social media posting workflows</li>
-              <li>Monitored engagement metrics such as likes, comments, and reach on Facebook</li>
-              <li>Improved content consistency and reduced manual posting effort</li>
-            </ul>
-            <h4 class="tools-title">Tools Used</h4>
-            <div class="tools-used">
-              <span>Buffer</span><span>Facebook</span><span>Content Scheduling</span><span>Engagement Tracking</span>
-            </div>
-          </div>
+      </div>
+
+
+      <div class="project-copy">
+
+        <h3>
+          GHL Funnel and Form Automation (Sample Data)
+        </h3>
+
+
+        <p>
+          Developed a GoHighLevel (GHL) funnel with integrated form automation using
+          conditional logic. When a user submits the form, the workflow automatically
+          delivers a downloadable lead magnet and enrolls the contact into a timed
+          email sequence. The follow-up emails were designed using HTML and CSS to
+          create a clean layout and more professional email presentation.
+        </p>
+
+
+        <ul>
+
+          <li>
+            Integrated GHL forms directly into funnel pages for lead capture
+          </li>
+
+          <li>
+            Configured if/else conditions to control user actions after form submission
+          </li>
+
+          <li>
+            Automated delivery of a downloadable lead magnet to users
+          </li>
+
+          <li>
+            Designed email templates using HTML and CSS for improved layout and readability
+          </li>
+
+          <li>
+            Created automated email sequences with wait times between messages
+          </li>
+
+          <li>
+            Organized funnel workflow to nurture leads over several days
+          </li>
+
+        </ul>
+
+
+        <h4 class="tools-title">
+          Tools Used
+        </h4>
+
+
+        <div class="tools-used">
+
+          <span>
+            GoHighLevel (GHL)
+          </span>
+
+          <span>
+            Funnels
+          </span>
+
+          <span>
+            Email Automation
+          </span>
+
+          <span>
+            HTML
+          </span>
+
+          <span>
+            CSS
+          </span>
+
+          <span>
+            Conditional Logic
+          </span>
+
         </div>
 
-        <div class="project-split">
-          <div class="project-media">
-            <div class="img-toggle" data-toggle data-labels="Image 1,Image 2">
-              <img class="img active" src="./images/sample7.jpg" alt="Image 1">
-              <img class="img" src="./images/sample7.1.jpg" alt="Image 2">
-              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-              <span class="badge" data-badge>Image 1</span>
-            </div>
-          </div>
-          <div class="project-copy">
-            <h3>Lead Generation Using Location-Based Scraping</h3>
-            <p>
-              Conducted lead generation by identifying target business categories and locations,
-              then collecting publicly available contact information using scraping tools and
-              Google Maps search results.
-            </p>
-            <ul>
-              <li>Identified target business category in specific locations</li>
-              <li>Used search tools and Google Maps to locate potential business leads</li>
-              <li>Utilized scraping tools to extract publicly available information including business name, location, and phone number</li>
-              <li>Compiled and organized collected leads into structured lists for outreach and marketing use</li>
-              <li>Streamlined the process of gathering local business data for targeted lead generation</li>
-            </ul>
-            <h4 class="tools-title">Tools Used</h4>
-            <div class="tools-used">
-              <span>Google Maps</span><span>Web Scraping Tools</span><span>Lead Research</span><span>Data Collection</span>
-            </div>
-          </div>
-        </div>
       </div>
 
     </div>
 
-    <footer class="footer-slim">
-      <div>© 2026 Sean Patrick Ramos. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./experience.html">Work Experience</a>
-        <a href="./projects.html">Projects</a>
-        <a href="./contactme.html">Contact Me</a>
-        <a href="./about.html">About</a>
+
+    <!-- ===================================================
+         PROJECT 2
+         =================================================== -->
+
+    <div class="project-split flip">
+
+
+      <div class="project-media">
+
+        <div
+          class="img-toggle"
+          data-toggle
+          data-labels="Image 1,Image 2,Image 3"
+        >
+
+          <img
+            class="img active"
+            src="./images/sample6.jpg"
+            alt="Image 1"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample6.1.jpg"
+            alt="Image 2"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample6.2.jpg"
+            alt="Image 3"
+          >
+
+
+          <button
+            class="toggle-btn prev"
+            type="button"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
+
+          <button
+            class="toggle-btn next"
+            type="button"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+
+          <span
+            class="badge"
+            data-badge
+          >
+            Image 1
+          </span>
+
+        </div>
+
       </div>
-    </footer>
+
+
+      <div class="project-copy">
+
+        <h3>
+          Content Scheduling (Demo Account)
+        </h3>
+
+
+        <p>
+          Managed social media content scheduling using Buffer to maintain consistent
+          posting across platforms. This workflow focused on planning, organizing,
+          and scheduling marketing content in advance while monitoring engagement
+          directly on Facebook to evaluate post performance.
+        </p>
+
+
+        <ul>
+
+          <li>
+            Planned and scheduled marketing posts using Buffer to ensure consistent publishing
+          </li>
+
+          <li>
+            Organized content calendars to streamline social media posting workflows
+          </li>
+
+          <li>
+            Monitored engagement metrics such as likes, comments, and reach on Facebook
+          </li>
+
+          <li>
+            Improved content consistency and reduced manual posting effort
+          </li>
+
+        </ul>
+
+
+        <h4 class="tools-title">
+          Tools Used
+        </h4>
+
+
+        <div class="tools-used">
+
+          <span>
+            Buffer
+          </span>
+
+          <span>
+            Facebook
+          </span>
+
+          <span>
+            Content Scheduling
+          </span>
+
+          <span>
+            Engagement Tracking
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         PROJECT 3
+         =================================================== -->
+
+    <div class="project-split">
+
+
+      <div class="project-media">
+
+        <div
+          class="img-toggle"
+          data-toggle
+          data-labels="Image 1,Image 2"
+        >
+
+          <img
+            class="img active"
+            src="./images/sample7.jpg"
+            alt="Image 1"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample7.1.jpg"
+            alt="Image 2"
+          >
+
+
+          <button
+            class="toggle-btn prev"
+            type="button"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
+
+          <button
+            class="toggle-btn next"
+            type="button"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+
+          <span
+            class="badge"
+            data-badge
+          >
+            Image 1
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="project-copy">
+
+        <h3>
+          Lead Generation Using Location-Based Scraping
+        </h3>
+
+
+        <p>
+          Conducted lead generation by identifying target business categories and locations,
+          then collecting publicly available contact information using scraping tools and
+          Google Maps search results.
+        </p>
+
+
+        <ul>
+
+          <li>
+            Identified target business category in specific locations
+          </li>
+
+          <li>
+            Used search tools and Google Maps to locate potential business leads
+          </li>
+
+          <li>
+            Utilized scraping tools to extract publicly available information including
+            business name, location, and phone number
+          </li>
+
+          <li>
+            Compiled and organized collected leads into structured lists for outreach
+            and marketing use
+          </li>
+
+          <li>
+            Streamlined the process of gathering local business data for targeted lead generation
+          </li>
+
+        </ul>
+
+
+        <h4 class="tools-title">
+          Tools Used
+        </h4>
+
+
+        <div class="tools-used">
+
+          <span>
+            Google Maps
+          </span>
+
+          <span>
+            Web Scraping Tools
+          </span>
+
+          <span>
+            Lead Research
+          </span>
+
+          <span>
+            Data Collection
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
   </div>
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="footer-slim">
+
+  <div>
+    © 2026 Sean Patrick Ramos. All rights reserved.
+  </div>
+
+
+  <div class="footer-links">
+
+    <a href="./index.html">
+      Home
+    </a>
+
+    <a href="./experience.html">
+      Work Experience
+    </a>
+
+    <a href="./projects.html">
+      Projects
+    </a>
+
+    <a href="./contactme.html">
+      Contact Me
+    </a>
+
+    <a href="./about.html">
+      About
+    </a>
+
+  </div>
+
+</footer>
+  
+
+  </main>
+
+</div>
+
+<!-- =========================================================
+     IMAGE LIGHTBOX
+     ========================================================= -->
+
+<div
+  class="image-lightbox"
+  id="imageLightbox"
+  aria-hidden="true"
+>
+
+  <div class="lightbox-content">
+
+  
+<button
+  class="lightbox-close"
+  id="lightboxClose"
+  type="button"
+  aria-label="Close image viewer"
+>
+
+  <i class="fa-solid fa-xmark"></i>
+
+</button>
+
+
+<button
+  class="lightbox-prev"
+  id="lightboxPrev"
+  type="button"
+  aria-label="Previous image"
+>
+  ‹
+</button>
+
+
+<img
+  class="lightbox-image"
+  id="lightboxImage"
+  src=""
+  alt=""
+>
+
+
+<button
+  class="lightbox-next"
+  id="lightboxNext"
+  type="button"
+  aria-label="Next image"
+>
+  ›
+</button>
+
+
+<div
+  class="lightbox-counter"
+  id="lightboxCounter"
+>
+  1 / 1
+</div>
+  
+
+  </div>
+
 </div>
 
 <script>
+
+
+  /* =========================================================
+     PROJECT IMAGE TOGGLES
+     ========================================================= */
+
   (function () {
-    document.querySelectorAll("[data-toggle]").forEach(box => {
-      const imgs = Array.from(box.querySelectorAll(".img"));
-      const prev = box.querySelector(".prev");
-      const next = box.querySelector(".next");
-      const badge = box.querySelector("[data-badge]");
-      const labelsRaw = box.getAttribute("data-labels") || "";
-      const labels = labelsRaw.split(",").map(s => s.trim()).filter(Boolean);
-      let index = 0;
-      const show = (i) => {
-        index = (i + imgs.length) % imgs.length;
-        imgs.forEach((img, idx) => img.classList.toggle("active", idx === index));
-        if (badge) badge.textContent = labels[index] || `Image ${index + 1}`;
-      };
-      prev?.addEventListener("click", (e) => { e.preventDefault(); show(index - 1); });
-      next?.addEventListener("click", (e) => { e.preventDefault(); show(index + 1); });
-      show(0);
-    });
+
+    document
+      .querySelectorAll("[data-toggle]")
+      .forEach(box => {
+
+
+        const imgs =
+          Array.from(
+            box.querySelectorAll(".img")
+          );
+
+
+        const prev =
+          box.querySelector(".prev");
+
+
+        const next =
+          box.querySelector(".next");
+
+
+        const badge =
+          box.querySelector("[data-badge]");
+
+
+        const labelsRaw =
+          box.getAttribute("data-labels") || "";
+
+
+        const labels =
+          labelsRaw
+            .split(",")
+            .map(s => s.trim())
+            .filter(Boolean);
+
+
+        let index = 0;
+
+
+        const show = (i) => {
+
+          index =
+            (i + imgs.length) % imgs.length;
+
+
+          imgs.forEach((img, idx) => {
+
+            img.classList.toggle(
+              "active",
+              idx === index
+            );
+
+          });
+
+
+          if (badge) {
+
+            badge.textContent =
+              labels[index] ||
+              `Image ${index + 1}`;
+
+          }
+
+        };
+
+
+        prev?.addEventListener(
+          "click",
+          (e) => {
+
+            e.preventDefault();
+
+            e.stopPropagation();
+
+            show(index - 1);
+
+          }
+        );
+
+
+        next?.addEventListener(
+          "click",
+          (e) => {
+
+            e.preventDefault();
+
+            e.stopPropagation();
+
+            show(index + 1);
+
+          }
+        );
+
+
+        /*
+         * Clicking the currently visible image
+         * opens the fullscreen viewer.
+         */
+
+        imgs.forEach((img, imgIndex) => {
+
+          img.addEventListener(
+            "click",
+            () => {
+
+              if (
+                !img.classList.contains("active")
+              ) {
+                return;
+              }
+
+              openLightbox(
+                imgs,
+                imgIndex
+              );
+
+            }
+          );
+
+        });
+
+
+        show(0);
+
+      });
+
   })();
+
+
+  /* =========================================================
+     IMAGE LIGHTBOX
+     ========================================================= */
+
+  const lightbox =
+    document.getElementById(
+      "imageLightbox"
+    );
+
+
+  const lightboxImage =
+    document.getElementById(
+      "lightboxImage"
+    );
+
+
+  const lightboxClose =
+    document.getElementById(
+      "lightboxClose"
+    );
+
+
+  const lightboxPrev =
+    document.getElementById(
+      "lightboxPrev"
+    );
+
+
+  const lightboxNext =
+    document.getElementById(
+      "lightboxNext"
+    );
+
+
+  const lightboxCounter =
+    document.getElementById(
+      "lightboxCounter"
+    );
+
+
+  let lightboxImages = [];
+
+  let lightboxIndex = 0;
+
+
+  function openLightbox(
+    images,
+    startIndex
+  ) {
+
+    lightboxImages =
+      images.map(img => ({
+        src: img.src,
+        alt: img.alt
+      }));
+
+
+    lightboxIndex =
+      startIndex;
+
+
+    updateLightbox();
+
+
+    lightbox.classList.add(
+      "open"
+    );
+
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+    document.body.classList.add(
+      "menu-open"
+    );
+
+  }
+
+
+  function closeLightbox() {
+
+    lightbox.classList.remove(
+      "open"
+    );
+
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    document.body.classList.remove(
+      "menu-open"
+    );
+
+
+    lightboxImage.src = "";
+
+  }
+
+
+  function updateLightbox() {
+
+    if (
+      !lightboxImages.length
+    ) {
+      return;
+    }
+
+
+    const current =
+      lightboxImages[
+        lightboxIndex
+      ];
+
+
+    lightboxImage.src =
+      current.src;
+
+
+    lightboxImage.alt =
+      current.alt || "Project image";
+
+
+    lightboxCounter.textContent =
+      `${lightboxIndex + 1} / ${lightboxImages.length}`;
+
+  }
+
+
+  function showPreviousImage() {
+
+    if (
+      !lightboxImages.length
+    ) {
+      return;
+    }
+
+
+    lightboxIndex =
+      (
+        lightboxIndex -
+        1 +
+        lightboxImages.length
+      ) %
+      lightboxImages.length;
+
+
+    updateLightbox();
+
+  }
+
+
+  function showNextImage() {
+
+    if (
+      !lightboxImages.length
+    ) {
+      return;
+    }
+
+
+    lightboxIndex =
+      (
+        lightboxIndex +
+        1
+      ) %
+      lightboxImages.length;
+
+
+    updateLightbox();
+
+  }
+
+
+  lightboxClose?.addEventListener(
+    "click",
+    closeLightbox
+  );
+
+
+  lightboxPrev?.addEventListener(
+    "click",
+    showPreviousImage
+  );
+
+
+  lightboxNext?.addEventListener(
+    "click",
+    showNextImage
+  );
+
+
+  /*
+   * Clicking outside the image closes
+   * the lightbox.
+   */
+
+  lightbox?.addEventListener(
+    "click",
+    (event) => {
+
+      if (
+        event.target === lightbox
+      ) {
+
+        closeLightbox();
+
+      }
+
+    }
+  );
+
+
+  /*
+   * Keyboard controls.
+   *
+   * ESC   = close
+   * LEFT  = previous
+   * RIGHT = next
+   */
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        !lightbox.classList.contains("open")
+      ) {
+        return;
+      }
+
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        closeLightbox();
+
+        return;
+
+      }
+
+
+      if (
+        event.key === "ArrowLeft"
+      ) {
+
+        showPreviousImage();
+
+        return;
+
+      }
+
+
+      if (
+        event.key === "ArrowRight"
+      ) {
+
+        showNextImage();
+
+        return;
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     MOBILE NAVIGATION
+     ========================================================= */
+
+  const menuButton =
+    document.querySelector(
+      ".mobile-menu-btn"
+    );
+
+
+  const closeButton =
+    document.querySelector(
+      ".mobile-menu-close"
+    );
+
+
+  const drawer =
+    document.querySelector(
+      ".mobile-drawer"
+    );
+
+
+  const overlay =
+    document.querySelector(
+      ".mobile-menu-overlay"
+    );
+
+
+  function openMenu() {
+
+    drawer?.classList.add(
+      "open"
+    );
+
+
+    overlay?.classList.add(
+      "open"
+    );
+
+
+    menuButton?.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+
+    document.body.classList.add(
+      "menu-open"
+    );
+
+  }
+
+
+  function closeMenu() {
+
+    drawer?.classList.remove(
+      "open"
+    );
+
+
+    overlay?.classList.remove(
+      "open"
+    );
+
+
+    menuButton?.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+
+    document.body.classList.remove(
+      "menu-open"
+    );
+
+  }
+
+
+  menuButton?.addEventListener(
+    "click",
+    openMenu
+  );
+
+
+  closeButton?.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  overlay?.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  document
+    .querySelectorAll(".mobile-nav a")
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        closeMenu
+      );
+
+    });
+
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (
+        event.key === "Escape" &&
+        !lightbox?.classList.contains("open")
+      ) {
+
+        closeMenu();
+
+      }
+
+    }
+  );
+
 </script>
+
 </body>
 </html>

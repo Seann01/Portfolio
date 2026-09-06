@@ -1,64 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>About - Sean Patrick L. Ramos</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
 
 <div class="shell">
 
+  <!-- =========================================================
+       DESKTOP SIDEBAR
+       ========================================================= -->
+
   <aside class="sidebar">
+
     <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Patrick Ramos<small>Marketing + Automation</small></div>
-    </a>
-    <nav class="side-nav">
-      <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
-      <a href="./experience.html"><i class="fa-solid fa-briefcase"></i>Work Experience</a>
-      <a href="./projects.html"><i class="fa-solid fa-diagram-project"></i>Projects</a>
-      <a href="./contactme.html"><i class="fa-solid fa-envelope"></i>Contact Me</a>
-      <a href="./about.html" class="active"><i class="fa-solid fa-user"></i>About</a>
-    </nav>
-    <div class="sidebar-foot">
-      <div class="sidebar-social">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/seanramos_02/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+
+      <div class="brand-mark">
+        SR
       </div>
-      <div class="sidebar-status">Open to opportunities</div>
+
+      <div class="brand-text">
+        Sean Patrick Ramos
+        <small>Marketing + Automation</small>
+      </div>
+
+    </a>
+
+
+    <nav class="side-nav">
+
+      <a href="./index.html">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./experience.html">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Work Experience</span>
+      </a>
+
+      <a href="./projects.html">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Projects</span>
+      </a>
+
+      <a href="./contactme.html">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Contact Me</span>
+      </a>
+
+      <a href="./about.html" class="active">
+        <i class="fa-solid fa-user"></i>
+        <span>About</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-foot">
+
+      <div class="sidebar-social">
+
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+          aria-label="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a
+          href="https://www.instagram.com/seanramos_02/"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+
+      </div>
+
+      <div class="sidebar-status">
+        Open to opportunities
+      </div>
+
     </div>
+
   </aside>
 
-  <header class="topbar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Ramos</div>
-    </a>
-  </header>
-  <nav class="topbar-nav">
-    <a href="./index.html">Home</a>
-    <a href="./experience.html">Work Experience</a>
-    <a href="./projects.html">Projects</a>
-    <a href="./contactme.html">Contact Me</a>
-    <a href="./about.html" class="active">About</a>
-  </nav>
 
-  <div class="content">
+  <!-- =========================================================
+       MOBILE TOPBAR
+       ========================================================= -->
+
+  <header class="topbar">
+
+    <a href="./index.html" class="brand">
+
+      <div class="brand-mark">
+        SR
+      </div>
+
+      <div class="brand-text">
+        Sean Patrick Ramos
+      </div>
+
+    </a>
+
+
+    <button
+      class="mobile-menu-btn"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-controls="mobileDrawer"
+      aria-expanded="false"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+  </header>
+
+
+  <!-- =========================================================
+       MOBILE NAVIGATION
+       ========================================================= -->
+
+  <div
+    class="mobile-menu-overlay"
+    aria-hidden="true"
+  ></div>
+
+
+  <aside
+    class="mobile-drawer"
+    id="mobileDrawer"
+    aria-label="Mobile navigation"
+  >
+
+    <div class="mobile-drawer-head">
+
+      <a href="./index.html" class="brand">
+
+        <div class="brand-mark">
+          SR
+        </div>
+
+        <div class="brand-text">
+          Sean Patrick Ramos
+          <small>Marketing + Automation</small>
+        </div>
+
+      </a>
+
+
+      <button
+        class="mobile-menu-close"
+        type="button"
+        aria-label="Close navigation menu"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+
+    <nav class="mobile-nav">
+
+      <a href="./index.html">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./experience.html">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Work Experience</span>
+      </a>
+
+      <a href="./projects.html">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Projects</span>
+      </a>
+
+      <a href="./contactme.html">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Contact Me</span>
+      </a>
+
+      <a href="./about.html" class="active">
+        <i class="fa-solid fa-user"></i>
+        <span>About</span>
+      </a>
+
+    </nav>
+
+
+    <div class="mobile-drawer-foot">
+
+      <div class="sidebar-social">
+
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+          aria-label="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a
+          href="https://www.instagram.com/seanramos_02/"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+
+      </div>
+
+
+      <div class="sidebar-status">
+        Open to opportunities
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
+
+  <main class="content">
+
     <div class="content-inner">
 
+
+      <!-- =====================================================
+           BACKGROUND
+           ===================================================== -->
+
       <section class="block">
-        <div class="block-label">Background</div>
+
+        <div class="block-label">
+          Background
+        </div>
+
         <div class="block-head">
-          <h2>Who I am</h2>
+
+          <h2>
+            Who I am
+          </h2>
+
           <p>
             I'm Sean, a web development graduate from the University of Batangas (Class of 2024).
             My technical background started during senior high school where I studied Computer System
@@ -66,6 +284,7 @@
             Since then, I've continued developing my skills across web development, IT support, and
             digital operations.
           </p>
+
           <p>
             I enjoy working across both technical systems and digital operations — from developing
             responsive websites and supporting IT environments to using automation tools and marketing
@@ -73,47 +292,203 @@
             managing digital content through scheduling tools and automation scripts, I enjoy building
             solutions that make work more efficient and structured.
           </p>
+
         </div>
+
       </section>
 
+
+      <!-- =====================================================
+           VISION
+           ===================================================== -->
+
       <section class="block">
-        <div class="block-label">Vision</div>
+
+        <div class="block-label">
+          Vision
+        </div>
+
         <div class="block-head">
-          <h2>Where I'm headed</h2>
+
+          <h2>
+            Where I'm headed
+          </h2>
+
           <p>
             My vision is to grow as a professional who can bridge technology, automation, and business
             operations. I aim to build systems, tools, and digital solutions that simplify processes,
             improve productivity, and help teams operate more effectively.
           </p>
+
         </div>
+
       </section>
 
+
+      <!-- =====================================================
+           HOBBIES
+           ===================================================== -->
+
       <section class="block">
-        <div class="block-label">Hobbies</div>
+
+        <div class="block-label">
+          Hobbies
+        </div>
+
         <div class="block-head">
-          <h2>Outside of work</h2>
+
+          <h2>
+            Outside of work
+          </h2>
+
           <p>
             I enjoy gaming, exploring new technologies, improving my coding skills, and staying active
             through jogging. I also enjoy spending time taking care of my dog, Tobi. These activities
             help me stay curious, disciplined, and continuously motivated to learn and improve.
           </p>
+
         </div>
+
       </section>
+
 
     </div>
 
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
     <footer class="footer-slim">
-      <div>© 2026 Sean Patrick Ramos. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./experience.html">Work Experience</a>
-        <a href="./projects.html">Projects</a>
-        <a href="./contactme.html">Contact Me</a>
-        <a href="./about.html">About</a>
+
+      <div>
+        © 2026 Sean Patrick Ramos. All rights reserved.
       </div>
+
+      <div class="footer-links">
+
+        <a href="./index.html">
+          Home
+        </a>
+
+        <a href="./experience.html">
+          Work Experience
+        </a>
+
+        <a href="./projects.html">
+          Projects
+        </a>
+
+        <a href="./contactme.html">
+          Contact Me
+        </a>
+
+        <a href="./about.html">
+          About
+        </a>
+
+      </div>
+
     </footer>
-  </div>
+
+  </main>
+
 </div>
+
+
+<!-- =========================================================
+     MOBILE NAVIGATION SCRIPT
+     ========================================================= -->
+
+<script>
+
+  const menuButton =
+    document.querySelector(".mobile-menu-btn");
+
+  const closeButton =
+    document.querySelector(".mobile-menu-close");
+
+  const drawer =
+    document.querySelector(".mobile-drawer");
+
+  const overlay =
+    document.querySelector(".mobile-menu-overlay");
+
+
+  function openMenu() {
+
+    drawer?.classList.add("open");
+
+    overlay?.classList.add("open");
+
+    menuButton?.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+    document.body.classList.add("menu-open");
+
+  }
+
+
+  function closeMenu() {
+
+    drawer?.classList.remove("open");
+
+    overlay?.classList.remove("open");
+
+    menuButton?.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    document.body.classList.remove("menu-open");
+
+  }
+
+
+  menuButton?.addEventListener(
+    "click",
+    openMenu
+  );
+
+
+  closeButton?.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  overlay?.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  document
+    .querySelectorAll(".mobile-nav a")
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        closeMenu
+      );
+
+    });
+
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+
+    }
+  );
+
+</script>
 
 </body>
 </html>

@@ -2,125 +2,480 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Contact Me - Sean Patrick Ramos</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
 
 <div class="shell">
 
+  <!-- =========================================================
+       DESKTOP SIDEBAR
+       Same navigation structure as homepage
+       ========================================================= -->
+
   <aside class="sidebar">
+
     <a href="./index.html" class="brand">
       <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Patrick Ramos<small>Marketing + Automation</small></div>
-    </a>
-    <nav class="side-nav">
-      <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
-      <a href="./experience.html"><i class="fa-solid fa-briefcase"></i>Work Experience</a>
-      <a href="./projects.html"><i class="fa-solid fa-diagram-project"></i>Projects</a>
-      <a href="./contactme.html" class="active"><i class="fa-solid fa-envelope"></i>Contact Me</a>
-      <a href="./about.html"><i class="fa-solid fa-user"></i>About</a>
-    </nav>
-    <div class="sidebar-foot">
-      <div class="sidebar-social">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/seanramos_02/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+
+      <div class="brand-text">
+        Sean Patrick Ramos
+        <small>Marketing + Automation</small>
       </div>
-      <div class="sidebar-status">Open to opportunities</div>
+    </a>
+
+    <nav class="side-nav">
+
+      <a href="./index.html">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./experience.html">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Work Experience</span>
+      </a>
+
+      <a href="./projects.html">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Projects</span>
+      </a>
+
+      <a href="./contactme.html" class="active">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Contact Me</span>
+      </a>
+
+      <a href="./about.html">
+        <i class="fa-solid fa-user"></i>
+        <span>About</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-foot">
+
+      <div class="sidebar-social">
+
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+          aria-label="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a
+          href="https://www.instagram.com/seanramos_02/"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+
+      </div>
+
+      <div class="sidebar-status">
+        Open to opportunities
+      </div>
+
     </div>
+
   </aside>
 
+
+  <!-- =========================================================
+       MOBILE TOPBAR
+       The navigation drawer/button is controlled by style.css
+       ========================================================= -->
+
   <header class="topbar">
+
     <a href="./index.html" class="brand">
+
       <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Patrick Ramos</div>
+
+      <div class="brand-text">
+        Sean Patrick Ramos
+      </div>
+
     </a>
+
+    <!-- Mobile menu button -->
+    <button
+      class="mobile-menu-btn"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-controls="mobileDrawer"
+      aria-expanded="false"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
   </header>
-  <nav class="topbar-nav">
-    <a href="./index.html">Home</a>
-    <a href="./experience.html">Work Experience</a>
-    <a href="./projects.html">Projects</a>
-    <a href="./contactme.html" class="active">Contact Me</a>
-    <a href="./about.html">About</a>
-  </nav>
 
-  <div class="content">
-    <div class="content-inner">
 
-      <section class="hero-v2" style="margin-bottom:36px;">
-        <div class="kicker">Let's talk</div>
-        <h1 style="font-size:34px;">Have a project, role, or collaboration in mind?</h1>
-      </section>
+  <!-- =========================================================
+       MOBILE NAVIGATION DRAWER
+       ========================================================= -->
 
-      <div class="contact-split">
-        <div class="contact-aside">
-  <p>Send a message and I'll get back to you as soon as possible — or reach out directly below.</p>
+  <div class="mobile-menu-overlay" aria-hidden="true"></div>
 
-  <div class="contact-links">
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
-       class="email-link">
-      <i class="fas fa-envelope"></i>
-      <span>seanpatrickramos.sp@gmail.com</span>
-    </a>
+  <aside
+    class="mobile-drawer"
+    id="mobileDrawer"
+    aria-label="Mobile navigation"
+  >
 
-    <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/">
-      <i class="fab fa-linkedin"></i>
-      <span>LinkedIn</span>
-    </a>
+    <div class="mobile-drawer-head">
 
-    <a href="https://www.instagram.com/seanramos_02/">
-      <i class="fab fa-instagram"></i>
-      <span>Instagram</span>
-    </a>
-  </div>
-</div>
+      <a href="./index.html" class="brand">
 
-        <form action="https://formspree.io/f/mojkbejy" method="POST">
-          <div class="form-grid">
-            <div class="form-field">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required />
-            </div>
-            <div class="form-field">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required />
-            </div>
-          </div>
+        <div class="brand-mark">SR</div>
 
-          <div class="form-field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="7" placeholder="Write your message here..." required></textarea>
-          </div>
+        <div class="brand-text">
+          Sean Patrick Ramos
+          <small>Marketing + Automation</small>
+        </div>
 
-          <input type="hidden" name="_subject" value="New portfolio contact form submission" />
-          <input type="hidden" name="_captcha" value="false" />
+      </a>
 
-          <button type="submit" class="connect-btn">Send Message</button>
-        </form>
+      <button
+        class="mobile-menu-close"
+        type="button"
+        aria-label="Close navigation menu"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+
+    <nav class="mobile-nav">
+
+      <a href="./index.html">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./experience.html">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Work Experience</span>
+      </a>
+
+      <a href="./projects.html">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Projects</span>
+      </a>
+
+      <a href="./contactme.html" class="active">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Contact Me</span>
+      </a>
+
+      <a href="./about.html">
+        <i class="fa-solid fa-user"></i>
+        <span>About</span>
+      </a>
+
+    </nav>
+
+
+    <div class="mobile-drawer-foot">
+
+      <div class="sidebar-social">
+
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+          aria-label="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a
+          href="https://www.instagram.com/seanramos_02/"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+
+      </div>
+
+      <div class="sidebar-status">
+        Open to opportunities
       </div>
 
     </div>
 
-    <footer class="footer-slim">
-      <div>© 2026 Sean Patrick Ramos. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./experience.html">Work Experience</a>
-        <a href="./projects.html">Projects</a>
-        <a href="./contactme.html">Contact Me</a>
-        <a href="./about.html">About</a>
+  </aside>
+
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
+
+  <main class="content">
+
+    <div class="content-inner">
+
+      <section
+        class="hero-v2"
+        style="margin-bottom:36px;"
+      >
+
+        <div class="kicker">
+          Let's talk
+        </div>
+
+        <h1 style="font-size:34px;">
+          Have a project, role, or collaboration in mind?
+        </h1>
+
+      </section>
+
+
+      <!-- =====================================================
+           CONTACT SECTION
+           ===================================================== -->
+
+      <div class="contact-split">
+
+        <!-- Contact information -->
+
+        <div class="contact-aside">
+
+          <p>
+            Send a message and I'll get back to you as soon as possible
+            — or reach out directly below.
+          </p>
+
+
+          <div class="contact-links">
+
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+              class="email-link"
+            >
+              <i class="fas fa-envelope"></i>
+              <span>seanpatrickramos.sp@gmail.com</span>
+            </a>
+
+
+            <a
+              href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+            >
+              <i class="fab fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+
+
+            <a
+              href="https://www.instagram.com/seanramos_02/"
+            >
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- Contact form -->
+
+        <form
+          action="https://formspree.io/f/mojkbejy"
+          method="POST"
+        >
+
+          <div class="form-grid">
+
+            <div class="form-field">
+
+              <label for="name">
+                Name
+              </label>
+
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+              />
+
+            </div>
+
+
+            <div class="form-field">
+
+              <label for="email">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+              />
+
+            </div>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="message">
+              Message
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              rows="7"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+
+          </div>
+
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="New portfolio contact form submission"
+          />
+
+          <input
+            type="hidden"
+            name="_captcha"
+            value="false"
+          />
+
+
+          <button
+            type="submit"
+            class="connect-btn"
+          >
+            Send Message
+          </button>
+
+        </form>
+
       </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="footer-slim">
+
+      <div>
+        © 2026 Sean Patrick Ramos. All rights reserved.
+      </div>
+
+      <div class="footer-links">
+
+        <a href="./index.html">
+          Home
+        </a>
+
+        <a href="./experience.html">
+          Work Experience
+        </a>
+
+        <a href="./projects.html">
+          Projects
+        </a>
+
+        <a href="./contactme.html">
+          Contact Me
+        </a>
+
+        <a href="./about.html">
+          About
+        </a>
+
+      </div>
+
     </footer>
-  </div>
+
+  </main>
+
 </div>
+
+
+<!-- =========================================================
+     MOBILE NAV SCRIPT
+     ========================================================= -->
+
+<script>
+  const menuButton = document.querySelector(".mobile-menu-btn");
+  const closeButton = document.querySelector(".mobile-menu-close");
+  const drawer = document.querySelector(".mobile-drawer");
+  const overlay = document.querySelector(".mobile-menu-overlay");
+
+  function openMenu() {
+    drawer?.classList.add("open");
+    overlay?.classList.add("open");
+    menuButton?.setAttribute("aria-expanded", "true");
+    document.body.classList.add("menu-open");
+  }
+
+  function closeMenu() {
+    drawer?.classList.remove("open");
+    overlay?.classList.remove("open");
+    menuButton?.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("menu-open");
+  }
+
+  menuButton?.addEventListener("click", openMenu);
+  closeButton?.addEventListener("click", closeMenu);
+  overlay?.addEventListener("click", closeMenu);
+
+  document.querySelectorAll(".mobile-nav a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
+</script>
 
 </body>
 </html>

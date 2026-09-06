@@ -1,133 +1,1349 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Projects - Graphics</title>
+
+  <!-- Font Awesome -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
+
+  <!-- Google Fonts -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Main CSS -->
 
   <link rel="stylesheet" href="./style.css" />
+
+  <!-- =========================================================
+       IMAGE PREVIEW LIGHTBOX
+       ========================================================= -->
+
+  <style>
+
+    /* ---------------------------------------------------------
+       Make project images clickable
+       --------------------------------------------------------- */
+
+    .project-image img {
+      cursor: zoom-in;
+    }
+
+
+    /* ---------------------------------------------------------
+       Lightbox background
+       --------------------------------------------------------- */
+
+    .image-lightbox {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 9999;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 30px;
+
+      background: rgba(0, 0, 0, 0.90);
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      pointer-events: none;
+
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+
+    }
+
+
+    /* ---------------------------------------------------------
+       Open state
+       --------------------------------------------------------- */
+
+    .image-lightbox.open {
+
+      opacity: 1;
+
+      visibility: visible;
+
+      pointer-events: auto;
+
+    }
+
+
+    /* ---------------------------------------------------------
+       Image container
+       --------------------------------------------------------- */
+
+    .lightbox-content {
+
+      position: relative;
+
+      max-width: 92vw;
+
+      max-height: 88vh;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+    }
+
+
+    /* ---------------------------------------------------------
+       Preview image
+       --------------------------------------------------------- */
+
+    .lightbox-content img {
+
+      display: block;
+
+      max-width: 92vw;
+
+      max-height: 88vh;
+
+      width: auto;
+
+      height: auto;
+
+      object-fit: contain;
+
+      border-radius: 10px;
+
+      box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.60);
+
+      user-select: none;
+
+      -webkit-user-drag: none;
+
+    }
+
+
+    /* ---------------------------------------------------------
+       Close button
+       --------------------------------------------------------- */
+
+    .lightbox-close {
+
+      position: absolute;
+
+      top: 20px;
+
+      right: 20px;
+
+      z-index: 10;
+
+      width: 48px;
+
+      height: 48px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border: 1px solid rgba(255, 255, 255, 0.20);
+
+      border-radius: 50%;
+
+      background: rgba(18, 21, 27, 0.90);
+
+      color: #ffffff;
+
+      font-size: 18px;
+
+      cursor: pointer;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+    }
+
+
+    .lightbox-close:hover {
+
+      background: rgba(255, 255, 255, 0.15);
+
+      transform: rotate(90deg);
+
+    }
+
+
+    /* ---------------------------------------------------------
+       Prevent background scrolling
+       --------------------------------------------------------- */
+
+    body.lightbox-open {
+
+      overflow: hidden;
+
+    }
+
+
+    /* ---------------------------------------------------------
+       Mobile
+       --------------------------------------------------------- */
+
+    @media (max-width: 700px) {
+
+      .image-lightbox {
+
+        padding: 15px;
+
+      }
+
+
+      .lightbox-content {
+
+        max-width: 96vw;
+
+        max-height: 82vh;
+
+      }
+
+
+      .lightbox-content img {
+
+        max-width: 96vw;
+
+        max-height: 82vh;
+
+      }
+
+
+      .lightbox-close {
+
+        top: 12px;
+
+        right: 12px;
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 16px;
+
+      }
+
+    }
+
+  </style>
+
 </head>
+
 <body>
 
 <div class="shell">
 
+  <!-- =========================================================
+       DESKTOP SIDEBAR
+       ========================================================= -->
+
   <aside class="sidebar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Patrick Ramos<small>Marketing + Automation</small></div>
+
+```
+<a href="./index.html" class="brand">
+
+  <div class="brand-mark">
+    SR
+  </div>
+
+  <div class="brand-text">
+
+    Sean Patrick Ramos
+
+    <small>
+      Marketing + Automation
+    </small>
+
+  </div>
+
+</a>
+
+
+<nav class="side-nav">
+
+
+  <a href="./index.html">
+
+    <i class="fa-solid fa-house"></i>
+
+    <span>
+      Home
+    </span>
+
+  </a>
+
+
+  <a href="./experience.html">
+
+    <i class="fa-solid fa-briefcase"></i>
+
+    <span>
+      Work Experience
+    </span>
+
+  </a>
+
+
+  <a
+    href="./projects.html"
+    class="active"
+  >
+
+    <i class="fa-solid fa-diagram-project"></i>
+
+    <span>
+      Projects
+    </span>
+
+  </a>
+
+
+  <a href="./contactme.html">
+
+    <i class="fa-solid fa-envelope"></i>
+
+    <span>
+      Contact Me
+    </span>
+
+  </a>
+
+
+  <a href="./about.html">
+
+    <i class="fa-solid fa-user"></i>
+
+    <span>
+      About
+    </span>
+
+  </a>
+
+
+</nav>
+
+
+<div class="sidebar-foot">
+
+
+  <div class="sidebar-social">
+
+
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+      aria-label="Email"
+    >
+
+      <i class="fas fa-envelope"></i>
+
     </a>
-    <nav class="side-nav">
-      <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
-      <a href="./experience.html"><i class="fa-solid fa-briefcase"></i>Work Experience</a>
-      <a href="./projects.html" class="active"><i class="fa-solid fa-diagram-project"></i>Projects</a>
-      <a href="./contactme.html"><i class="fa-solid fa-envelope"></i>Contact Me</a>
-      <a href="./about.html"><i class="fa-solid fa-user"></i>About</a>
-    </nav>
-    <div class="sidebar-foot">
-      <div class="sidebar-social">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/seanramos_02/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-      <div class="sidebar-status">Open to opportunities</div>
-    </div>
+
+
+    <a
+      href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+      aria-label="LinkedIn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <i class="fab fa-linkedin"></i>
+
+    </a>
+
+
+    <a
+      href="https://www.instagram.com/seanramos_02/"
+      aria-label="Instagram"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <i class="fab fa-instagram"></i>
+
+    </a>
+
+
+  </div>
+
+
+  <div class="sidebar-status">
+
+    Open to opportunities
+
+  </div>
+
+
+</div>
+```
+
   </aside>
 
+  <!-- =========================================================
+       MOBILE TOPBAR
+       ========================================================= -->
+
   <header class="topbar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Ramos</div>
-    </a>
+
+```
+<a href="./index.html" class="brand">
+
+
+  <div class="brand-mark">
+    SR
+  </div>
+
+
+  <div class="brand-text">
+    Sean Patrick Ramos
+  </div>
+
+
+</a>
+
+
+<button
+  class="mobile-menu-btn"
+  type="button"
+  aria-label="Open navigation menu"
+  aria-controls="mobileDrawer"
+  aria-expanded="false"
+>
+
+  <i class="fa-solid fa-bars"></i>
+
+</button>
+```
+
   </header>
-  <nav class="topbar-nav">
-    <a href="./index.html">Home</a>
-    <a href="./experience.html">Work Experience</a>
-    <a href="./projects.html" class="active">Projects</a>
-    <a href="./contactme.html">Contact Me</a>
-    <a href="./about.html">About</a>
-  </nav>
+
+  <!-- =========================================================
+       MOBILE MENU OVERLAY
+       ========================================================= -->
+
+  <div
+    class="mobile-menu-overlay"
+    aria-hidden="true"
+  ></div>
+
+  <!-- =========================================================
+       MOBILE DRAWER
+       ========================================================= -->
+
+  <aside
+    class="mobile-drawer"
+    id="mobileDrawer"
+    aria-label="Mobile navigation"
+  >
+
+```
+<div class="mobile-drawer-head">
+
+
+  <a href="./index.html" class="brand">
+
+
+    <div class="brand-mark">
+      SR
+    </div>
+
+
+    <div class="brand-text">
+      Sean Ramos
+    </div>
+
+
+  </a>
+
+
+  <button
+    class="mobile-menu-close"
+    type="button"
+    aria-label="Close navigation menu"
+  >
+
+    <i class="fa-solid fa-xmark"></i>
+
+  </button>
+
+
+</div>
+
+
+
+<nav class="mobile-nav">
+
+
+  <a href="./index.html">
+
+    <i class="fa-solid fa-house"></i>
+
+    <span>
+      Home
+    </span>
+
+  </a>
+
+
+  <a href="./experience.html">
+
+    <i class="fa-solid fa-briefcase"></i>
+
+    <span>
+      Work Experience
+    </span>
+
+  </a>
+
+
+  <a
+    href="./projects.html"
+    class="active"
+  >
+
+    <i class="fa-solid fa-diagram-project"></i>
+
+    <span>
+      Projects
+    </span>
+
+  </a>
+
+
+  <a href="./contactme.html">
+
+    <i class="fa-solid fa-envelope"></i>
+
+    <span>
+      Contact Me
+    </span>
+
+  </a>
+
+
+  <a href="./about.html">
+
+    <i class="fa-solid fa-user"></i>
+
+    <span>
+      About
+    </span>
+
+  </a>
+
+
+</nav>
+
+
+
+<div class="mobile-drawer-foot">
+
+
+  <div class="sidebar-social">
+
+
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+      aria-label="Email"
+    >
+
+      <i class="fas fa-envelope"></i>
+
+    </a>
+
+
+    <a
+      href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+      aria-label="LinkedIn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <i class="fab fa-linkedin"></i>
+
+    </a>
+
+
+    <a
+      href="https://www.instagram.com/seanramos_02/"
+      aria-label="Instagram"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <i class="fab fa-instagram"></i>
+
+    </a>
+
+
+  </div>
+
+
+  <div class="sidebar-status">
+
+    Open to opportunities
+
+  </div>
+
+
+</div>
+```
+
+  </aside>
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
 
   <div class="content">
-    <div class="content-inner">
 
-      <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i>Back to Projects</a>
+```
+<div class="content-inner">
 
-      <section class="hero-v2" style="margin-bottom:8px;">
-        <div class="kicker">Graphic Design</div>
-        <h1 style="font-size:34px;">Visuals built to convert, not just decorate.</h1>
-      </section>
 
-      <div>
-        <div class="project-split">
-          <div class="project-media">
-            <div class="project-image">
-              <img src="./images/sample1.jpg" alt="Sample 1">
-            </div>
-          </div>
-          <div class="project-copy">
-            <h3>7-Day Meal Prep Guide – Lead Magnet Design and Cover Photo</h3>
-            <p>
-              Designed a high-converting lead magnet focused on engaging visuals,
-              clear information flow, and effective content structure to attract
-              and capture potential clients.
-            </p>
-            <ul>
-              <li>Created a structured layout optimized for readability and user engagement</li>
-              <li>Designed visual hierarchy to guide users through key information</li>
-              <li>Aligned colors, typography, and imagery with brand identity</li>
-              <li>Optimized for digital distribution and conversion-focused marketing</li>
-            </ul>
-            <h4 class="tools-title">Tools Used</h4>
-            <div class="tools-used"><span>Canva</span><span>Pexels.com</span></div>
-            <p class="link-line">Preview Lead Magnet:</p>
-            <p><a href="https://drive.google.com/file/d/16hUkgBP3JEkIJfnmFpc9XhEzMdToEkGy/view?usp=sharing">https://drive.google.com/Meal-Prep-lead-magnet</a></p>
-          </div>
-        </div>
+  <a
+    href="./projects.html"
+    class="back-link"
+  >
 
-        <div class="project-split flip">
-          <div class="project-media">
-            <div class="project-image">
-              <img src="./images/sample3.jpg" alt="Sample 3">
-            </div>
-          </div>
-          <div class="project-copy">
-            <h3>RESA Face & Body Spa – Ladies Lock-In Spa Night Promo</h3>
-            <p>
-              Designed a promotional graphic for a spa event targeting women,
-              focusing on relaxation and wellness with clear event details.
-            </p>
-            <ul>
-              <li>Created a lifestyle-focused layout to promote wellness and relaxation</li>
-              <li>Applied color harmony and typography to convey a calm, premium feel</li>
-              <li>Designed for digital promotion across social media and online platforms</li>
-            </ul>
-            <h4 class="tools-title">Tools Used</h4>
-            <div class="tools-used"><span>Canva</span><span>Pexels.com</span></div>
-            <p class="link-line">More sample at:</p>
-            <p><a href="https://drive.google.com/drive/folders/1OQ2uTXsIN6xN7GBj9NfCFoTl5LlALS6S?usp=drive_link">https://drive.google.com/</a></p>
-          </div>
-        </div>
-      </div>
+    <i class="fa-solid fa-arrow-left"></i>
+
+    Back to Projects
+
+  </a>
+
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <section
+    class="hero-v2"
+    style="margin-bottom:8px;"
+  >
+
+
+    <div class="kicker">
+
+      Graphic Design
 
     </div>
 
-    <footer class="footer-slim">
-      <div>© 2026 Sean Patrick Ramos. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./experience.html">Work Experience</a>
-        <a href="./projects.html">Projects</a>
-        <a href="./contactme.html">Contact Me</a>
-        <a href="./about.html">About</a>
+
+    <h1 style="font-size:34px;">
+
+      Visuals built to convert, not just decorate.
+
+    </h1>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       PROJECTS
+       ===================================================== -->
+
+  <div>
+
+
+    <!-- ===================================================
+         PROJECT 01
+         =================================================== -->
+
+    <div class="project-split">
+
+
+      <div class="project-media">
+
+
+        <div class="project-image">
+
+
+          <img
+            src="./images/sample1.jpg"
+            alt="7-Day Meal Prep Guide lead magnet design"
+          >
+
+
+        </div>
+
+
       </div>
-    </footer>
+
+
+
+      <div class="project-copy">
+
+
+        <h3>
+
+          7-Day Meal Prep Guide – Lead Magnet Design and Cover Photo
+
+        </h3>
+
+
+        <p>
+
+          Designed a high-converting lead magnet focused on engaging visuals,
+          clear information flow, and effective content structure to attract
+          and capture potential clients.
+
+        </p>
+
+
+        <ul>
+
+
+          <li>
+
+            Created a structured layout optimized for readability and user engagement
+
+          </li>
+
+
+          <li>
+
+            Designed visual hierarchy to guide users through key information
+
+          </li>
+
+
+          <li>
+
+            Aligned colors, typography, and imagery with brand identity
+
+          </li>
+
+
+          <li>
+
+            Optimized for digital distribution and conversion-focused marketing
+
+          </li>
+
+
+        </ul>
+
+
+
+        <h4 class="tools-title">
+
+          Tools Used
+
+        </h4>
+
+
+        <div class="tools-used">
+
+          <span>
+            Canva
+          </span>
+
+          <span>
+            Pexels.com
+          </span>
+
+        </div>
+
+
+
+        <p class="link-line">
+
+          Preview Lead Magnet:
+
+        </p>
+
+
+        <p>
+
+
+          <a
+            href="https://drive.google.com/file/d/16hUkgBP3JEkIJfnmFpc9XhEzMdToEkGy/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            https://drive.google.com/Meal-Prep-lead-magnet
+
+          </a>
+
+
+        </p>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- ===================================================
+         PROJECT 02
+         =================================================== -->
+
+    <div class="project-split flip">
+
+
+      <div class="project-media">
+
+
+        <div class="project-image">
+
+
+          <img
+            src="./images/sample3.jpg"
+            alt="RESA Face and Body Spa promotional graphic"
+          >
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="project-copy">
+
+
+        <h3>
+
+          RESA Face & Body Spa – Ladies Lock-In Spa Night Promo
+
+        </h3>
+
+
+        <p>
+
+          Designed a promotional graphic for a spa event targeting women,
+          focusing on relaxation and wellness with clear event details.
+
+        </p>
+
+
+        <ul>
+
+
+          <li>
+
+            Created a lifestyle-focused layout to promote wellness and relaxation
+
+          </li>
+
+
+          <li>
+
+            Applied color harmony and typography to convey a calm, premium feel
+
+          </li>
+
+
+          <li>
+
+            Designed for digital promotion across social media and online platforms
+
+          </li>
+
+
+        </ul>
+
+
+
+        <h4 class="tools-title">
+
+          Tools Used
+
+        </h4>
+
+
+        <div class="tools-used">
+
+          <span>
+            Canva
+          </span>
+
+          <span>
+            Pexels.com
+          </span>
+
+        </div>
+
+
+
+        <p class="link-line">
+
+          More sample at:
+
+        </p>
+
+
+        <p>
+
+
+          <a
+            href="https://drive.google.com/drive/folders/1OQ2uTXsIN6xN7GBj9NfCFoTl5LlALS6S?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            https://drive.google.com/
+
+          </a>
+
+
+        </p>
+
+
+      </div>
+
+
+    </div>
+
+
   </div>
+
+
 </div>
+
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="footer-slim">
+
+
+  <div>
+
+    © 2026 Sean Patrick Ramos. All rights reserved.
+
+  </div>
+
+
+  <div class="footer-links">
+
+
+    <a href="./index.html">
+
+      Home
+
+    </a>
+
+
+    <a href="./experience.html">
+
+      Work Experience
+
+    </a>
+
+
+    <a href="./projects.html">
+
+      Projects
+
+    </a>
+
+
+    <a href="./contactme.html">
+
+      Contact Me
+
+    </a>
+
+
+    <a href="./about.html">
+
+      About
+
+    </a>
+
+
+  </div>
+
+
+</footer>
+```
+
+  </div>
+
+</div>
+
+<!-- =========================================================
+     IMAGE PREVIEW LIGHTBOX
+     ========================================================= -->
+
+<div
+  class="image-lightbox"
+  id="imageLightbox"
+  aria-hidden="true"
+>
+
+<button
+class="lightbox-close"
+type="button"
+aria-label="Close image preview"
+
+>
+
+```
+<i class="fa-solid fa-xmark"></i>
+```
+
+  </button>
+
+  <div class="lightbox-content">
+
+```
+<img
+  id="lightboxImage"
+  src=""
+  alt=""
+>
+```
+
+  </div>
+
+</div>
+
+<!-- =========================================================
+     MOBILE NAVIGATION SCRIPT
+     ========================================================= -->
+
+<script>
+
+
+  /* =========================================================
+     MOBILE NAVIGATION
+     ========================================================= */
+
+  const menuButton =
+    document.querySelector(".mobile-menu-btn");
+
+
+  const closeButton =
+    document.querySelector(".mobile-menu-close");
+
+
+  const drawer =
+    document.querySelector(".mobile-drawer");
+
+
+  const overlay =
+    document.querySelector(".mobile-menu-overlay");
+
+
+
+  function openMenu() {
+
+    drawer?.classList.add("open");
+
+    overlay?.classList.add("open");
+
+    menuButton?.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+    document.body.classList.add(
+      "menu-open"
+    );
+
+  }
+
+
+
+  function closeMenu() {
+
+    drawer?.classList.remove("open");
+
+    overlay?.classList.remove("open");
+
+    menuButton?.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    document.body.classList.remove(
+      "menu-open"
+    );
+
+  }
+
+
+
+  menuButton?.addEventListener(
+    "click",
+    openMenu
+  );
+
+
+  closeButton?.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  overlay?.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+
+  /* ---------------------------------------------------------
+     Close drawer when navigating
+     --------------------------------------------------------- */
+
+  document
+    .querySelectorAll(".mobile-nav a")
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        closeMenu
+      );
+
+    });
+
+
+
+  /* =========================================================
+     IMAGE PREVIEW LIGHTBOX
+     ========================================================= */
+
+  const lightbox =
+    document.getElementById(
+      "imageLightbox"
+    );
+
+
+  const lightboxImage =
+    document.getElementById(
+      "lightboxImage"
+    );
+
+
+  const lightboxClose =
+    document.querySelector(
+      ".lightbox-close"
+    );
+
+
+  const projectImages =
+    document.querySelectorAll(
+      ".project-image img"
+    );
+
+
+
+  /* ---------------------------------------------------------
+     Open image preview
+     --------------------------------------------------------- */
+
+  projectImages.forEach(image => {
+
+    image.addEventListener(
+      "click",
+      () => {
+
+        lightboxImage.src =
+          image.currentSrc ||
+          image.src;
+
+
+        lightboxImage.alt =
+          image.alt ||
+          "Project image";
+
+
+        lightbox.classList.add(
+          "open"
+        );
+
+
+        lightbox.setAttribute(
+          "aria-hidden",
+          "false"
+        );
+
+
+        document.body.classList.add(
+          "lightbox-open"
+        );
+
+      }
+    );
+
+  });
+
+
+
+  /* ---------------------------------------------------------
+     Close lightbox
+     --------------------------------------------------------- */
+
+  function closeLightbox() {
+
+    lightbox.classList.remove(
+      "open"
+    );
+
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    document.body.classList.remove(
+      "lightbox-open"
+    );
+
+
+    /*
+     * Clear the image after closing.
+     * This prevents the previous image
+     * from remaining loaded unnecessarily.
+     */
+
+    setTimeout(() => {
+
+      if (
+        !lightbox.classList.contains("open")
+      ) {
+
+        lightboxImage.src = "";
+
+      }
+
+    }, 200);
+
+  }
+
+
+
+  /* ---------------------------------------------------------
+     Close button
+     --------------------------------------------------------- */
+
+  lightboxClose?.addEventListener(
+    "click",
+    closeLightbox
+  );
+
+
+
+  /* ---------------------------------------------------------
+     Click outside the image to close
+     --------------------------------------------------------- */
+
+  lightbox?.addEventListener(
+    "click",
+    event => {
+
+      if (
+        event.target === lightbox
+      ) {
+
+        closeLightbox();
+
+      }
+
+    }
+  );
+
+
+
+  /* ---------------------------------------------------------
+     Escape key
+     --------------------------------------------------------- */
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+
+      /*
+       * Close mobile menu
+       */
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        closeMenu();
+
+      }
+
+
+      /*
+       * Close image preview
+       */
+
+      if (
+        event.key === "Escape" &&
+        lightbox?.classList.contains("open")
+      ) {
+
+        closeLightbox();
+
+      }
+
+    }
+  );
+
+
+
+  /* ---------------------------------------------------------
+     Prevent image dragging
+     --------------------------------------------------------- */
+
+  lightboxImage?.addEventListener(
+    "dragstart",
+    event => {
+
+      event.preventDefault();
+
+    }
+  );
+
+
+</script>
 
 </body>
 </html>

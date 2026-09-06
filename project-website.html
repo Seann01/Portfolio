@@ -1,239 +1,2379 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Projects - Websites</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="./style.css" />
+
+  <!-- =========================================================
+       IMAGE PREVIEW LIGHTBOX
+       ========================================================= -->
+
+  <style>
+
+    /* =========================================================
+       CLICKABLE IMAGES
+       ========================================================= */
+
+    .img-toggle .img {
+      cursor: zoom-in;
+    }
+
+
+    /* =========================================================
+       LIGHTBOX
+       ========================================================= */
+
+    .image-lightbox {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 9999;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 30px;
+
+      background: rgba(0, 0, 0, 0.92);
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      pointer-events: none;
+
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+
+    }
+
+
+    .image-lightbox.open {
+
+      opacity: 1;
+
+      visibility: visible;
+
+      pointer-events: auto;
+
+    }
+
+
+    /* =========================================================
+       LIGHTBOX IMAGE AREA
+       ========================================================= */
+
+    .lightbox-content {
+
+      position: relative;
+
+      width: min(88vw, 1250px);
+
+      height: min(86vh, 850px);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+    }
+
+
+    .lightbox-content img {
+
+      display: block;
+
+      max-width: 100%;
+
+      max-height: 100%;
+
+      width: auto;
+
+      height: auto;
+
+      object-fit: contain;
+
+      border-radius: 10px;
+
+      box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.65);
+
+      user-select: none;
+
+      -webkit-user-drag: none;
+
+    }
+
+
+    /* =========================================================
+       CLOSE BUTTON
+       ========================================================= */
+
+    .lightbox-close {
+
+      position: absolute;
+
+      top: 20px;
+
+      right: 20px;
+
+      z-index: 20;
+
+      width: 48px;
+
+      height: 48px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border: 1px solid rgba(255, 255, 255, 0.20);
+
+      border-radius: 50%;
+
+      background: rgba(18, 21, 27, 0.92);
+
+      color: #ffffff;
+
+      font-size: 18px;
+
+      cursor: pointer;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+    }
+
+
+    .lightbox-close:hover {
+
+      background: rgba(255, 255, 255, 0.15);
+
+      transform: rotate(90deg);
+
+    }
+
+
+    /* =========================================================
+       PREVIOUS / NEXT
+       ========================================================= */
+
+    .lightbox-prev,
+    .lightbox-next {
+
+      position: absolute;
+
+      top: 50%;
+
+      z-index: 20;
+
+      width: 52px;
+
+      height: 52px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border: 1px solid rgba(255, 255, 255, 0.20);
+
+      border-radius: 50%;
+
+      background: rgba(18, 21, 27, 0.92);
+
+      color: #ffffff;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+      transform: translateY(-50%);
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
+
+    }
+
+
+    .lightbox-prev {
+
+      left: 24px;
+
+    }
+
+
+    .lightbox-next {
+
+      right: 24px;
+
+    }
+
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+
+      background: rgba(255, 255, 255, 0.15);
+
+      border-color: rgba(255, 255, 255, 0.40);
+
+    }
+
+
+    .lightbox-prev:hover {
+
+      transform:
+        translateY(-50%)
+        scale(1.06);
+
+    }
+
+
+    .lightbox-next:hover {
+
+      transform:
+        translateY(-50%)
+        scale(1.06);
+
+    }
+
+
+    /* =========================================================
+       IMAGE COUNTER
+       ========================================================= */
+
+    .lightbox-counter {
+
+      position: absolute;
+
+      left: 50%;
+
+      bottom: -36px;
+
+      transform: translateX(-50%);
+
+      padding: 6px 12px;
+
+      border: 1px solid rgba(255, 255, 255, 0.14);
+
+      border-radius: 20px;
+
+      background: rgba(18, 21, 27, 0.90);
+
+      color: #ffffff;
+
+      font-family: "IBM Plex Sans", sans-serif;
+
+      font-size: 13px;
+
+      font-weight: 500;
+
+      white-space: nowrap;
+
+    }
+
+
+    /* =========================================================
+       HIDE NAVIGATION IF ONLY ONE IMAGE
+       ========================================================= */
+
+    .image-lightbox.single-image .lightbox-prev,
+    .image-lightbox.single-image .lightbox-next,
+    .image-lightbox.single-image .lightbox-counter {
+
+      display: none;
+
+    }
+
+
+    /* =========================================================
+       PREVENT BACKGROUND SCROLL
+       ========================================================= */
+
+    body.lightbox-open {
+
+      overflow: hidden;
+
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .image-lightbox {
+
+        padding: 15px;
+
+      }
+
+
+      .lightbox-content {
+
+        width: 100%;
+
+        height: 80vh;
+
+      }
+
+
+      .lightbox-content img {
+
+        max-width: 96vw;
+
+        max-height: 80vh;
+
+      }
+
+
+      .lightbox-close {
+
+        top: 12px;
+
+        right: 12px;
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 16px;
+
+      }
+
+
+      .lightbox-prev,
+      .lightbox-next {
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 16px;
+
+      }
+
+
+      .lightbox-prev {
+
+        left: 8px;
+
+      }
+
+
+      .lightbox-next {
+
+        right: 8px;
+
+      }
+
+
+      .lightbox-counter {
+
+        bottom: -30px;
+
+      }
+
+    }
+
+  </style>
+
 </head>
+
 <body>
 
 <div class="shell">
 
+  <!-- =========================================================
+       DESKTOP SIDEBAR
+       ========================================================= -->
+
   <aside class="sidebar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Ramos<small>Marketing + Automation</small></div>
+
+  
+<a href="./index.html" class="brand">
+
+  <div class="brand-mark">
+    SR
+  </div>
+
+  <div class="brand-text">
+
+    Sean Ramos
+
+    <small>
+      Marketing + Automation
+    </small>
+
+  </div>
+
+</a>
+
+
+<nav class="side-nav">
+
+
+  <a href="./index.html">
+
+    <i class="fa-solid fa-house"></i>
+
+    <span>
+      Home
+    </span>
+
+  </a>
+
+
+  <a href="./experience.html">
+
+    <i class="fa-solid fa-briefcase"></i>
+
+    <span>
+      Work Experience
+    </span>
+
+  </a>
+
+
+  <a
+    href="./projects.html"
+    class="active"
+  >
+
+    <i class="fa-solid fa-diagram-project"></i>
+
+    <span>
+      Projects
+    </span>
+
+  </a>
+
+
+  <a href="./contactme.html">
+
+    <i class="fa-solid fa-envelope"></i>
+
+    <span>
+      Contact Me
+    </span>
+
+  </a>
+
+
+  <a href="./about.html">
+
+    <i class="fa-solid fa-user"></i>
+
+    <span>
+      About
+    </span>
+
+  </a>
+
+
+</nav>
+
+
+<div class="sidebar-foot">
+
+
+  <div class="sidebar-social">
+
+
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+      aria-label="Email"
+    >
+
+      <i class="fas fa-envelope"></i>
+
     </a>
-    <nav class="side-nav">
-      <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
-      <a href="./experience.html"><i class="fa-solid fa-briefcase"></i>Work Experience</a>
-      <a href="./projects.html" class="active"><i class="fa-solid fa-diagram-project"></i>Projects</a>
-      <a href="./contactme.html"><i class="fa-solid fa-envelope"></i>Contact Me</a>
-      <a href="./about.html"><i class="fa-solid fa-user"></i>About</a>
-    </nav>
-    <div class="sidebar-foot">
-      <div class="sidebar-social">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/seanramos_02/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-      <div class="sidebar-status">Open to opportunities</div>
-    </div>
+
+
+    <a
+      href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+      aria-label="LinkedIn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <i class="fab fa-linkedin"></i>
+
+    </a>
+
+
+    <a
+      href="https://www.instagram.com/seanramos_02/"
+      aria-label="Instagram"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <i class="fab fa-instagram"></i>
+
+    </a>
+
+
+  </div>
+
+
+  <div class="sidebar-status">
+
+    Open to opportunities
+
+  </div>
+
+
+</div>
+  
+
   </aside>
 
+  <!-- =========================================================
+       MOBILE TOPBAR
+       ========================================================= -->
+
   <header class="topbar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Patrick Ramos</div>
-    </a>
+
+  
+<a href="./index.html" class="brand">
+
+
+  <div class="brand-mark">
+    SR
+  </div>
+
+
+  <div class="brand-text">
+    Sean Patrick Ramos
+  </div>
+
+
+</a>
+
+
+<button
+  class="mobile-menu-btn"
+  type="button"
+  aria-label="Open navigation menu"
+  aria-controls="mobileDrawer"
+  aria-expanded="false"
+>
+
+  <i class="fa-solid fa-bars"></i>
+
+</button>
+  
+
   </header>
-  <nav class="topbar-nav">
-    <a href="./index.html">Home</a>
-    <a href="./experience.html">Work Experience</a>
-    <a href="./projects.html" class="active">Projects</a>
-    <a href="./contactme.html">Contact Me</a>
-    <a href="./about.html">About</a>
-  </nav>
+
+  <!-- =========================================================
+       MOBILE MENU OVERLAY
+       ========================================================= -->
+
+  <div
+    class="mobile-menu-overlay"
+    aria-hidden="true"
+  ></div>
+
+  <!-- =========================================================
+       MOBILE NAVIGATION DRAWER
+       ========================================================= -->
+
+  <aside
+    class="mobile-drawer"
+    id="mobileDrawer"
+    aria-label="Mobile navigation"
+  >
+
+  
+<div class="mobile-drawer-head">
+
+
+  <a href="./index.html" class="brand">
+
+
+    <div class="brand-mark">
+      SR
+    </div>
+
+
+    <div class="brand-text">
+      Sean Ramos
+    </div>
+
+
+  </a>
+
+
+  <button
+    class="mobile-menu-close"
+    type="button"
+    aria-label="Close navigation menu"
+  >
+
+    <i class="fa-solid fa-xmark"></i>
+
+  </button>
+
+
+</div>
+
+
+
+<nav class="mobile-nav">
+
+
+  <a href="./index.html">
+
+    <i class="fa-solid fa-house"></i>
+
+    <span>
+      Home
+    </span>
+
+  </a>
+
+
+  <a href="./experience.html">
+
+    <i class="fa-solid fa-briefcase"></i>
+
+    <span>
+      Work Experience
+    </span>
+
+  </a>
+
+
+  <a
+    href="./projects.html"
+    class="active"
+  >
+
+    <i class="fa-solid fa-diagram-project"></i>
+
+    <span>
+      Projects
+    </span>
+
+  </a>
+
+
+  <a href="./contactme.html">
+
+    <i class="fa-solid fa-envelope"></i>
+
+    <span>
+      Contact Me
+    </span>
+
+  </a>
+
+
+  <a href="./about.html">
+
+    <i class="fa-solid fa-user"></i>
+
+    <span>
+      About
+    </span>
+
+  </a>
+
+
+</nav>
+
+
+
+<div class="mobile-drawer-foot">
+
+
+  <div class="sidebar-social">
+
+
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+      aria-label="Email"
+    >
+
+      <i class="fas fa-envelope"></i>
+
+    </a>
+
+
+    <a
+      href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+      aria-label="LinkedIn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <i class="fab fa-linkedin"></i>
+
+    </a>
+
+
+    <a
+      href="https://www.instagram.com/seanramos_02/"
+      aria-label="Instagram"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <i class="fab fa-instagram"></i>
+
+    </a>
+
+
+  </div>
+
+
+  <div class="sidebar-status">
+
+    Open to opportunities
+
+  </div>
+
+
+</div>
+  
+
+  </aside>
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
 
   <div class="content">
-    <div class="content-inner">
 
-      <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i>Back to Projects</a>
+  
+<div class="content-inner">
 
-      <section class="hero-v2" style="margin-bottom:8px;">
-        <div class="kicker">Websites</div>
-        <h1 style="font-size:34px;">Responsive builds, from demo funnels to live deployments.</h1>
-      </section>
 
-      <div>
-        <div class="project-split">
-          <div class="project-media">
-            <div class="img-toggle" data-toggle data-labels="Home Page, Services Page, Contact Page">
-              <img class="img active" src="./images/sample11.jpg" alt="Website Sample 1">
-              <img class="img" src="./images/sample11.1.jpg" alt="Website Sample 2">
-              <img class="img" src="./images/sample11.2.jpg" alt="Website Sample 3">
-              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-              <span class="badge" data-badge>Home Page</span>
-            </div>
-          </div>
-          <div class="project-copy">
-            <h3>Creating Landing Page for Zucheng IT Solutions (Demo)</h3>
-            <p>
-              Developed a conversion-focused landing page for Zucheng IT Solutions, a Chinese tech-oriented company, using Replit and modern “vibe coding”
-              workflows. The project emphasized fast development and efficient deployment, allowing the website to move quickly from concept to a fully
-              functional live page. Managed the complete setup process, including domain registration, DNS configuration, and hosting, while maintaining
-              strong performance, security, and reliability. Designed the landing page to reflect a modern tech brand, focusing on clear messaging,
-              intuitive navigation, and user engagement to support marketing objectives.
-            </p>
-            <ul>
-              <li>Developed the landing page using Replit with fast prototyping (“vibe coding”) techniques for efficient turnaround</li>
-              <li>Purchased and configured the domain through Namecheap, aligning it with the company’s branding</li>
-              <li>Deployed and hosted the website using SiteGround for reliable uptime and performance</li>
-              <li>Integrated Cloudflare for DNS management, improving website speed, caching, and security protection</li>
-              <li>Designed the layout with a focus on conversion, clear call-to-actions, and user-friendly navigation</li>
-              <li>Implemented responsive design to ensure seamless performance across desktop, tablet, and mobile devices</li>
-            </ul>
-            <h4 class="tools-title">Tools Used</h4>
-            <div class="tools-used">
-              <span>Replit</span><span>Namecheap</span><span>SiteGround</span><span>Cloudflare</span>
-            </div>
-          </div>
+  <a
+    href="./projects.html"
+    class="back-link"
+  >
+
+    <i class="fa-solid fa-arrow-left"></i>
+
+    Back to Projects
+
+  </a>
+
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <section
+    class="hero-v2"
+    style="margin-bottom:8px;"
+  >
+
+    <div class="kicker">
+      Websites
+    </div>
+
+
+    <h1 style="font-size:34px;">
+
+      Responsive builds, from demo funnels to live deployments.
+
+    </h1>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       PROJECTS
+       ===================================================== -->
+
+  <div>
+
+
+    <!-- ===================================================
+         PROJECT 01
+         =================================================== -->
+
+    <div class="project-split">
+
+
+      <div class="project-media">
+
+
+        <div
+          class="img-toggle"
+          data-toggle
+          data-labels="Home Page, Services Page, Contact Page"
+        >
+
+
+          <img
+            class="img active"
+            src="./images/sample11.jpg"
+            alt="Website Sample 1"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample11.1.jpg"
+            alt="Website Sample 2"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample11.2.jpg"
+            alt="Website Sample 3"
+          >
+
+
+          <button
+            class="toggle-btn prev"
+            type="button"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
+
+          <button
+            class="toggle-btn next"
+            type="button"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+
+          <span
+            class="badge"
+            data-badge
+          >
+            Home Page
+          </span>
+
+
         </div>
 
-        <div class="project-split flip">
-          <div class="project-media">
-            <div class="img-toggle" data-toggle data-labels="Home Page, Services Page, Contact Page">
-              <img class="img active" src="./images/sample10.jpg" alt="Website Sample 1">
-              <img class="img" src="./images/sample10.1.jpg" alt="Website Sample 2">
-              <img class="img" src="./images/sample10.2.jpg" alt="Website Sample 3">
-              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-              <span class="badge" data-badge>Home Page</span>
-            </div>
-          </div>
-          <div class="project-copy">
-            <h3>Creating Landing Page for Zhongrenxing Company (Demo)</h3>
-            <p>
-              Developed a high-converting landing page for a Chinese technology-focused company using Replit and modern “vibe coding” workflows,
-              enabling rapid prototyping and efficient development. The project involved managing the full deployment lifecycle—from domain acquisition
-              to live hosting—while ensuring performance, security, and scalability. The landing page was structured to align with the company’s tech-oriented
-              branding, focusing on clear messaging, user engagement, and conversion-driven design.
-            </p>
-            <ul>
-              <li>Developed the landing page using Replit with fast prototyping (“vibe coding”) techniques for efficient turnaround</li>
-              <li>Purchased and configured the domain through Namecheap, aligning it with the company’s branding</li>
-              <li>Deployed and hosted the website using SiteGround for reliable uptime and performance</li>
-              <li>Integrated Cloudflare for DNS management, improving website speed, caching, and security protection</li>
-              <li>Designed the layout with a focus on conversion, clear call-to-actions, and user-friendly navigation</li>
-              <li>Implemented responsive design to ensure seamless performance across desktop, tablet, and mobile devices</li>
-            </ul>
-            <h4 class="tools-title">Tools Used</h4>
-            <div class="tools-used">
-              <span>Replit</span><span>Namecheap</span><span>SiteGround</span><span>Cloudflare</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="project-split">
-          <div class="project-media">
-            <div class="img-toggle" data-toggle data-labels="Home Page, Health Optimization Page">
-              <img class="img active" src="./images/sample5.jpg" alt="Website Sample 1">
-              <img class="img" src="./images/sample5.1.jpg" alt="Website Sample 2">
-              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-              <span class="badge" data-badge>Home Page</span>
-            </div>
-          </div>
-          <div class="project-copy">
-            <h3>Vanguard Men's Health Website Collaboration</h3>
-            <p><a href="https://go.vanguardmenshealth.com/home">https://go.vanguardmenshealth.com/home</a></p>
-            <p>
-              Collaborated on the development and refinement of the Vanguard Men's Health
-              website using the GoHighLevel platform, focusing on layout consistency,
-              content structure, and visual presentation to support a professional,
-              healthcare-focused brand.
-            </p>
-            <ul>
-              <li>Worked within the GoHighLevel website builder to assist with layout, section organization, and content placement</li>
-              <li>Refined hero sections, service highlights, CTA placement, and visual flow across key pages</li>
-              <li>Ensured design consistency, readability, and alignment with branding</li>
-              <li>Collaborated with the team to improve UX and presentation</li>
-            </ul>
-            <h4 class="tools-title">Tools Used</h4>
-            <div class="tools-used">
-              <span>GHL</span><span>HTML</span><span>CSS</span><span>Pexels.com</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-split flip">
-          <div class="project-media">
-            <div class="img-toggle" data-toggle data-labels="Home Page, Projects, Projects-Websites">
-              <img class="img active" src="./images/sample9.jpg" alt="Website Sample 1">
-              <img class="img" src="./images/sample9.1.jpg" alt="Website Sample 2">
-              <img class="img" src="./images/sample9.2.jpg" alt="Website Sample 3">
-              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-              <span class="badge" data-badge>Home Page</span>
-            </div>
-          </div>
-          <div class="project-copy">
-            <h3>Personal Portfolio Website</h3>
-            <p>
-              Developed a personal portfolio website to showcase my projects, skills, and
-              approach to web development and marketing. The site is built with a focus on
-              clean structure, responsive design, and user-friendly navigation to effectively
-              present my work to potential clients.
-            </p>
-            <ul>
-              <li>Built the website from scratch using HTML, CSS, and JavaScript</li>
-              <li>Designed a responsive layout that adapts seamlessly across desktop, tablet, and mobile screen sizes</li>
-              <li>Structured content to highlight projects, skills, and practical experience in web development and marketing</li>
-              <li>Implemented clean UI and navigation to improve user experience and readability</li>
-              <li>Integrated a contact form with Formspree to handle user inquiries and enable direct email submissions without a backend</li>
-              <li>Deployed the project using GitHub for version control and Vercel for hosting and performance monitoring</li>
-            </ul>
-            <h4 class="tools-title">Tools Used</h4>
-            <div class="tools-used">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub</span><span>Vercel</span><span>Formspree</span>
-            </div>
-          </div>
-        </div>
       </div>
+
+
+
+      <div class="project-copy">
+
+
+        <h3>
+
+          Creating Landing Page for Zucheng IT Solutions (Demo)
+
+        </h3>
+
+
+        <p>
+
+          Developed a conversion-focused landing page for Zucheng IT Solutions,
+          a Chinese tech-oriented company, using Replit and modern “vibe coding”
+          workflows. The project emphasized fast development and efficient
+          deployment, allowing the website to move quickly from concept to a
+          fully functional live page. Managed the complete setup process,
+          including domain registration, DNS configuration, and hosting, while
+          maintaining strong performance, security, and reliability. Designed
+          the landing page to reflect a modern tech brand, focusing on clear
+          messaging, intuitive navigation, and user engagement to support
+          marketing objectives.
+
+        </p>
+
+
+        <ul>
+
+
+          <li>
+
+            Developed the landing page using Replit with fast prototyping
+            (“vibe coding”) techniques for efficient turnaround
+
+          </li>
+
+
+          <li>
+
+            Purchased and configured the domain through Namecheap, aligning
+            it with the company’s branding
+
+          </li>
+
+
+          <li>
+
+            Deployed and hosted the website using SiteGround for reliable
+            uptime and performance
+
+          </li>
+
+
+          <li>
+
+            Integrated Cloudflare for DNS management, improving website speed,
+            caching, and security protection
+
+          </li>
+
+
+          <li>
+
+            Designed the layout with a focus on conversion, clear call-to-actions,
+            and user-friendly navigation
+
+          </li>
+
+
+          <li>
+
+            Implemented responsive design to ensure seamless performance across
+            desktop, tablet, and mobile devices
+
+          </li>
+
+
+        </ul>
+
+
+        <h4 class="tools-title">
+
+          Tools Used
+
+        </h4>
+
+
+        <div class="tools-used">
+
+          <span>
+            Replit
+          </span>
+
+          <span>
+            Namecheap
+          </span>
+
+          <span>
+            SiteGround
+          </span>
+
+          <span>
+            Cloudflare
+          </span>
+
+        </div>
+
+
+      </div>
+
 
     </div>
 
-    <footer class="footer-slim">
-      <div>© 2026 Sean Patrick Ramos. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./experience.html">Work Experience</a>
-        <a href="./projects.html">Projects</a>
-        <a href="./contactme.html">Contact Me</a>
-        <a href="./about.html">About</a>
+
+
+    <!-- ===================================================
+         PROJECT 02
+         =================================================== -->
+
+    <div class="project-split flip">
+
+
+      <div class="project-media">
+
+
+        <div
+          class="img-toggle"
+          data-toggle
+          data-labels="Home Page, Services Page, Contact Page"
+        >
+
+
+          <img
+            class="img active"
+            src="./images/sample10.jpg"
+            alt="Website Sample 1"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample10.1.jpg"
+            alt="Website Sample 2"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample10.2.jpg"
+            alt="Website Sample 3"
+          >
+
+
+          <button
+            class="toggle-btn prev"
+            type="button"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
+
+          <button
+            class="toggle-btn next"
+            type="button"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+
+          <span
+            class="badge"
+            data-badge
+          >
+            Home Page
+          </span>
+
+
+        </div>
+
+
       </div>
-    </footer>
+
+
+
+      <div class="project-copy">
+
+
+        <h3>
+
+          Creating Landing Page for Zhongrenxing Company (Demo)
+
+        </h3>
+
+
+        <p>
+
+          Developed a high-converting landing page for a Chinese
+          technology-focused company using Replit and modern “vibe coding”
+          workflows, enabling rapid prototyping and efficient development.
+          The project involved managing the full deployment lifecycle—from
+          domain acquisition to live hosting—while ensuring performance,
+          security, and scalability. The landing page was structured to align
+          with the company’s tech-oriented branding, focusing on clear
+          messaging, user engagement, and conversion-driven design.
+
+        </p>
+
+
+        <ul>
+
+
+          <li>
+
+            Developed the landing page using Replit with fast prototyping
+            (“vibe coding”) techniques for efficient turnaround
+
+          </li>
+
+
+          <li>
+
+            Purchased and configured the domain through Namecheap, aligning
+            it with the company’s branding
+
+          </li>
+
+
+          <li>
+
+            Deployed and hosted the website using SiteGround for reliable
+            uptime and performance
+
+          </li>
+
+
+          <li>
+
+            Integrated Cloudflare for DNS management, improving website speed,
+            caching, and security protection
+
+          </li>
+
+
+          <li>
+
+            Designed the layout with a focus on conversion, clear call-to-actions,
+            and user-friendly navigation
+
+          </li>
+
+
+          <li>
+
+            Implemented responsive design to ensure seamless performance across
+            desktop, tablet, and mobile devices
+
+          </li>
+
+
+        </ul>
+
+
+        <h4 class="tools-title">
+
+          Tools Used
+
+        </h4>
+
+
+        <div class="tools-used">
+
+          <span>
+            Replit
+          </span>
+
+          <span>
+            Namecheap
+          </span>
+
+          <span>
+            SiteGround
+          </span>
+
+          <span>
+            Cloudflare
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- ===================================================
+         PROJECT 03
+         =================================================== -->
+
+    <div class="project-split">
+
+
+      <div class="project-media">
+
+
+        <div
+          class="img-toggle"
+          data-toggle
+          data-labels="Home Page, Health Optimization Page"
+        >
+
+
+          <img
+            class="img active"
+            src="./images/sample5.jpg"
+            alt="Website Sample 1"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample5.1.jpg"
+            alt="Website Sample 2"
+          >
+
+
+          <button
+            class="toggle-btn prev"
+            type="button"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
+
+          <button
+            class="toggle-btn next"
+            type="button"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+
+          <span
+            class="badge"
+            data-badge
+          >
+            Home Page
+          </span>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="project-copy">
+
+
+        <h3>
+
+          Vanguard Men's Health Website Collaboration
+
+        </h3>
+
+
+        <p>
+
+          <a
+            href="https://go.vanguardmenshealth.com/home"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            https://go.vanguardmenshealth.com/home
+
+          </a>
+
+        </p>
+
+
+        <p>
+
+          Collaborated on the development and refinement of the Vanguard
+          Men's Health website using the GoHighLevel platform, focusing on
+          layout consistency, content structure, and visual presentation to
+          support a professional, healthcare-focused brand.
+
+        </p>
+
+
+        <ul>
+
+
+          <li>
+
+            Worked within the GoHighLevel website builder to assist with
+            layout, section organization, and content placement
+
+          </li>
+
+
+          <li>
+
+            Refined hero sections, service highlights, CTA placement, and
+            visual flow across key pages
+
+          </li>
+
+
+          <li>
+
+            Ensured design consistency, readability, and alignment with branding
+
+          </li>
+
+
+          <li>
+
+            Collaborated with the team to improve UX and presentation
+
+          </li>
+
+
+        </ul>
+
+
+        <h4 class="tools-title">
+
+          Tools Used
+
+        </h4>
+
+
+        <div class="tools-used">
+
+          <span>
+            GHL
+          </span>
+
+          <span>
+            HTML
+          </span>
+
+          <span>
+            CSS
+          </span>
+
+          <span>
+            Pexels.com
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- ===================================================
+         PROJECT 04
+         =================================================== -->
+
+    <div class="project-split flip">
+
+
+      <div class="project-media">
+
+
+        <div
+          class="img-toggle"
+          data-toggle
+          data-labels="Home Page, Projects, Projects-Websites"
+        >
+
+
+          <img
+            class="img active"
+            src="./images/sample9.jpg"
+            alt="Website Sample 1"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample9.1.jpg"
+            alt="Website Sample 2"
+          >
+
+
+          <img
+            class="img"
+            src="./images/sample9.2.jpg"
+            alt="Website Sample 3"
+          >
+
+
+          <button
+            class="toggle-btn prev"
+            type="button"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
+
+          <button
+            class="toggle-btn next"
+            type="button"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+
+          <span
+            class="badge"
+            data-badge
+          >
+            Home Page
+          </span>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="project-copy">
+
+
+        <h3>
+
+          Personal Portfolio Website
+
+        </h3>
+
+
+        <p>
+
+          Developed a personal portfolio website to showcase my projects,
+          skills, and approach to web development and marketing. The site is
+          built with a focus on clean structure, responsive design, and
+          user-friendly navigation to effectively present my work to potential
+          clients.
+
+        </p>
+
+
+        <ul>
+
+
+          <li>
+
+            Built the website from scratch using HTML, CSS, and JavaScript
+
+          </li>
+
+
+          <li>
+
+            Designed a responsive layout that adapts seamlessly across desktop,
+            tablet, and mobile screen sizes
+
+          </li>
+
+
+          <li>
+
+            Structured content to highlight projects, skills, and practical
+            experience in web development and marketing
+
+          </li>
+
+
+          <li>
+
+            Implemented clean UI and navigation to improve user experience
+            and readability
+
+          </li>
+
+
+          <li>
+
+            Integrated a contact form with Formspree to handle user inquiries
+            and enable direct email submissions without a backend
+
+          </li>
+
+
+          <li>
+
+            Deployed the project using GitHub for version control and Vercel
+            for hosting and performance monitoring
+
+          </li>
+
+
+        </ul>
+
+
+        <h4 class="tools-title">
+
+          Tools Used
+
+        </h4>
+
+
+        <div class="tools-used">
+
+          <span>
+            HTML
+          </span>
+
+          <span>
+            CSS
+          </span>
+
+          <span>
+            JavaScript
+          </span>
+
+          <span>
+            GitHub
+          </span>
+
+          <span>
+            Vercel
+          </span>
+
+          <span>
+            Formspree
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
   </div>
+
+
 </div>
 
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="footer-slim">
+
+
+  <div>
+
+    © 2026 Sean Patrick Ramos. All rights reserved.
+
+  </div>
+
+
+  <div class="footer-links">
+
+
+    <a href="./index.html">
+      Home
+    </a>
+
+
+    <a href="./experience.html">
+      Work Experience
+    </a>
+
+
+    <a href="./projects.html">
+      Projects
+    </a>
+
+
+    <a href="./contactme.html">
+      Contact Me
+    </a>
+
+
+    <a href="./about.html">
+      About
+    </a>
+
+
+  </div>
+
+
+</footer>
+  
+
+  </div>
+
+</div>
+
+<!-- =========================================================
+     IMAGE PREVIEW LIGHTBOX
+     ========================================================= -->
+
+<div
+  class="image-lightbox"
+  id="imageLightbox"
+  aria-hidden="true"
+>
+
+<button
+class="lightbox-close"
+type="button"
+aria-label="Close image preview"
+
+>
+
+  
+<i class="fa-solid fa-xmark"></i>
+  
+
+  </button>
+
+<button
+class="lightbox-prev"
+type="button"
+aria-label="Previous image"
+
+>
+
+  
+<i class="fa-solid fa-chevron-left"></i>
+  
+
+  </button>
+
+  <div class="lightbox-content">
+
+  
+<img
+  id="lightboxImage"
+  src=""
+  alt=""
+/>
+
+
+<div
+  class="lightbox-counter"
+  id="lightboxCounter"
+>
+  1 / 1
+</div>
+  
+
+  </div>
+
+<button
+class="lightbox-next"
+type="button"
+aria-label="Next image"
+
+>
+
+  
+<i class="fa-solid fa-chevron-right"></i>
+  
+
+  </button>
+
+</div>
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
 <script>
-  (function () {
-    document.querySelectorAll("[data-toggle]").forEach(box => {
-      const imgs = Array.from(box.querySelectorAll(".img"));
-      const prev = box.querySelector(".prev");
-      const next = box.querySelector(".next");
-      const badge = box.querySelector("[data-badge]");
-      const labelsRaw = box.getAttribute("data-labels") || "";
-      const labels = labelsRaw.split(",").map(s => s.trim()).filter(Boolean);
-      let index = 0;
-      const show = (i) => {
-        index = (i + imgs.length) % imgs.length;
-        imgs.forEach((img, idx) => img.classList.toggle("active", idx === index));
-        if (badge) badge.textContent = labels[index] || `Image ${index + 1}`;
-      };
-      prev?.addEventListener("click", (e) => { e.preventDefault(); show(index - 1); });
-      next?.addEventListener("click", (e) => { e.preventDefault(); show(index + 1); });
-      show(0);
+
+
+  /* =========================================================
+     MOBILE NAVIGATION
+     ========================================================= */
+
+  const menuButton =
+    document.querySelector(".mobile-menu-btn");
+
+
+  const closeButton =
+    document.querySelector(".mobile-menu-close");
+
+
+  const drawer =
+    document.querySelector(".mobile-drawer");
+
+
+  const overlay =
+    document.querySelector(".mobile-menu-overlay");
+
+
+
+  function openMenu() {
+
+    drawer?.classList.add("open");
+
+    overlay?.classList.add("open");
+
+    menuButton?.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+    document.body.classList.add(
+      "menu-open"
+    );
+
+  }
+
+
+
+  function closeMenu() {
+
+    drawer?.classList.remove("open");
+
+    overlay?.classList.remove("open");
+
+    menuButton?.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    document.body.classList.remove(
+      "menu-open"
+    );
+
+  }
+
+
+
+  menuButton?.addEventListener(
+    "click",
+    openMenu
+  );
+
+
+  closeButton?.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  overlay?.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+
+  document
+    .querySelectorAll(".mobile-nav a")
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        closeMenu
+      );
+
     });
-  })();
+
+
+
+  /* =========================================================
+     IMAGE TOGGLE
+     ========================================================= */
+
+  document
+    .querySelectorAll("[data-toggle]")
+    .forEach(box => {
+
+
+      const imgs =
+        Array.from(
+          box.querySelectorAll(".img")
+        );
+
+
+      const prev =
+        box.querySelector(".prev");
+
+
+      const next =
+        box.querySelector(".next");
+
+
+      const badge =
+        box.querySelector("[data-badge]");
+
+
+      const labelsRaw =
+        box.getAttribute("data-labels") || "";
+
+
+      const labels =
+        labelsRaw
+          .split(",")
+          .map(s => s.trim())
+          .filter(Boolean);
+
+
+      let index = 0;
+
+
+
+      const show = (i) => {
+
+        if (!imgs.length) {
+          return;
+        }
+
+
+        index =
+          (i + imgs.length) %
+          imgs.length;
+
+
+        imgs.forEach(
+          (img, idx) => {
+
+            img.classList.toggle(
+              "active",
+              idx === index
+            );
+
+          }
+        );
+
+
+        if (badge) {
+
+          badge.textContent =
+            labels[index] ||
+            `Image ${index + 1}`;
+
+        }
+
+      };
+
+
+
+      /* -------------------------------------------------------
+         Previous button on project card
+         ------------------------------------------------------- */
+
+      prev?.addEventListener(
+        "click",
+        event => {
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+          show(index - 1);
+
+        }
+      );
+
+
+
+      /* -------------------------------------------------------
+         Next button on project card
+         ------------------------------------------------------- */
+
+      next?.addEventListener(
+        "click",
+        event => {
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+          show(index + 1);
+
+        }
+      );
+
+
+
+      show(0);
+
+    });
+
+
+
+  /* =========================================================
+     IMAGE PREVIEW LIGHTBOX
+     ========================================================= */
+
+  const lightbox =
+    document.getElementById(
+      "imageLightbox"
+    );
+
+
+  const lightboxImage =
+    document.getElementById(
+      "lightboxImage"
+    );
+
+
+  const lightboxCounter =
+    document.getElementById(
+      "lightboxCounter"
+    );
+
+
+  const lightboxClose =
+    document.querySelector(
+      ".lightbox-close"
+    );
+
+
+  const lightboxPrev =
+    document.querySelector(
+      ".lightbox-prev"
+    );
+
+
+  const lightboxNext =
+    document.querySelector(
+      ".lightbox-next"
+    );
+
+
+
+  let lightboxImages = [];
+
+  let lightboxIndex = 0;
+
+
+
+  /* =========================================================
+     UPDATE LIGHTBOX
+     ========================================================= */
+
+  function updateLightbox() {
+
+    if (!lightboxImages.length) {
+      return;
+    }
+
+
+    const image =
+      lightboxImages[
+        lightboxIndex
+      ];
+
+
+    lightboxImage.src =
+      image.src;
+
+
+    lightboxImage.alt =
+      image.alt;
+
+
+    lightboxCounter.textContent =
+      `${lightboxIndex + 1} / ${lightboxImages.length}`;
+
+  }
+
+
+
+  /* =========================================================
+     OPEN LIGHTBOX
+     ========================================================= */
+
+  function openLightbox(box, clickedImage) {
+
+    const images =
+      Array.from(
+        box.querySelectorAll(".img")
+      );
+
+
+    if (!images.length) {
+      return;
+    }
+
+
+    lightboxImages =
+      images.map(img => ({
+
+        src:
+          img.currentSrc ||
+          img.src,
+
+        alt:
+          img.alt ||
+          "Website project image"
+
+      }));
+
+
+    lightboxIndex =
+      images.indexOf(
+        clickedImage
+      );
+
+
+    if (lightboxIndex < 0) {
+
+      lightboxIndex = 0;
+
+    }
+
+
+    updateLightbox();
+
+
+    /*
+     * Hide navigation when
+     * the project only has one image.
+     */
+
+    if (
+      lightboxImages.length <= 1
+    ) {
+
+      lightbox.classList.add(
+        "single-image"
+      );
+
+    } else {
+
+      lightbox.classList.remove(
+        "single-image"
+      );
+
+    }
+
+
+    lightbox.classList.add(
+      "open"
+    );
+
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+    document.body.classList.add(
+      "lightbox-open"
+    );
+
+  }
+
+
+
+  /* =========================================================
+     CLOSE LIGHTBOX
+     ========================================================= */
+
+  function closeLightbox() {
+
+    lightbox.classList.remove(
+      "open"
+    );
+
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    document.body.classList.remove(
+      "lightbox-open"
+    );
+
+
+    setTimeout(() => {
+
+      if (
+        !lightbox.classList.contains(
+          "open"
+        )
+      ) {
+
+        lightboxImage.src = "";
+
+        lightboxImages = [];
+
+        lightboxIndex = 0;
+
+      }
+
+    }, 200);
+
+  }
+
+
+
+  /* =========================================================
+     CLICK IMAGE TO OPEN PREVIEW
+     ========================================================= */
+
+  document
+    .querySelectorAll(
+      ".img-toggle .img"
+    )
+    .forEach(image => {
+
+
+      image.addEventListener(
+        "click",
+        event => {
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+
+          const box =
+            image.closest(
+              ".img-toggle"
+            );
+
+
+          if (!box) {
+            return;
+          }
+
+
+          openLightbox(
+            box,
+            image
+          );
+
+        }
+      );
+
+    });
+
+
+
+  /* =========================================================
+     LIGHTBOX NEXT
+     ========================================================= */
+
+  lightboxNext?.addEventListener(
+    "click",
+    event => {
+
+      event.preventDefault();
+
+      event.stopPropagation();
+
+
+      if (
+        lightboxImages.length <= 1
+      ) {
+
+        return;
+
+      }
+
+
+      lightboxIndex =
+        (
+          lightboxIndex + 1
+        ) %
+        lightboxImages.length;
+
+
+      updateLightbox();
+
+    }
+  );
+
+
+
+  /* =========================================================
+     LIGHTBOX PREVIOUS
+     ========================================================= */
+
+  lightboxPrev?.addEventListener(
+    "click",
+    event => {
+
+      event.preventDefault();
+
+      event.stopPropagation();
+
+
+      if (
+        lightboxImages.length <= 1
+      ) {
+
+        return;
+
+      }
+
+
+      lightboxIndex =
+        (
+          lightboxIndex -
+          1 +
+          lightboxImages.length
+        ) %
+        lightboxImages.length;
+
+
+      updateLightbox();
+
+    }
+  );
+
+
+
+  /* =========================================================
+     CLOSE BUTTON
+     ========================================================= */
+
+  lightboxClose?.addEventListener(
+    "click",
+    event => {
+
+      event.preventDefault();
+
+      event.stopPropagation();
+
+      closeLightbox();
+
+    }
+  );
+
+
+
+  /* =========================================================
+     CLICK BACKGROUND TO CLOSE
+     ========================================================= */
+
+  lightbox?.addEventListener(
+    "click",
+    event => {
+
+      if (
+        event.target === lightbox
+      ) {
+
+        closeLightbox();
+
+      }
+
+    }
+  );
+
+
+
+  /* =========================================================
+     KEYBOARD CONTROLS
+     ========================================================= */
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+
+      /* -------------------------------------------------------
+         Escape
+         ------------------------------------------------------- */
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        if (
+          lightbox?.classList.contains(
+            "open"
+          )
+        ) {
+
+          closeLightbox();
+
+        } else {
+
+          closeMenu();
+
+        }
+
+        return;
+
+      }
+
+
+      /* -------------------------------------------------------
+         Ignore arrow keys if lightbox isn't open
+         ------------------------------------------------------- */
+
+      if (
+        !lightbox?.classList.contains(
+          "open"
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      /* -------------------------------------------------------
+         Next
+         ------------------------------------------------------- */
+
+      if (
+        event.key === "ArrowRight"
+      ) {
+
+        event.preventDefault();
+
+        lightboxNext?.click();
+
+      }
+
+
+      /* -------------------------------------------------------
+         Previous
+         ------------------------------------------------------- */
+
+      if (
+        event.key === "ArrowLeft"
+      ) {
+
+        event.preventDefault();
+
+        lightboxPrev?.click();
+
+      }
+
+    }
+  );
+
+
+
+  /* =========================================================
+     PREVENT DRAGGING PREVIEW IMAGE
+     ========================================================= */
+
+  lightboxImage?.addEventListener(
+    "dragstart",
+    event => {
+
+      event.preventDefault();
+
+    }
+  );
+
+
 </script>
+
 </body>
 </html>

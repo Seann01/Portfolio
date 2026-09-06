@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Experience - Sean Patrick Ramos</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,141 +15,591 @@
 
   <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
 
 <div class="shell">
 
+  <!-- =========================================================
+       DESKTOP SIDEBAR
+       ========================================================= -->
+
   <aside class="sidebar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Patrick Ramos<small>Marketing + Automation</small></div>
+
+  
+<a href="./index.html" class="brand">
+  <div class="brand-mark">SR</div>
+  <div class="brand-text">
+    Sean Patrick Ramos
+    <small>Marketing + Automation</small>
+  </div>
+</a>
+
+<nav class="side-nav">
+  <a href="./index.html">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </a>
+
+  <a href="./experience.html" class="active">
+    <i class="fa-solid fa-briefcase"></i>
+    <span>Work Experience</span>
+  </a>
+
+  <a href="./projects.html">
+    <i class="fa-solid fa-diagram-project"></i>
+    <span>Projects</span>
+  </a>
+
+  <a href="./contactme.html">
+    <i class="fa-solid fa-envelope"></i>
+    <span>Contact Me</span>
+  </a>
+
+  <a href="./about.html">
+    <i class="fa-solid fa-user"></i>
+    <span>About</span>
+  </a>
+</nav>
+
+<div class="sidebar-foot">
+
+  <div class="sidebar-social">
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+      aria-label="Email"
+    >
+      <i class="fas fa-envelope"></i>
     </a>
-    <nav class="side-nav">
-      <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
-      <a href="./experience.html" class="active"><i class="fa-solid fa-briefcase"></i>Work Experience</a>
-      <a href="./projects.html"><i class="fa-solid fa-diagram-project"></i>Projects</a>
-      <a href="./contactme.html"><i class="fa-solid fa-envelope"></i>Contact Me</a>
-      <a href="./about.html"><i class="fa-solid fa-user"></i>About</a>
-    </nav>
-    <div class="sidebar-foot">
-      <div class="sidebar-social">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/seanramos_02/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-      <div class="sidebar-status">Open to opportunities</div>
-    </div>
+
+    <a
+      href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+      aria-label="LinkedIn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+    <a
+      href="https://www.instagram.com/seanramos_02/"
+      aria-label="Instagram"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+  <div class="sidebar-status">
+    Open to opportunities
+  </div>
+
+</div>
+  
+
   </aside>
 
+  <!-- =========================================================
+       MOBILE TOPBAR
+       ========================================================= -->
+
   <header class="topbar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Ramos</div>
-    </a>
+
+  
+<a href="./index.html" class="brand">
+  <div class="brand-mark">SR</div>
+
+  <div class="brand-text">
+    Sean Ramos
+  </div>
+</a>
+
+<button
+  class="mobile-menu-btn"
+  type="button"
+  aria-label="Open navigation menu"
+  aria-controls="mobileDrawer"
+  aria-expanded="false"
+>
+  <i class="fa-solid fa-bars"></i>
+</button>
+  
+
   </header>
-  <nav class="topbar-nav">
-    <a href="./index.html">Home</a>
-    <a href="./experience.html" class="active">Work Experience</a>
-    <a href="./projects.html">Projects</a>
-    <a href="./contactme.html">Contact Me</a>
-    <a href="./about.html">About</a>
-  </nav>
+
+  <!-- =========================================================
+       MOBILE MENU OVERLAY
+       ========================================================= -->
+
+  <div
+    class="mobile-menu-overlay"
+    aria-hidden="true"
+  ></div>
+
+  <!-- =========================================================
+       MOBILE DRAWER
+       ========================================================= -->
+
+  <aside
+    class="mobile-drawer"
+    id="mobileDrawer"
+    aria-label="Mobile navigation"
+  >
+
+  
+<div class="mobile-drawer-head">
+
+  <a href="./index.html" class="brand">
+    <div class="brand-mark">SR</div>
+
+    <div class="brand-text">
+      Sean Ramos
+    </div>
+  </a>
+
+  <button
+    class="mobile-menu-close"
+    type="button"
+    aria-label="Close navigation menu"
+  >
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+
+</div>
+
+
+<nav class="mobile-nav">
+
+  <a href="./index.html">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </a>
+
+  <a href="./experience.html" class="active">
+    <i class="fa-solid fa-briefcase"></i>
+    <span>Work Experience</span>
+  </a>
+
+  <a href="./projects.html">
+    <i class="fa-solid fa-diagram-project"></i>
+    <span>Projects</span>
+  </a>
+
+  <a href="./contactme.html">
+    <i class="fa-solid fa-envelope"></i>
+    <span>Contact Me</span>
+  </a>
+
+  <a href="./about.html">
+    <i class="fa-solid fa-user"></i>
+    <span>About</span>
+  </a>
+
+</nav>
+
+
+<div class="mobile-drawer-foot">
+
+  <div class="sidebar-social">
+
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+      aria-label="Email"
+    >
+      <i class="fas fa-envelope"></i>
+    </a>
+
+    <a
+      href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+      aria-label="LinkedIn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+    <a
+      href="https://www.instagram.com/seanramos_02/"
+      aria-label="Instagram"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+
+  </div>
+
+  <div class="sidebar-status">
+    Open to opportunities
+  </div>
+
+</div>
+  
+
+  </aside>
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
 
   <div class="content">
-    <div class="content-inner">
 
-      <section class="hero-v2" style="margin-bottom:36px;">
-        <div class="kicker">Work Experience</div>
-        <h1 style="font-size:34px;">A running log of where I've applied these skills.</h1>
-      </section>
+  
+<div class="content-inner">
 
-      <div>
-        <div class="log-row">
-          <div class="log-date">Feb 2026 – May 2026</div>
-          <div class="log-body">
-            <h3>Administrative Marketing Assistant</h3>
-            <ul>
-              <li>Conduct competitor market analysis (CMA) by evaluating local businesses’ online presence, SEO performance, and paid advertising strategies to identify growth opportunities.</li>
-              <li>Perform website audits focused on user experience, mobile responsiveness, call-to-action placement, and overall conversion optimization.</li>
-              <li>Research and analyze high-performing keywords, both organic and paid, to support SEO strategies and improve search visibility.</li>
-              <li>Assist in developing website improvement recommendations based on industry standards and competitor benchmarks.</li>
-              <li>Create structured reports summarizing findings, insights, and actionable suggestions for business growth.</li>
-              <li>Continuously learn and apply web development fundamentals (HTML/CSS) and SEO best practices to enhance analysis accuracy and recommendations.</li>
-            </ul>
-          </div>
-        </div>
+  <!-- =====================================================
+       PAGE HERO
+       ===================================================== -->
 
-        <div class="log-row">
-          <div class="log-date">Nov 2025 – Mar 2026<span class="log-tag">Project-Based</span></div>
-          <div class="log-body">
-            <h3>Virtual Marketing Associate</h3>
-            <ul>
-              <li>Managed social media platforms, including content scheduling, CTA creation, and landing page development for appointment bookings and lead generation.</li>
-              <li>Designed engaging content using Canva, including lead magnets, graphics, and basic video editing with subtitles and transitions.</li>
-              <li>Tracked and analyzed engagement metrics across multiple social media platforms to optimize content performance and audience reach.</li>
-              <li>Handled email management by creating automated replies, categorization, and tagging systems to improve response time and workflow efficiency.</li>
-              <li>Developed email marketing campaigns, including automated sequences and seasonal promotional emails, to nurture leads and guide customers toward bookings.</li>
-              <li>Built HTML/CSS landing pages to support campaigns and improve user experience.</li>
-            </ul>
-          </div>
-        </div>
+  <section class="hero-v2" style="margin-bottom:36px;">
 
-        <div class="log-row">
-          <div class="log-date">Jan 2025 – May 2025</div>
-          <div class="log-body">
-            <h3>IT Staff — Crestec Philippines Inc.</h3>
-            <ul>
-              <li>Troubleshot printer, computer, and network connectivity issues</li>
-              <li>Set up computers, printers, and telephone systems including cabling</li>
-              <li>Installed printers and essential applications such as Microsoft Office, Outlook, and internal tools</li>
-              <li>Managed inventory of department equipment, including restocking and disposal</li>
-              <li>Provided technical support for employee hardware, software, and network concerns</li>
-            </ul>
-          </div>
-        </div>
+    <div class="kicker">
+      Work Experience
+    </div>
 
-        <div class="log-row">
-          <div class="log-date">Oct 2024 – Jan 2025<span class="log-tag">International Account · Peak Season</span></div>
-          <div class="log-body">
-            <h3>Customer Service and Experience Representative — Alorica</h3>
-            <ul>
-              <li>Handled sales and customer service for an international account</li>
-              <li>Provided warm, professional support for customer order concerns</li>
-              <li>Assisted customers with order processing and transaction issues</li>
-              <li>Delivered effective solutions while maintaining customer satisfaction during peak season</li>
-            </ul>
-          </div>
-        </div>
+    <h1 style="font-size:34px;">
+      A running log of where I've applied these skills.
+    </h1>
 
-        <div class="log-row">
-          <div class="log-date">Mar 2024 – Jul 2024<span class="log-tag">Contract Role</span></div>
-          <div class="log-body">
-            <h3>IT Specialist — DysrupIT</h3>
-            <ul>
-              <li>Provided technical support to employees, resolving hardware, software, and system access issues</li>
-              <li>Automated employee timesheet processing using CSV-based workflows to improve payroll accuracy and efficiency</li>
-              <li>Handled device provisioning, setup, and distribution for new hires during onboarding</li>
-              <li>Maintained inventory of IT equipment and office supplies to ensure proper tracking and availability</li>
-              <li>Supported onboarding by ensuring systems, tools, and devices were fully operational</li>
-            </ul>
-          </div>
-        </div>
+  </section>
+
+
+  <!-- =====================================================
+       EXPERIENCE LOG
+       ===================================================== -->
+
+  <div>
+
+    <!-- EXPERIENCE 01 -->
+
+    <div class="log-row">
+
+      <div class="log-date">
+        Feb 2026 – May 2026
+      </div>
+
+      <div class="log-body">
+
+        <h3>
+          Administrative Marketing Assistant
+        </h3>
+
+        <ul>
+
+          <li>
+            Conduct competitor market analysis (CMA) by evaluating local businesses’ online presence, SEO performance, and paid advertising strategies to identify growth opportunities.
+          </li>
+
+          <li>
+            Perform website audits focused on user experience, mobile responsiveness, call-to-action placement, and overall conversion optimization.
+          </li>
+
+          <li>
+            Research and analyze high-performing keywords, both organic and paid, to support SEO strategies and improve search visibility.
+          </li>
+
+          <li>
+            Assist in developing website improvement recommendations based on industry standards and competitor benchmarks.
+          </li>
+
+          <li>
+            Create structured reports summarizing findings, insights, and actionable suggestions for business growth.
+          </li>
+
+          <li>
+            Continuously learn and apply web development fundamentals (HTML/CSS) and SEO best practices to enhance analysis accuracy and recommendations.
+          </li>
+
+        </ul>
+
       </div>
 
     </div>
 
-    <footer class="footer-slim">
-      <div>© 2026 Sean Patrick Ramos. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./experience.html">Work Experience</a>
-        <a href="./projects.html">Projects</a>
-        <a href="./contactme.html">Contact Me</a>
-        <a href="./about.html">About</a>
+
+    <!-- EXPERIENCE 02 -->
+
+    <div class="log-row">
+
+      <div class="log-date">
+        Nov 2025 – Mar 2026
+        <span class="log-tag">
+          Project-Based
+        </span>
       </div>
-    </footer>
+
+      <div class="log-body">
+
+        <h3>
+          Virtual Marketing Associate
+        </h3>
+
+        <ul>
+
+          <li>
+            Managed social media platforms, including content scheduling, CTA creation, and landing page development for appointment bookings and lead generation.
+          </li>
+
+          <li>
+            Designed engaging content using Canva, including lead magnets, graphics, and basic video editing with subtitles and transitions.
+          </li>
+
+          <li>
+            Tracked and analyzed engagement metrics across multiple social media platforms to optimize content performance and audience reach.
+          </li>
+
+          <li>
+            Handled email management by creating automated replies, categorization, and tagging systems to improve response time and workflow efficiency.
+          </li>
+
+          <li>
+            Developed email marketing campaigns, including automated sequences and seasonal promotional emails, to nurture leads and guide customers toward bookings.
+          </li>
+
+          <li>
+            Built HTML/CSS landing pages to support campaigns and improve user experience.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <!-- EXPERIENCE 03 -->
+
+    <div class="log-row">
+
+      <div class="log-date">
+        Jan 2025 – May 2025
+      </div>
+
+      <div class="log-body">
+
+        <h3>
+          IT Staff — Crestec Philippines Inc.
+        </h3>
+
+        <ul>
+
+          <li>
+            Troubleshot printer, computer, and network connectivity issues
+          </li>
+
+          <li>
+            Set up computers, printers, and telephone systems including cabling
+          </li>
+
+          <li>
+            Installed printers and essential applications such as Microsoft Office, Outlook, and internal tools
+          </li>
+
+          <li>
+            Managed inventory of department equipment, including restocking and disposal
+          </li>
+
+          <li>
+            Provided technical support for employee hardware, software, and network concerns
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <!-- EXPERIENCE 04 -->
+
+    <div class="log-row">
+
+      <div class="log-date">
+
+        Oct 2024 – Jan 2025
+
+        <span class="log-tag">
+          International Account · Peak Season
+        </span>
+
+      </div>
+
+      <div class="log-body">
+
+        <h3>
+          Customer Service and Experience Representative — Alorica
+        </h3>
+
+        <ul>
+
+          <li>
+            Handled sales and customer service for an international account
+          </li>
+
+          <li>
+            Provided warm, professional support for customer order concerns
+          </li>
+
+          <li>
+            Assisted customers with order processing and transaction issues
+          </li>
+
+          <li>
+            Delivered effective solutions while maintaining customer satisfaction during peak season
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <!-- EXPERIENCE 05 -->
+
+    <div class="log-row">
+
+      <div class="log-date">
+
+        Mar 2024 – Jul 2024
+
+        <span class="log-tag">
+          Contract Role
+        </span>
+
+      </div>
+
+      <div class="log-body">
+
+        <h3>
+          IT Specialist — DysrupIT
+        </h3>
+
+        <ul>
+
+          <li>
+            Provided technical support to employees, resolving hardware, software, and system access issues
+          </li>
+
+          <li>
+            Automated employee timesheet processing using CSV-based workflows to improve payroll accuracy and efficiency
+          </li>
+
+          <li>
+            Handled device provisioning, setup, and distribution for new hires during onboarding
+          </li>
+
+          <li>
+            Maintained inventory of IT equipment and office supplies to ensure proper tracking and availability
+          </li>
+
+          <li>
+            Supported onboarding by ensuring systems, tools, and devices were fully operational
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
   </div>
+
 </div>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="footer-slim">
+
+  <div>
+    © 2026 Sean Patrick Ramos. All rights reserved.
+  </div>
+
+  <div class="footer-links">
+
+    <a href="./index.html">
+      Home
+    </a>
+
+    <a href="./experience.html">
+      Work Experience
+    </a>
+
+    <a href="./projects.html">
+      Projects
+    </a>
+
+    <a href="./contactme.html">
+      Contact Me
+    </a>
+
+    <a href="./about.html">
+      About
+    </a>
+
+  </div>
+
+</footer>
+  
+
+  </div>
+
+</div>
+
+<!-- =========================================================
+     MOBILE NAVIGATION SCRIPT
+     ========================================================= -->
+
+<script>
+  const menuButton = document.querySelector(".mobile-menu-btn");
+  const closeButton = document.querySelector(".mobile-menu-close");
+  const drawer = document.querySelector(".mobile-drawer");
+  const overlay = document.querySelector(".mobile-menu-overlay");
+
+  function openMenu() {
+    drawer?.classList.add("open");
+    overlay?.classList.add("open");
+
+    menuButton?.setAttribute("aria-expanded", "true");
+
+    document.body.classList.add("menu-open");
+  }
+
+  function closeMenu() {
+    drawer?.classList.remove("open");
+    overlay?.classList.remove("open");
+
+    menuButton?.setAttribute("aria-expanded", "false");
+
+    document.body.classList.remove("menu-open");
+  }
+
+  menuButton?.addEventListener("click", openMenu);
+
+  closeButton?.addEventListener("click", closeMenu);
+
+  overlay?.addEventListener("click", closeMenu);
+
+
+  /* Close drawer after selecting a page */
+
+  document.querySelectorAll(".mobile-nav a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+
+  /* Close drawer with Escape */
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
+</script>
 
 </body>
 </html>

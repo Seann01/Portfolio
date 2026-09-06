@@ -1,166 +1,1482 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Projects - Automations</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="./style.css">
+
+  <!--
+    Defensive rule:
+    The old top navigation is no longer used.
+  -->
+
+  <style>
+
+    .topbar-nav {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      max-height: 0 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+    }
+
+
+    /* =========================================================
+       IMAGE LIGHTBOX / PREVIEW
+       ========================================================= */
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px;
+
+      background: rgba(0, 0, 0, 0.88);
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+    }
+
+
+    .image-lightbox.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+
+    .lightbox-inner {
+      position: relative;
+
+      width: min(1100px, 92vw);
+      height: min(86vh, 800px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .lightbox-image {
+      display: block;
+
+      max-width: 100%;
+      max-height: 100%;
+
+      width: auto;
+      height: auto;
+
+      object-fit: contain;
+
+      border: 1px solid rgba(255,255,255,0.15);
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.55);
+
+      border-radius: 4px;
+    }
+
+
+    .lightbox-close {
+      position: absolute;
+
+      top: -18px;
+      right: -18px;
+
+      width: 44px;
+      height: 44px;
+
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+
+      background: rgba(18,21,27,0.95);
+      color: #fff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      font-size: 18px;
+
+      z-index: 5;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.12);
+      transform: scale(1.05);
+    }
+
+
+    .lightbox-prev,
+    .lightbox-next {
+
+      position: absolute;
+
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 48px;
+      height: 48px;
+
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 50%;
+
+      background: rgba(18,21,27,0.92);
+      color: #fff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      font-size: 25px;
+
+      z-index: 5;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+
+    .lightbox-prev {
+      left: -70px;
+    }
+
+
+    .lightbox-next {
+      right: -70px;
+    }
+
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+
+    .lightbox-prev:hover {
+      transform: translateY(-50%) translateX(-2px);
+    }
+
+
+    .lightbox-next:hover {
+      transform: translateY(-50%) translateX(2px);
+    }
+
+
+    .lightbox-counter {
+
+      position: absolute;
+
+      left: 50%;
+      bottom: -34px;
+
+      transform: translateX(-50%);
+
+      color: rgba(255,255,255,0.75);
+
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+
+      letter-spacing: 0.04em;
+
+      white-space: nowrap;
+    }
+
+
+    /* Make images obviously clickable */
+
+    .img-toggle .img {
+      cursor: zoom-in;
+    }
+
+
+    /* Single-image project */
+
+    .image-lightbox.single-image .lightbox-prev,
+    .image-lightbox.single-image .lightbox-next,
+    .image-lightbox.single-image .lightbox-counter {
+      display: none;
+    }
+
+
+    /* =========================================================
+       MOBILE LIGHTBOX
+       ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .image-lightbox {
+        padding: 20px;
+      }
+
+
+      .lightbox-inner {
+        width: 94vw;
+        height: 78vh;
+      }
+
+
+      .lightbox-close {
+        top: -52px;
+        right: 0;
+      }
+
+
+      .lightbox-prev,
+      .lightbox-next {
+        width: 42px;
+        height: 42px;
+
+        font-size: 21px;
+      }
+
+
+      .lightbox-prev {
+        left: 8px;
+      }
+
+
+      .lightbox-next {
+        right: 8px;
+      }
+
+
+      .lightbox-counter {
+        bottom: -30px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
+
 <body>
 
 <div class="shell">
 
+
+  <!-- =========================================================
+       DESKTOP SIDEBAR
+       ========================================================= -->
+
   <aside class="sidebar">
+
     <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Patrick Ramos<small>Marketing + Automation</small></div>
-    </a>
-    <nav class="side-nav">
-      <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
-      <a href="./experience.html"><i class="fa-solid fa-briefcase"></i>Work Experience</a>
-      <a href="./projects.html" class="active"><i class="fa-solid fa-diagram-project"></i>Projects</a>
-      <a href="./contactme.html"><i class="fa-solid fa-envelope"></i>Contact Me</a>
-      <a href="./about.html"><i class="fa-solid fa-user"></i>About</a>
-    </nav>
-    <div class="sidebar-foot">
-      <div class="sidebar-social">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/seanramos_02/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+
+      <div class="brand-mark">
+        SR
       </div>
-      <div class="sidebar-status">Open to opportunities</div>
+
+      <div class="brand-text">
+        Sean Patrick Ramos
+        <small>Marketing + Automation</small>
+      </div>
+
+    </a>
+
+
+    <nav class="side-nav">
+
+      <a href="./index.html">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./experience.html">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Work Experience</span>
+      </a>
+
+      <a href="./projects.html" class="active">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Projects</span>
+      </a>
+
+      <a href="./contactme.html">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Contact Me</span>
+      </a>
+
+      <a href="./about.html">
+        <i class="fa-solid fa-user"></i>
+        <span>About</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-foot">
+
+      <div class="sidebar-social">
+
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+          aria-label="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a
+          href="https://www.instagram.com/seanramos_02/"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+
+      </div>
+
+
+      <div class="sidebar-status">
+        Open to opportunities
+      </div>
+
     </div>
+
   </aside>
 
-  <header class="topbar">
-    <a href="./index.html" class="brand">
-      <div class="brand-mark">SR</div>
-      <div class="brand-text">Sean Patrick Ramos</div>
-    </a>
-  </header>
-  <nav class="topbar-nav">
-    <a href="./index.html">Home</a>
-    <a href="./experience.html">Work Experience</a>
-    <a href="./projects.html" class="active">Projects</a>
-    <a href="./contactme.html">Contact Me</a>
-    <a href="./about.html">About</a>
-  </nav>
 
-  <div class="content">
+  <!-- =========================================================
+       MOBILE TOPBAR
+       ========================================================= -->
+
+  <header class="topbar">
+
+    <a href="./index.html" class="brand">
+
+      <div class="brand-mark">
+        SR
+      </div>
+
+      <div class="brand-text">
+        Sean Patrick Ramos
+      </div>
+
+    </a>
+
+
+    <button
+      class="mobile-menu-btn"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-controls="mobileDrawer"
+      aria-expanded="false"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+  </header>
+
+
+  <!-- =========================================================
+       MOBILE MENU OVERLAY
+       ========================================================= -->
+
+  <div
+    class="mobile-menu-overlay"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- =========================================================
+       MOBILE NAVIGATION DRAWER
+       ========================================================= -->
+
+  <aside
+    class="mobile-drawer"
+    id="mobileDrawer"
+    aria-label="Mobile navigation"
+  >
+
+    <div class="mobile-drawer-head">
+
+      <a href="./index.html" class="brand">
+
+        <div class="brand-mark">
+          SR
+        </div>
+
+        <div class="brand-text">
+          Sean Patrick Ramos
+          <small>Marketing + Automation</small>
+        </div>
+
+      </a>
+
+
+      <button
+        class="mobile-menu-close"
+        type="button"
+        aria-label="Close navigation menu"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+
+    <nav class="mobile-nav">
+
+      <a href="./index.html">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./experience.html">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Work Experience</span>
+      </a>
+
+      <a href="./projects.html" class="active">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Projects</span>
+      </a>
+
+      <a href="./contactme.html">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Contact Me</span>
+      </a>
+
+      <a href="./about.html">
+        <i class="fa-solid fa-user"></i>
+        <span>About</span>
+      </a>
+
+    </nav>
+
+
+    <div class="mobile-drawer-foot">
+
+      <div class="sidebar-social">
+
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+          aria-label="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a
+          href="https://www.instagram.com/seanramos_02/"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+
+      </div>
+
+
+      <div class="sidebar-status">
+        Open to opportunities
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
+
+  <main class="content">
+
     <div class="content-inner">
 
-      <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i>Back to Projects</a>
 
-      <section class="hero-v2" style="margin-bottom:8px;">
-        <div class="kicker">Automations</div>
-        <h1 style="font-size:34px;">Scripts and workflows that remove manual busywork.</h1>
+      <!-- BACK TO PROJECTS -->
+
+      <a href="./projects.html" class="back-link">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Projects
+
+      </a>
+
+
+      <!-- =====================================================
+           HERO
+           ===================================================== -->
+
+      <section
+        class="hero-v2"
+        style="margin-bottom:8px;"
+      >
+
+        <div class="kicker">
+          Automations
+        </div>
+
+        <h1 style="font-size:34px;">
+          Scripts and workflows that remove manual busywork.
+        </h1>
+
       </section>
 
+
+      <!-- =====================================================
+           PROJECTS
+           ===================================================== -->
+
       <div>
+
+
+        <!-- ===================================================
+             PROJECT 1
+             =================================================== -->
+
         <div class="project-split">
+
+
           <div class="project-media">
-            <div class="img-toggle" data-toggle data-labels="Raw Data,Report Output">
-              <img class="img active" src="./images/sample4.jpg" alt="Timesheet Automation Before">
-              <img class="img" src="./images/sample4.1.jpg" alt="Timesheet Automation After">
-              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-              <span class="badge" data-badge>Raw Data</span>
+
+            <div
+              class="img-toggle"
+              data-toggle
+              data-labels="Raw Data,Report Output"
+            >
+
+              <img
+                class="img active"
+                src="./images/sample4.jpg"
+                alt="Timesheet Automation Before"
+              >
+
+              <img
+                class="img"
+                src="./images/sample4.1.jpg"
+                alt="Timesheet Automation After"
+              >
+
+
+              <button
+                class="toggle-btn prev"
+                type="button"
+                aria-label="Previous image"
+              >
+                ‹
+              </button>
+
+
+              <button
+                class="toggle-btn next"
+                type="button"
+                aria-label="Next image"
+              >
+                ›
+              </button>
+
+
+              <span
+                class="badge"
+                data-badge
+              >
+                Raw Data
+              </span>
+
             </div>
+
           </div>
+
+
           <div class="project-copy">
-            <h3>Timesheet Automation</h3>
+
+            <h3>
+              Timesheet Automation
+            </h3>
+
+
             <p>
               Built an automated timesheet workflow using anonymized attendance data
               exported from Sprout, transforming raw biometric logs into a structured,
               payroll-ready format while maintaining data confidentiality.
             </p>
+
+
             <ul>
-              <li>CSV file generated from Sprout containing anonymized shift schedules and biometric logs (Raw Data)</li>
-              <li>Automated processing converts raw data into a clean, structured timesheet output for payroll review (Output)</li>
-              <li>All employee-identifiable information removed to comply with data privacy requirements</li>
-              <li>Reduced manual processing time and minimized payroll-related errors</li>
+
+              <li>
+                CSV file generated from Sprout containing anonymized shift schedules
+                and biometric logs (Raw Data)
+              </li>
+
+              <li>
+                Automated processing converts raw data into a clean, structured
+                timesheet output for payroll review (Output)
+              </li>
+
+              <li>
+                All employee-identifiable information removed to comply with data
+                privacy requirements
+              </li>
+
+              <li>
+                Reduced manual processing time and minimized payroll-related errors
+              </li>
+
             </ul>
-            <h4 class="tools-title">Tools Used</h4>
+
+
+            <h4 class="tools-title">
+              Tools Used
+            </h4>
+
+
             <div class="tools-used">
-              <span>Python</span><span>Pandas</span><span>CSV Processing</span><span>Git Bash</span><span>Bash</span><span>Automation Scripts</span>
+
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>CSV Processing</span>
+              <span>Git Bash</span>
+              <span>Bash</span>
+              <span>Automation Scripts</span>
+
             </div>
+
           </div>
+
         </div>
 
+
+        <!-- ===================================================
+             PROJECT 2
+             =================================================== -->
+
         <div class="project-split flip">
+
+
           <div class="project-media">
-            <div class="img-toggle" data-toggle data-labels="Raw Data,Report Output">
-              <img class="img active" src="./images/sample2.1.jpg" alt="Raw Data">
-              <img class="img" src="./images/sample2.jpg" alt="Report Output">
-              <button class="toggle-btn prev" type="button" aria-label="Previous image">‹</button>
-              <button class="toggle-btn next" type="button" aria-label="Next image">›</button>
-              <span class="badge" data-badge>Raw Data</span>
+
+            <div
+              class="img-toggle"
+              data-toggle
+              data-labels="Raw Data,Report Output"
+            >
+
+              <img
+                class="img active"
+                src="./images/sample2.1.jpg"
+                alt="Raw Data"
+              >
+
+              <img
+                class="img"
+                src="./images/sample2.jpg"
+                alt="Report Output"
+              >
+
+
+              <button
+                class="toggle-btn prev"
+                type="button"
+                aria-label="Previous image"
+              >
+                ‹
+              </button>
+
+
+              <button
+                class="toggle-btn next"
+                type="button"
+                aria-label="Next image"
+              >
+                ›
+              </button>
+
+
+              <span
+                class="badge"
+                data-badge
+              >
+                Raw Data
+              </span>
+
             </div>
+
           </div>
+
+
           <div class="project-copy">
-            <h3>Automated Social Media Reporting using Spreadsheet Queries (Sample Data)</h3>
+
+            <h3>
+              Automated Social Media Reporting using Spreadsheet Queries (Sample Data)
+            </h3>
+
+
             <p>
               Developed a structured reporting using sample social media data to
               demonstrate query-driven automation within a spreadsheet environment.
             </p>
+
+
             <ul>
-              <li>Designed a multi-sheet structure separating raw data and reporting outputs</li>
-              <li>Used spreadsheet queries to extract, aggregate, and summarize sample raw data</li>
-              <li>Automated calculation of engagement metrics and platform performance</li>
-              <li>Implemented auto-updating summaries that refresh as new rows are added</li>
-              <li>Demonstrated lightweight reporting automation using native spreadsheet tools</li>
+
+              <li>
+                Designed a multi-sheet structure separating raw data and reporting outputs
+              </li>
+
+              <li>
+                Used spreadsheet queries to extract, aggregate, and summarize sample raw data
+              </li>
+
+              <li>
+                Automated calculation of engagement metrics and platform performance
+              </li>
+
+              <li>
+                Implemented auto-updating summaries that refresh as new rows are added
+              </li>
+
+              <li>
+                Demonstrated lightweight reporting automation using native spreadsheet tools
+              </li>
+
             </ul>
-            <p class="link-line">Link to the spreadsheet:</p>
-            <p><a href="https://docs.google.com/spreadsheets/d/19vkXjV0LH1qFU6mi7O_ADQVbHy5gK7yp4HiOTctBNiU/edit?usp=sharing">https://docs.google.com/</a></p>
-            <h4 class="tools-title">Tools Used</h4>
+
+
+            <p class="link-line">
+              Link to the spreadsheet:
+            </p>
+
+
+            <p>
+
+              <a
+                href="https://docs.google.com/spreadsheets/d/19vkXjV0LH1qFU6mi7O_ADQVbHy5gK7yp4HiOTctBNiU/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://docs.google.com/
+              </a>
+
+            </p>
+
+
+            <h4 class="tools-title">
+              Tools Used
+            </h4>
+
+
             <div class="tools-used">
-              <span>Google Sheets</span><span>Queries</span>
+
+              <span>Google Sheets</span>
+              <span>Queries</span>
+
             </div>
+
           </div>
+
         </div>
+
+
       </div>
 
     </div>
 
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
     <footer class="footer-slim">
-      <div>© 2026 Sean Patrick Ramos. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./experience.html">Work Experience</a>
-        <a href="./projects.html">Projects</a>
-        <a href="./contactme.html">Contact Me</a>
-        <a href="./about.html">About</a>
+
+      <div>
+        © 2026 Sean Patrick Ramos. All rights reserved.
       </div>
+
+
+      <div class="footer-links">
+
+        <a href="./index.html">
+          Home
+        </a>
+
+        <a href="./experience.html">
+          Work Experience
+        </a>
+
+        <a href="./projects.html">
+          Projects
+        </a>
+
+        <a href="./contactme.html">
+          Contact Me
+        </a>
+
+        <a href="./about.html">
+          About
+        </a>
+
+      </div>
+
     </footer>
-  </div>
+
+
+  </main>
+
 </div>
 
+
+<!-- =========================================================
+     IMAGE LIGHTBOX
+     ========================================================= -->
+
+<div
+  class="image-lightbox"
+  id="imageLightbox"
+  aria-hidden="true"
+>
+
+  <div class="lightbox-inner">
+
+
+    <button
+      class="lightbox-close"
+      id="lightboxClose"
+      type="button"
+      aria-label="Close image preview"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+
+    <button
+      class="lightbox-prev"
+      id="lightboxPrev"
+      type="button"
+      aria-label="Previous image"
+    >
+      ‹
+    </button>
+
+
+    <img
+      class="lightbox-image"
+      id="lightboxImage"
+      src=""
+      alt=""
+    >
+
+
+    <button
+      class="lightbox-next"
+      id="lightboxNext"
+      type="button"
+      aria-label="Next image"
+    >
+      ›
+    </button>
+
+
+    <div
+      class="lightbox-counter"
+      id="lightboxCounter"
+    >
+      1 / 2
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
 <script>
+
+  /* =========================================================
+     IMAGE TOGGLE + LIGHTBOX
+     ========================================================= */
+
   (function () {
-    document.querySelectorAll("[data-toggle]").forEach(box => {
-      const imgs = Array.from(box.querySelectorAll(".img"));
-      const prev = box.querySelector(".prev");
-      const next = box.querySelector(".next");
-      const badge = box.querySelector("[data-badge]");
-      const labelsRaw = box.getAttribute("data-labels") || "";
-      const labels = labelsRaw.split(",").map(s => s.trim()).filter(Boolean);
+
+    const toggles =
+      Array.from(
+        document.querySelectorAll("[data-toggle]")
+      );
+
+
+    const lightbox =
+      document.getElementById("imageLightbox");
+
+    const lightboxImage =
+      document.getElementById("lightboxImage");
+
+    const lightboxClose =
+      document.getElementById("lightboxClose");
+
+    const lightboxPrev =
+      document.getElementById("lightboxPrev");
+
+    const lightboxNext =
+      document.getElementById("lightboxNext");
+
+    const lightboxCounter =
+      document.getElementById("lightboxCounter");
+
+
+    let currentBox = null;
+    let currentIndex = 0;
+
+
+    /* =======================================================
+       NORMAL IMAGE TOGGLE
+       ======================================================= */
+
+    toggles.forEach(box => {
+
+      const imgs =
+        Array.from(
+          box.querySelectorAll(".img")
+        );
+
+      const prev =
+        box.querySelector(".prev");
+
+      const next =
+        box.querySelector(".next");
+
+      const badge =
+        box.querySelector("[data-badge]");
+
+
+      const labelsRaw =
+        box.getAttribute("data-labels") || "";
+
+
+      const labels =
+        labelsRaw
+          .split(",")
+          .map(s => s.trim())
+          .filter(Boolean);
+
+
       let index = 0;
+
+
       const show = (i) => {
-        index = (i + imgs.length) % imgs.length;
-        imgs.forEach((img, idx) => img.classList.toggle("active", idx === index));
-        if (badge) badge.textContent = labels[index] || `Image ${index + 1}`;
+
+        if (!imgs.length) return;
+
+
+        index =
+          (i + imgs.length) % imgs.length;
+
+
+        imgs.forEach((img, idx) => {
+
+          img.classList.toggle(
+            "active",
+            idx === index
+          );
+
+        });
+
+
+        if (badge) {
+
+          badge.textContent =
+            labels[index] ||
+            `Image ${index + 1}`;
+
+        }
+
       };
-      prev?.addEventListener("click", (e) => { e.preventDefault(); show(index - 1); });
-      next?.addEventListener("click", (e) => { e.preventDefault(); show(index + 1); });
+
+
+      prev?.addEventListener(
+        "click",
+        (e) => {
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          show(index - 1);
+
+        }
+      );
+
+
+      next?.addEventListener(
+        "click",
+        (e) => {
+
+          e.preventDefault();
+          e.stopPropagation();
+
+          show(index + 1);
+
+        }
+      );
+
+
+      /* =====================================================
+         CLICK IMAGE → OPEN LIGHTBOX
+         ===================================================== */
+
+      imgs.forEach((img, imgIndex) => {
+
+        img.addEventListener(
+          "click",
+          () => {
+
+            openLightbox(
+              box,
+              imgIndex
+            );
+
+          }
+        );
+
+      });
+
+
       show(0);
+
     });
+
+
+    /* =========================================================
+       OPEN LIGHTBOX
+       ========================================================= */
+
+    function openLightbox(box, index) {
+
+      if (!box) return;
+
+
+      const imgs =
+        Array.from(
+          box.querySelectorAll(".img")
+        );
+
+
+      if (!imgs.length) return;
+
+
+      currentBox = box;
+
+      currentIndex =
+        (index + imgs.length) % imgs.length;
+
+
+      updateLightbox();
+
+
+      lightbox?.classList.add("open");
+
+      lightbox?.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      document.body.classList.add(
+        "lightbox-open"
+      );
+
+
+      if (imgs.length <= 1) {
+
+        lightbox?.classList.add(
+          "single-image"
+        );
+
+      } else {
+
+        lightbox?.classList.remove(
+          "single-image"
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       UPDATE LIGHTBOX IMAGE
+       ========================================================= */
+
+    function updateLightbox() {
+
+      if (!currentBox) return;
+
+
+      const imgs =
+        Array.from(
+          currentBox.querySelectorAll(".img")
+        );
+
+
+      if (!imgs.length) return;
+
+
+      currentIndex =
+        (currentIndex + imgs.length) % imgs.length;
+
+
+      const activeImage =
+        imgs[currentIndex];
+
+
+      lightboxImage.src =
+        activeImage.src;
+
+
+      lightboxImage.alt =
+        activeImage.alt || "Project preview";
+
+
+      lightboxCounter.textContent =
+        `${currentIndex + 1} / ${imgs.length}`;
+
+    }
+
+
+    /* =========================================================
+       NEXT IMAGE
+       ========================================================= */
+
+    function nextLightboxImage() {
+
+      if (!currentBox) return;
+
+
+      const imgs =
+        currentBox.querySelectorAll(".img");
+
+
+      if (imgs.length <= 1) return;
+
+
+      currentIndex++;
+
+      if (currentIndex >= imgs.length) {
+        currentIndex = 0;
+      }
+
+
+      updateLightbox();
+
+    }
+
+
+    /* =========================================================
+       PREVIOUS IMAGE
+       ========================================================= */
+
+    function previousLightboxImage() {
+
+      if (!currentBox) return;
+
+
+      const imgs =
+        currentBox.querySelectorAll(".img");
+
+
+      if (imgs.length <= 1) return;
+
+
+      currentIndex--;
+
+      if (currentIndex < 0) {
+        currentIndex = imgs.length - 1;
+      }
+
+
+      updateLightbox();
+
+    }
+
+
+    /* =========================================================
+       CLOSE LIGHTBOX
+       ========================================================= */
+
+    function closeLightbox() {
+
+      lightbox?.classList.remove("open");
+
+      lightbox?.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      document.body.classList.remove(
+        "lightbox-open"
+      );
+
+
+      currentBox = null;
+
+    }
+
+
+    /* =========================================================
+       BUTTON EVENTS
+       ========================================================= */
+
+    lightboxClose?.addEventListener(
+      "click",
+      (event) => {
+
+        event.preventDefault();
+
+        closeLightbox();
+
+      }
+    );
+
+
+    lightboxNext?.addEventListener(
+      "click",
+      (event) => {
+
+        event.preventDefault();
+
+        nextLightboxImage();
+
+      }
+    );
+
+
+    lightboxPrev?.addEventListener(
+      "click",
+      (event) => {
+
+        event.preventDefault();
+
+        previousLightboxImage();
+
+      }
+    );
+
+
+    /* =========================================================
+       CLICK BACKGROUND TO CLOSE
+       ========================================================= */
+
+    lightbox?.addEventListener(
+      "click",
+      (event) => {
+
+        if (event.target === lightbox) {
+
+          closeLightbox();
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       KEYBOARD CONTROLS
+       ========================================================= */
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (!lightbox?.classList.contains("open")) {
+          return;
+        }
+
+
+        if (event.key === "Escape") {
+
+          closeLightbox();
+
+          return;
+
+        }
+
+
+        if (event.key === "ArrowRight") {
+
+          nextLightboxImage();
+
+          return;
+
+        }
+
+
+        if (event.key === "ArrowLeft") {
+
+          previousLightboxImage();
+
+        }
+
+      }
+    );
+
   })();
+
+
+  /* =========================================================
+     MOBILE NAVIGATION
+     ========================================================= */
+
+  const menuButton =
+    document.querySelector(".mobile-menu-btn");
+
+
+  const closeButton =
+    document.querySelector(".mobile-menu-close");
+
+
+  const drawer =
+    document.querySelector(".mobile-drawer");
+
+
+  const overlay =
+    document.querySelector(".mobile-menu-overlay");
+
+
+  function openMenu() {
+
+    drawer?.classList.add("open");
+
+    overlay?.classList.add("open");
+
+
+    menuButton?.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+
+    document.body.classList.add(
+      "menu-open"
+    );
+
+  }
+
+
+  function closeMenu() {
+
+    drawer?.classList.remove("open");
+
+    overlay?.classList.remove("open");
+
+
+    menuButton?.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+
+    document.body.classList.remove(
+      "menu-open"
+    );
+
+  }
+
+
+  menuButton?.addEventListener(
+    "click",
+    openMenu
+  );
+
+
+  closeButton?.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  overlay?.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  document
+    .querySelectorAll(".mobile-nav a")
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        closeMenu
+      );
+
+    });
+
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (event.key === "Escape") {
+
+        closeMenu();
+
+      }
+
+    }
+  );
+
 </script>
+
+
 </body>
 </html>

@@ -390,6 +390,23 @@
 
   <header class="topbar">
 
+    <!-- HAMBURGER -->
+
+    <button
+      class="mobile-menu-btn"
+      id="mobileMenuBtn"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+
+    <!-- MOBILE BRAND -->
+
     <a href="./index.html" class="brand">
 
       <div class="brand-mark">
@@ -397,21 +414,10 @@
       </div>
 
       <div class="brand-text">
-        Sean Patrick Ramos
+        Sean Ramos
       </div>
 
     </a>
-
-
-    <button
-      class="mobile-menu-btn"
-      type="button"
-      aria-label="Open navigation menu"
-      aria-controls="mobileDrawer"
-      aria-expanded="false"
-    >
-      <i class="fa-solid fa-bars"></i>
-    </button>
 
   </header>
 
@@ -422,7 +428,7 @@
 
   <div
     class="mobile-menu-overlay"
-    aria-hidden="true"
+    id="mobileMenuOverlay"
   ></div>
 
 
@@ -430,70 +436,104 @@
        MOBILE NAVIGATION DRAWER
        ========================================================= -->
 
-  <aside
+  <nav
     class="mobile-drawer"
     id="mobileDrawer"
     aria-label="Mobile navigation"
   >
 
-    <div class="mobile-drawer-head">
+    <div class="mobile-drawer-header">
 
-      <a href="./index.html" class="brand">
-
-        <div class="brand-mark">
-          SR
-        </div>
-
-        <div class="brand-text">
-          Sean Patrick Ramos
-          <small>Marketing + Automation</small>
-        </div>
-
-      </a>
-
+      <span>
+        Navigation
+      </span>
 
       <button
         class="mobile-menu-close"
+        id="mobileMenuClose"
         type="button"
-        aria-label="Close navigation menu"
+        aria-label="Close navigation"
       >
-        <i class="fa-solid fa-xmark"></i>
+        &times;
       </button>
 
     </div>
 
 
-    <nav class="mobile-nav">
+    <div class="mobile-drawer-brand">
 
-      <a href="./index.html">
+      <div class="brand-mark">
+        SR
+      </div>
+
+      <div>
+        <strong>
+          Sean Patrick Ramos
+        </strong>
+
+        <small>
+          Marketing + Automation
+        </small>
+      </div>
+
+    </div>
+
+
+    <div class="mobile-drawer-links">
+
+      <a
+        href="./index.html"
+      >
         <i class="fa-solid fa-house"></i>
-        <span>Home</span>
+        <span>
+          Home
+        </span>
       </a>
 
-      <a href="./experience.html">
+
+      <a
+        href="./experience.html"
+      >
         <i class="fa-solid fa-briefcase"></i>
-        <span>Work Experience</span>
+        <span>
+          Work Experience
+        </span>
       </a>
 
-      <a href="./projects.html" class="active">
+
+      <a
+        href="./projects.html" class="active"
+      >
         <i class="fa-solid fa-diagram-project"></i>
-        <span>Projects</span>
+        <span>
+          Projects
+        </span>
       </a>
 
-      <a href="./contactme.html">
+
+      <a
+        href="./contactme.html"
+      >
         <i class="fa-solid fa-envelope"></i>
-        <span>Contact Me</span>
+        <span>
+          Contact Me
+        </span>
       </a>
 
-      <a href="./about.html">
+
+      <a
+        href="./about.html"
+      >
         <i class="fa-solid fa-user"></i>
-        <span>About</span>
+        <span>
+          About
+        </span>
       </a>
 
-    </nav>
+    </div>
 
 
-    <div class="mobile-drawer-foot">
+    <div class="mobile-drawer-footer">
 
       <div class="sidebar-social">
 
@@ -507,6 +547,8 @@
         <a
           href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
           aria-label="LinkedIn"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <i class="fab fa-linkedin"></i>
         </a>
@@ -514,12 +556,13 @@
         <a
           href="https://www.instagram.com/seanramos_02/"
           aria-label="Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <i class="fab fa-instagram"></i>
         </a>
 
       </div>
-
 
       <div class="sidebar-status">
         Open to opportunities
@@ -527,7 +570,7 @@
 
     </div>
 
-  </aside>
+  </nav>
 
 
   <!-- =========================================================
@@ -1451,7 +1494,7 @@
 
 
   document
-    .querySelectorAll(".mobile-nav a")
+    .querySelectorAll(".mobile-drawer-links a")
     .forEach(link => {
 
       link.addEventListener(

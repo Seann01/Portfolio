@@ -415,35 +415,34 @@
 
   <header class="topbar">
 
-```
-<a href="./index.html" class="brand">
+    <!-- HAMBURGER -->
+
+    <button
+      class="mobile-menu-btn"
+      id="mobileMenuBtn"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
 
-  <div class="brand-mark">
-    SR
-  </div>
+    <!-- MOBILE BRAND -->
 
+    <a href="./index.html" class="brand">
 
-  <div class="brand-text">
-    Sean Patrick Ramos
-  </div>
+      <div class="brand-mark">
+        SR
+      </div>
 
+      <div class="brand-text">
+        Sean Ramos
+      </div>
 
-</a>
-
-
-<button
-  class="mobile-menu-btn"
-  type="button"
-  aria-label="Open navigation menu"
-  aria-controls="mobileDrawer"
-  aria-expanded="false"
->
-
-  <i class="fa-solid fa-bars"></i>
-
-</button>
-```
+    </a>
 
   </header>
 
@@ -453,173 +452,148 @@
 
   <div
     class="mobile-menu-overlay"
-    aria-hidden="true"
+    id="mobileMenuOverlay"
   ></div>
 
   <!-- =========================================================
        MOBILE DRAWER
        ========================================================= -->
 
-  <aside
+  <nav
     class="mobile-drawer"
     id="mobileDrawer"
     aria-label="Mobile navigation"
   >
 
-```
-<div class="mobile-drawer-head">
+    <div class="mobile-drawer-header">
 
+      <span>
+        Navigation
+      </span>
 
-  <a href="./index.html" class="brand">
+      <button
+        class="mobile-menu-close"
+        id="mobileMenuClose"
+        type="button"
+        aria-label="Close navigation"
+      >
+        &times;
+      </button>
 
-
-    <div class="brand-mark">
-      SR
     </div>
 
 
-    <div class="brand-text">
-      Sean Ramos
+    <div class="mobile-drawer-brand">
+
+      <div class="brand-mark">
+        SR
+      </div>
+
+      <div>
+        <strong>
+          Sean Patrick Ramos
+        </strong>
+
+        <small>
+          Marketing + Automation
+        </small>
+      </div>
+
     </div>
 
 
-  </a>
+    <div class="mobile-drawer-links">
+
+      <a
+        href="./index.html"
+      >
+        <i class="fa-solid fa-house"></i>
+        <span>
+          Home
+        </span>
+      </a>
 
 
-  <button
-    class="mobile-menu-close"
-    type="button"
-    aria-label="Close navigation menu"
-  >
-
-    <i class="fa-solid fa-xmark"></i>
-
-  </button>
-
-
-</div>
+      <a
+        href="./experience.html"
+      >
+        <i class="fa-solid fa-briefcase"></i>
+        <span>
+          Work Experience
+        </span>
+      </a>
 
 
-
-<nav class="mobile-nav">
-
-
-  <a href="./index.html">
-
-    <i class="fa-solid fa-house"></i>
-
-    <span>
-      Home
-    </span>
-
-  </a>
+      <a
+        href="./projects.html" class="active"
+      >
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>
+          Projects
+        </span>
+      </a>
 
 
-  <a href="./experience.html">
-
-    <i class="fa-solid fa-briefcase"></i>
-
-    <span>
-      Work Experience
-    </span>
-
-  </a>
-
-
-  <a
-    href="./projects.html"
-    class="active"
-  >
-
-    <i class="fa-solid fa-diagram-project"></i>
-
-    <span>
-      Projects
-    </span>
-
-  </a>
+      <a
+        href="./contactme.html"
+      >
+        <i class="fa-solid fa-envelope"></i>
+        <span>
+          Contact Me
+        </span>
+      </a>
 
 
-  <a href="./contactme.html">
+      <a
+        href="./about.html"
+      >
+        <i class="fa-solid fa-user"></i>
+        <span>
+          About
+        </span>
+      </a>
 
-    <i class="fa-solid fa-envelope"></i>
-
-    <span>
-      Contact Me
-    </span>
-
-  </a>
-
-
-  <a href="./about.html">
-
-    <i class="fa-solid fa-user"></i>
-
-    <span>
-      About
-    </span>
-
-  </a>
+    </div>
 
 
-</nav>
+    <div class="mobile-drawer-footer">
 
+      <div class="sidebar-social">
 
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
+          aria-label="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
 
-<div class="mobile-drawer-foot">
+        <a
+          href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
+          aria-label="LinkedIn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
 
+        <a
+          href="https://www.instagram.com/seanramos_02/"
+          aria-label="Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
 
-  <div class="sidebar-social">
+      </div>
 
+      <div class="sidebar-status">
+        Open to opportunities
+      </div>
 
-    <a
-      href="https://mail.google.com/mail/?view=cm&fs=1&to=seanpatrickramos.sp@gmail.com&su=Connect%20With%20Me"
-      aria-label="Email"
-    >
+    </div>
 
-      <i class="fas fa-envelope"></i>
-
-    </a>
-
-
-    <a
-      href="https://www.linkedin.com/in/sean-patrick-ramos-053385302/"
-      aria-label="LinkedIn"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <i class="fab fa-linkedin"></i>
-
-    </a>
-
-
-    <a
-      href="https://www.instagram.com/seanramos_02/"
-      aria-label="Instagram"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <i class="fab fa-instagram"></i>
-
-    </a>
-
-
-  </div>
-
-
-  <div class="sidebar-status">
-
-    Open to opportunities
-
-  </div>
-
-
-</div>
-```
-
-  </aside>
+  </nav>
 
   <!-- =========================================================
        MAIN CONTENT
@@ -1130,7 +1104,7 @@ aria-label="Close image preview"
      --------------------------------------------------------- */
 
   document
-    .querySelectorAll(".mobile-nav a")
+    .querySelectorAll(".mobile-drawer-links a")
     .forEach(link => {
 
       link.addEventListener(

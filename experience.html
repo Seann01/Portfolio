@@ -5288,48 +5288,22 @@ ACCESSIBILITY — respect reduced-motion preference
 </script>
 
 
-<style>
-/* =========================================================
-   CLIENT-SIDE NAVIGATION — progress bar + transition
-   ========================================================= */
-
-#routeProgress{
-  position:fixed;
-  top:0;
-  left:0;
-  height:2px;
-  width:0%;
-  background:linear-gradient(90deg, var(--amber), var(--teal));
-  z-index:99999;
-  opacity:0;
-  pointer-events:none;
-  transition:width .3s ease, opacity .2s ease;
-}
-
-#routeProgress.active{
-  opacity:1;
-  width:70%;
-  transition:width 1.1s ease;
-}
-
-body{
-  transition:opacity .22s ease, filter .22s ease;
-}
-
-html.is-navigating body{
-  opacity:.5;
-  filter:saturate(.6) blur(1px);
-  transition:opacity .16s ease, filter .16s ease;
-}
-</style>
 
 <script>
 /* =========================================================
    CLIENT-SIDE NAVIGATION (no full page reload between pages)
-   Fetches the target page, swaps <body> in, re-runs its
-   scripts, and updates the URL via the History API. Falls
-   back to a normal navigation if fetch isn't available
-   (e.g. opening the file directly with file://).
+
+   Only the main content area (.content and, if present,
+   .skills-compact) is swapped out. The sidebar, topbar, and
+   mobile drawer are never touched, so nothing there flickers
+   or re-plays its entrance animation on navigation — it just
+   stays put, the way persistent chrome should. There is no
+   loading indicator: the swap happens the instant the fetch
+   resolves, so the transition itself is invisible on a fast
+   connection.
+
+   Falls back to a normal navigation if fetch fails (e.g.
+   opening the file directly via file://, or a network error).
    ========================================================= */
 
 (function () {
@@ -5353,39 +5327,9 @@ html.is-navigating body{
     }
 
     if (target.origin !== window.location.origin) return false;
-    if (!/\.html($|\?|#)/.test(target.pathname) && target.pathname !== "/" ) return false;
+    if (!/\.html($|\?|#)/.test(target.pathname) && target.pathname !== "/") return false;
 
     return true;
-  }
-
-  function getProgressBar() {
-    var bar = document.getElementById("routeProgress");
-    if (!bar) {
-      bar = document.createElement("div");
-      bar.id = "routeProgress";
-      document.documentElement.appendChild(bar);
-    }
-    return bar;
-  }
-
-  function startProgress() {
-    var bar = getProgressBar();
-    bar.style.transition = "none";
-    bar.style.width = "0%";
-    void bar.offsetWidth;
-    bar.style.transition = "";
-    bar.classList.add("active");
-    document.documentElement.classList.add("is-navigating");
-  }
-
-  function finishProgress() {
-    var bar = getProgressBar();
-    bar.style.width = "100%";
-    document.documentElement.classList.remove("is-navigating");
-    window.setTimeout(function () {
-      bar.classList.remove("active");
-      bar.style.width = "0%";
-    }, 220);
   }
 
   function runScripts(container) {
@@ -5400,9 +5344,43 @@ html.is-navigating body{
     });
   }
 
-  function navigateTo(url, push) {
-    startProgress();
+  function syncActiveNav(pathname) {
+    var page = pathname.split("/").pop() || "index.html";
 
+    document.querySelectorAll(".side-nav a, .mobile-drawer-links a").forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      var hrefPage = href.split("/").pop();
+      if (hrefPage === page) {
+        a.classList.add("active");
+      } else {
+        a.classList.remove("active");
+      }
+    });
+  }
+
+  function swapContent(newDoc) {
+    var oldContent = document.querySelector(".content");
+    var newContent = newDoc.querySelector(".content");
+
+    if (oldContent && newContent) {
+      var imported = document.importNode(newContent, true);
+      oldContent.parentNode.replaceChild(imported, oldContent);
+    }
+
+    var oldAside = document.querySelector(".skills-compact");
+    var newAside = newDoc.querySelector(".skills-compact");
+    var content = document.querySelector(".content");
+
+    if (newAside && oldAside) {
+      oldAside.parentNode.replaceChild(document.importNode(newAside, true), oldAside);
+    } else if (newAside && !oldAside && content) {
+      content.parentNode.insertBefore(document.importNode(newAside, true), content.nextSibling);
+    } else if (!newAside && oldAside) {
+      oldAside.parentNode.removeChild(oldAside);
+    }
+  }
+
+  function navigateTo(url, push) {
     fetch(url, { credentials: "same-origin" })
       .then(function (res) {
         if (!res.ok) throw new Error("Navigation fetch failed: " + res.status);
@@ -5413,19 +5391,19 @@ html.is-navigating body{
         var newDoc = parser.parseFromString(html, "text/html");
 
         document.title = newDoc.title;
-        document.body.innerHTML = newDoc.body.innerHTML;
-        document.body.className = newDoc.body.className;
+        swapContent(newDoc);
+
+        var target = new URL(url, window.location.href);
+        syncActiveNav(target.pathname);
 
         if (push) {
           history.pushState({ url: url }, "", url);
         }
 
         window.scrollTo(0, 0);
-        runScripts(document.body);
-        finishProgress();
+        runScripts(document.querySelector(".content") || document.body);
       })
       .catch(function () {
-        // Graceful fallback: behave like a normal link.
         window.location.href = url;
       });
   }

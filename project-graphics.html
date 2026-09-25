@@ -5765,5 +5765,177 @@ aria-label="Close image preview"
 
 </script>
 
+
+<style>
+/* =========================================================
+   CLIENT-SIDE NAVIGATION — progress bar + transition
+   ========================================================= */
+
+#routeProgress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:2px;
+  width:0%;
+  background:linear-gradient(90deg, var(--amber), var(--teal));
+  z-index:99999;
+  opacity:0;
+  pointer-events:none;
+  transition:width .3s ease, opacity .2s ease;
+}
+
+#routeProgress.active{
+  opacity:1;
+  width:70%;
+  transition:width 1.1s ease;
+}
+
+body{
+  transition:opacity .22s ease, filter .22s ease;
+}
+
+html.is-navigating body{
+  opacity:.5;
+  filter:saturate(.6) blur(1px);
+  transition:opacity .16s ease, filter .16s ease;
+}
+</style>
+
+<script>
+/* =========================================================
+   CLIENT-SIDE NAVIGATION (no full page reload between pages)
+   Fetches the target page, swaps <body> in, re-runs its
+   scripts, and updates the URL via the History API. Falls
+   back to a normal navigation if fetch isn't available
+   (e.g. opening the file directly with file://).
+   ========================================================= */
+
+(function () {
+
+  function isRoutableLink(link) {
+    if (!link) return false;
+    if (link.target === "_blank") return false;
+    if (link.hasAttribute("download")) return false;
+
+    var href = link.getAttribute("href");
+    if (!href) return false;
+    if (href.indexOf("#") === 0) return false;
+    if (href.indexOf("mailto:") === 0) return false;
+    if (href.indexOf("tel:") === 0) return false;
+
+    var target;
+    try {
+      target = new URL(href, window.location.href);
+    } catch (e) {
+      return false;
+    }
+
+    if (target.origin !== window.location.origin) return false;
+    if (!/\.html($|\?|#)/.test(target.pathname) && target.pathname !== "/" ) return false;
+
+    return true;
+  }
+
+  function getProgressBar() {
+    var bar = document.getElementById("routeProgress");
+    if (!bar) {
+      bar = document.createElement("div");
+      bar.id = "routeProgress";
+      document.documentElement.appendChild(bar);
+    }
+    return bar;
+  }
+
+  function startProgress() {
+    var bar = getProgressBar();
+    bar.style.transition = "none";
+    bar.style.width = "0%";
+    void bar.offsetWidth;
+    bar.style.transition = "";
+    bar.classList.add("active");
+    document.documentElement.classList.add("is-navigating");
+  }
+
+  function finishProgress() {
+    var bar = getProgressBar();
+    bar.style.width = "100%";
+    document.documentElement.classList.remove("is-navigating");
+    window.setTimeout(function () {
+      bar.classList.remove("active");
+      bar.style.width = "0%";
+    }, 220);
+  }
+
+  function runScripts(container) {
+    var scripts = Array.prototype.slice.call(container.querySelectorAll("script"));
+    scripts.forEach(function (oldScript) {
+      var newScript = document.createElement("script");
+      Array.prototype.forEach.call(oldScript.attributes, function (attr) {
+        newScript.setAttribute(attr.name, attr.value);
+      });
+      newScript.textContent = oldScript.textContent;
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+  }
+
+  function navigateTo(url, push) {
+    startProgress();
+
+    fetch(url, { credentials: "same-origin" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("Navigation fetch failed: " + res.status);
+        return res.text();
+      })
+      .then(function (html) {
+        var parser = new DOMParser();
+        var newDoc = parser.parseFromString(html, "text/html");
+
+        document.title = newDoc.title;
+        document.body.innerHTML = newDoc.body.innerHTML;
+        document.body.className = newDoc.body.className;
+
+        if (push) {
+          history.pushState({ url: url }, "", url);
+        }
+
+        window.scrollTo(0, 0);
+        runScripts(document.body);
+        finishProgress();
+      })
+      .catch(function () {
+        // Graceful fallback: behave like a normal link.
+        window.location.href = url;
+      });
+  }
+
+  if (!document.body.dataset.routerReady) {
+    document.body.dataset.routerReady = "1";
+
+    document.body.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.button !== 0) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      var link = e.target.closest ? e.target.closest("a") : null;
+      if (!isRoutableLink(link)) return;
+
+      var href = link.getAttribute("href");
+      var target = new URL(href, window.location.href);
+
+      if (target.pathname === window.location.pathname) {
+        e.preventDefault();
+        return;
+      }
+
+      e.preventDefault();
+      navigateTo(href, true);
+    });
+
+    window.addEventListener("popstate", function () {
+      navigateTo(window.location.pathname + window.location.search, false);
+    });
+  }
+})();
+</script>
+
 </body>
 </html>

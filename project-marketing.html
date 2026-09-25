@@ -75,7 +75,19 @@ ROOT VARIABLES
   --teal-soft:rgba(73,179,166,0.13);
 
   --rose:#d9829a;
+  --rose-soft:rgba(217,130,154,0.13);
+
   --blue:#7192d9;
+  --blue-soft:rgba(113,146,217,0.13);
+
+  --violet:#9d8cf5;
+  --violet-soft:rgba(157,140,245,0.13);
+
+  --green:#68c48a;
+  --green-soft:rgba(104,196,138,0.13);
+
+  --coral:#f08a5d;
+  --coral-soft:rgba(240,138,93,0.13);
 
   --radius-sm:6px;
   --radius-md:12px;
@@ -4084,6 +4096,214 @@ PANEL BOXES (Tools & Skillset / Areas of Focus)
 .panel-box:last-child {
   margin-bottom: 0;
 }
+
+
+/* =========================================================
+SKILL TAG COLOR CATEGORIES
+========================================================= */
+
+.skills-list span.tag-dev{
+  border-color:rgba(231,163,62,.35);
+  background:rgba(231,163,62,.10);
+  color:#f0c98a;
+}
+.skills-list span.tag-dev:hover{
+  border-color:var(--amber);
+  color:#f7dcae;
+  box-shadow:0 0 10px rgba(231,163,62,.28);
+}
+
+.skills-list span.tag-infra{
+  border-color:rgba(73,179,166,.35);
+  background:rgba(73,179,166,.10);
+  color:#8fd4c9;
+}
+.skills-list span.tag-infra:hover{
+  border-color:var(--teal);
+  color:#b3e4db;
+  box-shadow:0 0 10px rgba(73,179,166,.28);
+}
+
+.skills-list span.tag-seo{
+  border-color:rgba(217,130,154,.35);
+  background:rgba(217,130,154,.10);
+  color:#eeaac0;
+}
+.skills-list span.tag-seo:hover{
+  border-color:var(--rose);
+  color:#f5c6d5;
+  box-shadow:0 0 10px rgba(217,130,154,.28);
+}
+
+.skills-list span.tag-marketing{
+  border-color:rgba(113,146,217,.35);
+  background:rgba(113,146,217,.10);
+  color:#a8bdee;
+}
+.skills-list span.tag-marketing:hover{
+  border-color:var(--blue);
+  color:#c3d1f4;
+  box-shadow:0 0 10px rgba(113,146,217,.28);
+}
+
+.skills-list span.tag-creative{
+  border-color:rgba(157,140,245,.35);
+  background:rgba(157,140,245,.10);
+  color:#c3b8f7;
+}
+.skills-list span.tag-creative:hover{
+  border-color:var(--violet);
+  color:#d8d0fa;
+  box-shadow:0 0 10px rgba(157,140,245,.28);
+}
+
+.skills-list span.tag-admin{
+  border-color:rgba(104,196,138,.35);
+  background:rgba(104,196,138,.10);
+  color:#a3ddb8;
+}
+.skills-list span.tag-admin:hover{
+  border-color:var(--green);
+  color:#c2eace;
+  box-shadow:0 0 10px rgba(104,196,138,.28);
+}
+
+.skills-list span.tag-misc{
+  border-color:rgba(240,138,93,.35);
+  background:rgba(240,138,93,.10);
+  color:#f3b393;
+}
+.skills-list span.tag-misc:hover{
+  border-color:var(--coral);
+  color:#f8ccb4;
+  box-shadow:0 0 10px rgba(240,138,93,.28);
+}
+
+
+/* =========================================================
+AREAS OF FOCUS — colorful icon-card redesign
+========================================================= */
+
+.focus-dropdown{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:8px;
+
+  border-top:none;
+}
+
+.focus-dropdown details{
+  width:100%;
+
+  min-width:0;
+
+  border:1px solid var(--line);
+
+  border-radius:10px;
+
+  background:var(--raised);
+
+  overflow:hidden;
+
+  transition:
+    border-color .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.focus-dropdown details:hover{
+  transform:translateY(-2px);
+}
+
+.focus-dropdown details[open]{
+  box-shadow:0 10px 24px rgba(0,0,0,.28);
+}
+
+.focus-dropdown summary{
+  justify-content:flex-start;
+
+  padding:12px 14px;
+
+  gap:12px;
+}
+
+.focus-dropdown summary > span:first-child{
+  flex:none;
+}
+
+.focus-icon{
+  width:30px;
+  height:30px;
+
+  min-width:30px;
+
+  border-radius:8px;
+
+  display:grid;
+
+  place-items:center;
+
+  font-size:12.5px;
+
+  transition:transform .2s ease;
+}
+
+.focus-title{
+  flex:1;
+
+  min-width:0;
+
+  overflow-wrap:anywhere;
+}
+
+.focus-dropdown .focus-context{
+  padding:0 16px 16px 58px;
+}
+
+.focus-dropdown details[open] .focus-arrow{
+  transform:rotate(45deg);
+}
+
+details[open] .focus-icon{
+  transform:scale(1.08);
+}
+
+.focus-marketing .focus-icon{ background:var(--blue-soft); color:var(--blue); }
+.focus-marketing:hover,
+.focus-marketing[open]{ border-color:var(--blue); }
+.focus-marketing[open] .focus-arrow{ color:var(--blue); border-color:var(--blue); background:var(--blue-soft); }
+
+.focus-seo .focus-icon{ background:var(--rose-soft); color:var(--rose); }
+.focus-seo:hover,
+.focus-seo[open]{ border-color:var(--rose); }
+.focus-seo[open] .focus-arrow{ color:var(--rose); border-color:var(--rose); background:var(--rose-soft); }
+
+.focus-leadgen .focus-icon{ background:var(--coral-soft); color:var(--coral); }
+.focus-leadgen:hover,
+.focus-leadgen[open]{ border-color:var(--coral); }
+.focus-leadgen[open] .focus-arrow{ color:var(--coral); border-color:var(--coral); background:var(--coral-soft); }
+
+.focus-landing .focus-icon{ background:var(--violet-soft); color:var(--violet); }
+.focus-landing:hover,
+.focus-landing[open]{ border-color:var(--violet); }
+.focus-landing[open] .focus-arrow{ color:var(--violet); border-color:var(--violet); background:var(--violet-soft); }
+
+.focus-ops .focus-icon{ background:var(--teal-soft); color:var(--teal); }
+.focus-ops:hover,
+.focus-ops[open]{ border-color:var(--teal); }
+.focus-ops[open] .focus-arrow{ color:var(--teal); border-color:var(--teal); background:var(--teal-soft); }
+
+.focus-webdev .focus-icon{ background:var(--amber-soft); color:var(--amber); }
+.focus-webdev:hover,
+.focus-webdev[open]{ border-color:var(--amber); }
+.focus-webdev[open] .focus-arrow{ color:var(--amber); border-color:var(--amber); background:var(--amber-soft); }
+
+.focus-reporting .focus-icon{ background:var(--green-soft); color:var(--green); }
+.focus-reporting:hover,
+.focus-reporting[open]{ border-color:var(--green); }
+.focus-reporting[open] .focus-arrow{ color:var(--green); border-color:var(--green); background:var(--green-soft); }
 
 
 /* =========================================================

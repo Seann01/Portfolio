@@ -196,7 +196,7 @@
      Works even when the page arrives through the site's page-transition
      script, because it looks the carousel up fresh on every tick. */
 
-  var HL_DELAY = 4500;
+  var HL_DELAY = 3000;
   var hlPaused = false;
   var hlLastMove = Date.now();
 

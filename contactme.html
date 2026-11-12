@@ -446,7 +446,7 @@ DESKTOP MAIN CONTENT
 INDEX MAIN AREA — EXACT 55%
 ========================================================= */
 
-.content:has(.skills-compact) .content-inner{
+.shell:has(.skills-compact) .content .content-inner{
   /*
     The main content is EXACTLY 55% of the
     workspace remaining after the sidebar.
@@ -471,7 +471,7 @@ INDEX MAIN AREA — EXACT 55%
 CENTER DIVIDER
 ========================================================= */
 
-.content:has(.skills-compact)::before{
+.shell:has(.skills-compact) .content::before{
   content:"";
 
   position:fixed;
@@ -994,10 +994,6 @@ AREAS OF FOCUS
 
   min-width:0;
 
-  border-top:1px solid var(--line);
-
-  padding-top:10px;
-
   margin-top:12px;
 }
 
@@ -1012,7 +1008,11 @@ AREAS OF FOCUS
 
   color:var(--ink-faint);
 
-  margin-bottom:4px;
+  padding-bottom:10px;
+
+  margin-bottom:14px;
+
+  border-bottom:1px solid var(--line);
 }
 
 
@@ -1096,8 +1096,6 @@ DROPDOWN SUMMARY
 
 .focus-dropdown summary > span:first-child{
   min-width:0;
-
-  flex:1;
 
   overflow-wrap:anywhere;
 }
@@ -2054,7 +2052,7 @@ FOOTER
   color:var(--ink-faint);
 }
 
-.content:has(.skills-compact) .footer-slim{
+.shell:has(.skills-compact) .content .footer-slim{
   width:55%;
 
   max-width:none;
@@ -2416,7 +2414,7 @@ TABLET / MOBILE
     flex-direction:column;
   }
 
-  .content:has(.skills-compact) .content-inner{
+  .shell:has(.skills-compact) .content .content-inner{
     width:100%;
 
     max-width:none;
@@ -2429,11 +2427,11 @@ TABLET / MOBILE
       50px;
   }
 
-  .content:has(.skills-compact)::before{
+  .shell:has(.skills-compact) .content::before{
     display:none;
   }
 
-  .content:has(.skills-compact) .footer-slim{
+  .shell:has(.skills-compact) .content .footer-slim{
     width:100%;
 
     max-width:none;
@@ -3205,7 +3203,7 @@ MOBILE — <= 980px
   }
 
   .content-inner,
-  .content:has(.skills-compact) .content-inner{
+  .shell:has(.skills-compact) .content .content-inner{
     width:100%;
 
     max-width:none;
@@ -3451,7 +3449,7 @@ MOBILE — <= 980px
     align-items:flex-start;
   }
 
-  .content:has(.skills-compact) .footer-slim{
+  .shell:has(.skills-compact) .content .footer-slim{
     width:100%;
 
     max-width:none;
@@ -3611,7 +3609,7 @@ SMALL PHONES — <= 560px
   ----------------------------------------- */
 
   .content-inner,
-  .content:has(.skills-compact) .content-inner{
+  .shell:has(.skills-compact) .content .content-inner{
     padding:
       34px
       18px
@@ -3804,8 +3802,6 @@ SMALL PHONES — <= 560px
   .focus-dropdown summary > span:first-child{
     min-width:0;
 
-    flex:1;
-
     padding-right:8px;
   }
 
@@ -3896,7 +3892,7 @@ VERY SMALL PHONES — <= 380px
   }
 
   .content-inner,
-  .content:has(.skills-compact) .content-inner{
+  .shell:has(.skills-compact) .content .content-inner{
     padding-left:15px;
     padding-right:15px;
   }
@@ -4228,6 +4224,8 @@ AREAS OF FOCUS — colorful icon-card redesign
 
 .focus-dropdown summary > span:first-child{
   flex:none;
+
+  flex-shrink:0;
 }
 
 .focus-icon{
@@ -4235,6 +4233,10 @@ AREAS OF FOCUS — colorful icon-card redesign
   height:30px;
 
   min-width:30px;
+
+  flex:0 0 30px;
+
+  flex-shrink:0;
 
   border-radius:8px;
 
@@ -4629,6 +4631,8 @@ ACCESSIBILITY — respect reduced-motion preference
 }
 
 </style>
+  <!-- Tech theme: animated background + hover effects -->
+  <link rel="stylesheet" href="./tech-theme.css">
 </head>
 
 <body>
@@ -5334,6 +5338,9 @@ ACCESSIBILITY — respect reduced-motion preference
   }
 })();
 </script>
+
+<!-- Tech theme: animated background + hover effects -->
+<script src="./tech-theme.js"></script>
 
 </body>
 </html>

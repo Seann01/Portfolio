@@ -43,11 +43,14 @@
 
   /* ---------- Particle network ---------- */
 
-  if(!reduceMotion){
+  /* Always draw the constellation; with "reduce motion" on it just drifts slower. */
+  var SPEED = reduceMotion ? .35 : 1;
+
+  if(true){
     var ctx = canvas.getContext("2d");
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var W = 0, H = 0, nodes = [], pulses = [];
-    var COLORS = ["170,182,196", "92,207,194"];
+    var COLORS = ["176,176,176", "240,240,240"];
     var LINK = 140;
 
     function resize(){
@@ -63,8 +66,8 @@
         nodes.push({
           x: Math.random() * W,
           y: Math.random() * H,
-          vx: (Math.random() - .5) * .35,
-          vy: (Math.random() - .5) * .35,
+          vx: (Math.random() - .5) * .35 * SPEED,
+          vy: (Math.random() - .5) * .35 * SPEED,
           r: Math.random() * 1.6 + .6,
           c: COLORS[i % 4 === 0 ? 1 : 0]
         });
@@ -106,8 +109,8 @@
 
         n.vx *= .995;
         n.vy *= .995;
-        if(Math.abs(n.vx) < .05) n.vx += (Math.random() - .5) * .04;
-        if(Math.abs(n.vy) < .05) n.vy += (Math.random() - .5) * .04;
+        if(Math.abs(n.vx) < .05 * SPEED) n.vx += (Math.random() - .5) * .04 * SPEED;
+        if(Math.abs(n.vy) < .05 * SPEED) n.vy += (Math.random() - .5) * .04 * SPEED;
 
         n.x += n.vx;
         n.y += n.vy;
@@ -124,7 +127,7 @@
           var dx = p.x - q.x, dy = p.y - q.y;
           var d2 = dx * dx + dy * dy;
           if(d2 < LINK * LINK){
-            var al = (1 - Math.sqrt(d2) / LINK) * .16;
+            var al = (1 - Math.sqrt(d2) / LINK) * .26;
             ctx.strokeStyle = "rgba(" + p.c + "," + al + ")";
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -136,7 +139,7 @@
         var mx = mouse.x - p.x, my = mouse.y - p.y;
         var mdist = Math.sqrt(mx * mx + my * my);
         if(mdist < 200){
-          ctx.strokeStyle = "rgba(92,207,194," + ((1 - mdist / 200) * .3) + ")";
+          ctx.strokeStyle = "rgba(240,240,240," + ((1 - mdist / 200) * .3) + ")";
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
@@ -146,13 +149,13 @@
 
       for(var k = 0; k < nodes.length; k++){
         var s = nodes[k];
-        ctx.fillStyle = "rgba(" + s.c + ",.6)";
+        ctx.fillStyle = "rgba(" + s.c + ",.85)";
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      if(Math.random() < .03) spawnPulse();
+      if(!reduceMotion && Math.random() < .03) spawnPulse();
       for(var j = pulses.length - 1; j >= 0; j--){
         var pu = pulses[j];
         pu.t += .025;
@@ -161,8 +164,8 @@
         var py = pu.a.y + (pu.b.y - pu.a.y) * pu.t;
         var g = ctx.createRadialGradient(px, py, 0, px, py, 6);
         g.addColorStop(0, "rgba(255,255,255,.7)");
-        g.addColorStop(.4, "rgba(92,207,194,.5)");
-        g.addColorStop(1, "rgba(92,207,194,0)");
+        g.addColorStop(.4, "rgba(240,240,240,.45)");
+        g.addColorStop(1, "rgba(240,240,240,0)");
         ctx.fillStyle = g;
         ctx.beginPath();
         ctx.arc(px, py, 6, 0, Math.PI * 2);
@@ -177,7 +180,7 @@
 
   /* ---------- Spotlight that follows the mouse inside cards ---------- */
 
-  var CARD_SEL = ".row-item, .project-split, .panel-box, .block, .log-row, .focus-dropdown";
+  var CARD_SEL = ".row-item";
 
   if(canHover){
     document.addEventListener("mousemove", function(e){
@@ -189,21 +192,56 @@
     }, { passive: true });
   }
 
-  /* ---------- 3D tilt on images ---------- */
+  /* ---------- Projects page: auto-rotating highlights ----------
+     Works even when the page arrives through the site's page-transition
+     script, because it looks the carousel up fresh on every tick. */
 
-  if(canHover && !reduceMotion){
-    var tilts = document.querySelectorAll(".portrait-frame, .project-media");
-    Array.prototype.forEach.call(tilts, function(el){
-      el.addEventListener("mousemove", function(e){
-        var r = el.getBoundingClientRect();
-        var x = (e.clientX - r.left) / r.width - .5;
-        var y = (e.clientY - r.top) / r.height - .5;
-        el.style.transform = "perspective(900px) rotateY(" + (x * 8) + "deg) rotateX(" + (-y * 8) + "deg)";
-      });
-      el.addEventListener("mouseleave", function(){
-        el.style.transform = "";
-      });
+  var HL_DELAY = 4500;
+  var hlPaused = false;
+  var hlLastMove = Date.now();
+
+  function hlGo(track, page){
+    var pages = track.querySelectorAll(".highlight-slide").length;
+    if(!pages) return;
+    page = (page + pages) % pages;
+    track.dataset.page = page;
+    track.style.transform = "translateX(" + (-100 * page) + "%)";
+    var dots = document.querySelectorAll(".highlight-dot");
+    Array.prototype.forEach.call(dots, function(d, i){
+      d.classList.toggle("is-active", i === page);
+      d.setAttribute("aria-selected", i === page ? "true" : "false");
     });
+    hlLastMove = Date.now();
   }
 
+  function hlPlaceArrows(){
+    var vp = document.querySelector(".highlight-viewport");
+    var img = vp && vp.querySelector(".highlight-img");
+    if(!img) return;
+    vp.style.setProperty("--hl-arrow-top", (img.offsetHeight / 2) + "px");
+  }
+  window.addEventListener("resize", hlPlaceArrows);
+
+  setInterval(function(){
+    hlPlaceArrows();
+    var track = document.querySelector(".highlight-track");
+    if(!track || hlPaused || document.hidden) return;
+    if(Date.now() - hlLastMove < HL_DELAY - 50) return;
+    hlGo(track, (parseInt(track.dataset.page, 10) || 0) + 1);
+  }, 250);
+
+  document.addEventListener("click", function(e){
+    if(!e.target.closest) return;
+    var track = document.querySelector(".highlight-track");
+    if(!track) return;
+    var cur = parseInt(track.dataset.page, 10) || 0;
+    var dot = e.target.closest(".highlight-dot");
+    if(dot){ hlGo(track, parseInt(dot.dataset.page, 10) || 0); return; }
+    if(e.target.closest(".highlight-next")){ hlGo(track, cur + 1); return; }
+    if(e.target.closest(".highlight-prev")){ hlGo(track, cur - 1); return; }
+  });
+
+  document.addEventListener("mouseover", function(e){
+    hlPaused = !!(e.target.closest && e.target.closest(".highlight-viewport"));
+  });
 })();
